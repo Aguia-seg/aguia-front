@@ -9,12 +9,12 @@ const router = createRouter({
   routes
 })
 
-router.beforeEach((to, from, next) => {
-  if (to.name !== 'Login' && localStorage.getItem('token') == null) next({ name: 'Login' })
-  // if the user is not authenticated, `next` is called twice
-  else if (to.name == 'Login' && localStorage.getItem('token') !== null) next({ name: 'Home' })
+// router.beforeEach((to, from, next) => {
+//   if (to.name !== 'Login' && localStorage.getItem('token') == null) next({ name: 'Login' })
+//   // if the user is not authenticated, `next` is called twice
+//   else if (to.name == 'Login' && localStorage.getItem('token') !== null) next({ name: 'Home' })
 
-  else next()
-})
+//   else next()
+// })
 
 export default router
