@@ -1,0 +1,7 @@
+{
+  "name": "aguia-front",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue"
+}
