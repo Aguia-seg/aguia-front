@@ -13,23 +13,23 @@
     width: 150px;
   }
 
-ion-input{
-
-}  
 
 ion-item{
   --border-width: 1px;
   --border-radius: 45px;
-  --inner-padding-top: 1px;
+  /* --inner-padding-top: 1px; */
   width: 500px;
+  --highlight-color-focused: #ffc409;
+  
   
 }
 
 
-  .login-input{
+  ion-item.login-input{
     border-radius: 45px;
     margin: auto;
   }
+
 
   body{
     background-color: #F6F6F6;
