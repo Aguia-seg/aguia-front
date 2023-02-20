@@ -9,8 +9,30 @@
   }
 
   #main-logo{
-    height: 300px;
-    width: 250px;
+    height: 200px;
+    width: 150px;
+  }
+
+ion-inout{
+  
+}  
+
+ion-item{
+  --border-width: 1px;
+  --border-radius: 45px;
+  --inner-padding-top: 1px;
+  width: 500px;
+  
+}
+
+
+  .login-input{
+    border-radius: 45px;
+    margin: auto;
+  }
+
+  body{
+    background-color: #F6F6F6;
   }
   
   #container strong {
