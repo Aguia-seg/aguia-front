@@ -22,7 +22,12 @@ import '@ionic/vue/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 
-const app = createApp(App)
+import 'bootstrap/dist/css/bootstrap.css'
+import bootstrap from 'bootstrap/dist/js/bootstrap.bundle.js';
+
+
+
+const app = createApp(App).use(bootstrap)
   .use(IonicVue)
   .use(router);
 
@@ -53,3 +58,4 @@ const app = createApp(App)
 router.isReady().then(() => {
   app.mount('#app');
 });
+

@@ -13,9 +13,12 @@
         </ion-toolbar>
       </ion-header>
 
-      <div id="container">
-        <strong>Ready to create an app?</strong>
-        <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+      <div id="container" class="container">
+        <img id="main-logo" src="@/assets/img/logo.png" alt="logo">
+        <ion-item fill="outline">
+          <ion-label position="floating">Login</ion-label>
+          <ion-input placeholder="CPF"></ion-input>
+        </ion-item>
       </div>
     </ion-content>
   </ion-page>

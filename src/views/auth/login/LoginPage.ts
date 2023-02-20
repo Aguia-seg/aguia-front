@@ -1,5 +1,8 @@
-import { defineComponent } from 'vue';
+import { defineComponent } from 'vue'
+import { IonInput, IonItem, IonLabel } from '@ionic/vue';
 
 export default defineComponent({
-    name: 'LoginPage',
+    name: 'LoginPage', 
+    components: { IonInput, IonItem, IonLabel },
+    
 });
