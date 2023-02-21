@@ -1,8 +1,12 @@
 import AuthRoute from '@/views/auth/AuthRoute';
+import PainelRoute from '@/views/painel/PainelRoute';
 import { createRouter, createWebHistory } from '@ionic/vue-router';
 import { RouteRecordRaw } from 'vue-router';
 
-export const routes = ([] as Array<RouteRecordRaw>).concat(AuthRoute)
+export const routes = ([] as Array<RouteRecordRaw>).concat(
+  AuthRoute,
+  PainelRoute
+  )
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),

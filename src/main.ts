@@ -19,13 +19,18 @@ import '@ionic/vue/css/text-transformation.css';
 import '@ionic/vue/css/flex-utils.css';
 import '@ionic/vue/css/display.css';
 
+import 'admin-lte/dist/css/adminlte.min.css';
+import 'admin-lte/plugins/fontawesome-free/css/all.min.css';
+import 'admin-lte/plugins/jquery/jquery.min.js';
+import 'admin-lte/plugins/bootstrap/js/bootstrap.bundle.min.js';
+import 'admin-lte/dist/js/adminlte.min.js';
+
+
+
 /* Theme variables */
 import './theme/variables.css';
 
-import 'bootstrap/dist/css/bootstrap.css'
-import bootstrap from 'bootstrap/dist/js/bootstrap.bundle.js';
-
-const app = createApp(App).use(bootstrap)
+const app = createApp(App)
   .use(IonicVue)
   .use(router);
 
