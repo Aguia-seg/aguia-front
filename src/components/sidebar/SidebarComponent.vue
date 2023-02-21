@@ -3,14 +3,12 @@
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
       
-      <span class="brand-text font-weight-light">AdminLTE 3</span>
+      <span class="brand-text font-weight-light">ÁGUIA SEG</span>
     </a>
 
     <!-- Sidebar -->
     <div class="sidebar">
-      <!-- Sidebar user panel (optional) -->  
-
-      
+      <!-- Sidebar user panel (optional) -->       
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
@@ -50,3 +48,5 @@
     <!-- /.sidebar -->
   </aside>
 </template>
+
+<style scoped src="./SidebarComponent.css"></style>
