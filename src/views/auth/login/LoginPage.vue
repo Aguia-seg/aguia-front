@@ -7,18 +7,21 @@
     </ion-header>
 
     <ion-content :fullscreen="true">
-
-      <div id="container" class="container mt-5">
-        <img id="main-logo" src="@/assets/img/logo.png" alt="logo">
-        <ion-item class="mt-5 mb-4 login-input" fill="outline" color="warning">
-          <ion-label position="floating">Login</ion-label>
+      <div class="content">
+        <img class="main-logo" src="@/assets/img/logo.png" alt="logo">
+        <ion-item lines="full">
+          <ion-label position="floating" color="warning">Login</ion-label>
           <ion-input placeholder="CPF"></ion-input>
         </ion-item>
-        <ion-item class="mb-4 login-input" fill="outline" color="warning">
-          <ion-label position="floating">Senha</ion-label>
-          <ion-input placeholder="Senha"></ion-input>
+        <ion-item lines="full">
+          <ion-label position="floating" color="warning">Senha</ion-label>
+          <ion-input placeholder=""></ion-input>
         </ion-item>
-        <ion-button color="warning">Entrar</ion-button>
+
+        <ion-button expand="block" color="warning">Entrar</ion-button>
+        <ion-text color="dark">
+          <small>Esqueci senha!</small>
+        </ion-text>
       </div>
     </ion-content>
   </ion-page>
