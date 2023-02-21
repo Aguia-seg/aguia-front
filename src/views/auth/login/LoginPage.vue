@@ -18,7 +18,7 @@
           <ion-input placeholder=""></ion-input>
         </ion-item>
 
-        <ion-button expand="block" color="warning">Entrar</ion-button>
+        <ion-button @click="login()" expand="block" color="warning">Entrar</ion-button>
         <ion-text color="dark">
           <small>Esqueci senha!</small>
         </ion-text>
