@@ -1,0 +1,10 @@
+ion-item{
+    --border-width: 1px;
+    --border-radius: 20px;
+    --highlight-color-focused: #ffc409;
+    --color-focused: #000000;
+    --detail-font-color: #ffc409;
+    --highlight-height: 8px;
+    margin-bottom: 20px;
+    margin-top: 20px;   
+    }

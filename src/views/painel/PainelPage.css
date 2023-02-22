@@ -1,1 +1,17 @@
+sup{
+    top: -1.5em;
+}
 
+.small-box {
+    height: 80%;
+    overflow: hidden;
+}
+
+ul{
+    list-style-type: circle;
+    
+}
+
+tr, td{
+    font-size: 10px;
+}
