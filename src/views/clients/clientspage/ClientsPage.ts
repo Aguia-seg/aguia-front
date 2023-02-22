@@ -1,7 +1,7 @@
 import { defineComponent } from "vue";
 import SidebarComponent from "@/components/sidebar/SidebarComponent.vue"
 import NavbarComponent from "@/components/navbar/NavbarComponent.vue"
-import { searchOutline } from 'ionicons/icons'
+import { searchOutline, closeOutline, createOutline, searchCircleOutline } from 'ionicons/icons'
 
 export default defineComponent({
     name: 'ClientsShow',
@@ -12,6 +12,9 @@ export default defineComponent({
     setup() {
         return{
             searchOutline,
+            closeOutline,
+            createOutline,
+            searchCircleOutline,
         }
     },
 })

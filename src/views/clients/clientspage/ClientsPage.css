@@ -1,14 +1,26 @@
 ion-item{
     --border-width: 1px;
     --border-radius: 20px;
-    --highlight-color-focused: #ffc409;
+     --highlight-color-focused: #ffc409;
     --color-focused: #000000;
     --detail-font-color: #ffc409;
     margin-bottom: 20px;
     margin-top: 20px;  
 }
 
-ion-button{
+ion-button.add-button{
     --background: #CAD300;
     --background-hover: #f7ff66;
 }
+
+ion-button.delete-button{
+    --background: #ff0000;
+    --background-hover: #ff6666;
+}
+
+ion-button.edit-button{
+    --background: #ffae00;
+    --background-hover: #ffc966;
+}
+
+

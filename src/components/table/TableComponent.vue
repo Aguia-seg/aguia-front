@@ -1,48 +1,16 @@
-
 <template>
-<ion-page>
-    <SidebarComponent></SidebarComponent>
-    <NavbarComponent></NavbarComponent>
-
-    <ion-content>
-        <div class="content-wrapper">
-            <div class="content-header">
-                <div class="container-fluid">
-                    <div class="row mb-2">
-                        <div class="col-sm-6">
-                            <h1 class="m-0">Consulta de Clientes</h1>
-                        </div><!-- /.col -->
-                        <div class="col-sm-6">
-                            <ol class="breadcrumb float-sm-right">
-                               <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            </ol>
-                        </div><!-- /.col -->
-                    </div><!-- /.row -->
-                </div><!-- /.container-fluid -->
-            </div>
-            <div class="container mt-5">
-                <div class="row">
-                    <div class="col-lg-6 col-12">
-                        <div class="d-flex align-items-center">
-                            <ion-button shape="round" class="add-button mr-4">Adicionar</ion-button>
-                            <ion-item>
-                                <ion-input placeholder="Pesquisar"><ion-icon :icon="searchOutline"></ion-icon></ion-input>
-                            </ion-item>
-                        </div>
-                    </div>
-                </div>
-                <div class="container-fluid bg-light">
+    <div class="container-fluid bg-light">
                     <table class="table">
                         <thead>
                             <tr>
                                 <th scope="col">ID</th>
-                                <th scope="col">Nome</th>
-                                <th scope="col">Tipo</th>
-                                <th scope="col">Ativo</th>
-                                <th scope="col">Telefone</th>
-                                <th scope="col">Celular</th>
-                                <th scope="col">E-mail</th>
-                                <th scope="col">Ações</th>
+                                <th scope="col">{{ col1 }}</th>
+                                <th scope="col">{{ col2 }}</th>
+                                <th scope="col">{{ col3 }}</th>
+                                <th scope="col">{{ col4 }}</th>
+                                <th scope="col">{{ col5 }}</th>
+                                <th scope="col">{{ col6 }}</th>
+                                <th scope="col">{{ col7 }}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -105,13 +73,33 @@
                         </tbody>
                     </table>
                 </div>
-            </div>    
-        </div> 
-           
-    </ion-content>
-</ion-page>
-
 </template>
 
-<script lang="ts" src="./ClientsPage.ts"></script>
-<style scoped src="./ClientsPage.css"></style>
+<script lang="ts">
+import { defineComponent } from 'vue';
+import { searchOutline, closeOutline, createOutline } from 'ionicons/icons'
+export default defineComponent({
+    props: {
+        col1: String,
+        col2: String,
+        col3: String,
+        col4: String,
+        col5: String,
+        col6: String,
+        col7: String,
+    },
+    name: 'TableComponent',
+    setup(){
+        return{
+            searchOutline,
+            closeOutline,
+            createOutline,
+        }
+    }
+    
+})
+</script>
+
+<style scoped>
+
+</style>
