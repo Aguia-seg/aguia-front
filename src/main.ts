@@ -3,6 +3,8 @@ import App from './App.vue'
 import router from './router';
 import { IonicVue, IonPage, IonContent, IonButtons, IonBackButton, IonButton, IonHeader, IonItem, IonList, IonMenu, IonMenuToggle, IonToolbar, IonTitle, IonMenuButton, IonRow, IonCol, IonAccordionGroup, IonAccordion, IonIcon, IonGrid, IonLabel, IonText, IonInput, IonSelect, IonSelectOption } from '@ionic/vue';
 
+import AppLayout from '@/layout/AppLayout.vue';
+
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/vue/css/core.css';
 
@@ -21,19 +23,16 @@ import '@ionic/vue/css/display.css';
 
 import 'admin-lte/dist/css/adminlte.min.css';
 import 'admin-lte/plugins/fontawesome-free/css/all.min.css';
-import 'admin-lte/plugins/jquery/jquery.min.js';
-import 'admin-lte/plugins/bootstrap/js/bootstrap.bundle.min.js';
-import 'admin-lte/dist/js/adminlte.min.js';
-
-
 
 /* Theme variables */
 import './theme/variables.css';
+import './theme/global.css';
 
 const app = createApp(App)
   .use(IonicVue)
   .use(router);
 
+  app.component('AppLayout', AppLayout);
   app.component('ion-content', IonContent);
   app.component('ion-page', IonPage);
   app.component('ion-buttons', IonButtons);
@@ -63,4 +62,8 @@ const app = createApp(App)
 router.isReady().then(() => {
   app.mount('#app');
 });
+
+import 'admin-lte/plugins/jquery/jquery.js';
+import 'admin-lte/plugins/bootstrap/js/bootstrap.bundle.js';
+import 'admin-lte/dist/js/adminlte.js';
 

@@ -1,47 +1,43 @@
 <template>
- <aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
-      
+
       <span class="brand-text font-weight-light">ÁGUIA SEG</span>
     </a>
 
     <!-- Sidebar -->
     <div class="sidebar">
-      <!-- Sidebar user panel (optional) -->       
+      <!-- Sidebar user panel (optional) -->
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column " data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-
-          <li class="nav-item">
-            <button class="nav-link btn-block" @click="() => $router.push('/')">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Painel
-              </p>
-            </button>
-          </li>
-          <li class="nav-item">
-            <button href="#" class="nav-link btn-block ">
-              <i class="nav-icon fas fa-users"></i>
-              <p>
-                Cadastros
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </button>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <button  class="nav-link w-100 text-dark btn-light">
-                   <p>Active Page</p>
-                </button>
-              </li>
-              
-            </ul>
-          </li>
-        </ul>
+        <ion-item router-link="/painel" slot="header" color="dark">
+          <i class="nav-icon fas fa-tachometer-alt mr-2 cursor"></i>
+          <ion-label>Painel</ion-label>
+        </ion-item>
+        <ion-accordion-group :multiple="true">
+          <ion-accordion value="second">
+            <ion-item slot="header" color="dark">
+              <i class=" nav-icon fas fa-table mr-2 "></i>
+              <ion-label>Cadastros</ion-label>
+            </ion-item>
+            <div class="" slot="content" >
+              <ion-item router-link="/clients" lines="none">
+                <ion-label>Cadastros de Clientes</ion-label>
+              </ion-item>
+              <ion-item router-link="/clients" lines="none">
+                <ion-label>Cadastros de Residências</ion-label>
+              </ion-item>
+              <ion-item router-link="/clients" lines="none">
+                <ion-label>Cadastros de Vendedores</ion-label>
+              </ion-item>
+              <ion-item router-link="/clients" lines="none">
+                <ion-label>Cadastros de Cobradores</ion-label>
+              </ion-item>
+            </div>
+          </ion-accordion>
+        </ion-accordion-group>
       </nav>
       <!-- /.sidebar-menu -->
     </div>

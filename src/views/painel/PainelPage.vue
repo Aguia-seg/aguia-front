@@ -1,9 +1,5 @@
 <template>
-    <ion-page>
-        <SidebarComponent></SidebarComponent>
-        <NavbarComponent></NavbarComponent>
-        <ion-content>
-            <div class="content-wrapper">
+    <AppLayout>
                 <!-- Content Header (Page header) -->
                 <div class="content-header">
                     <div class="container-fluid">
@@ -143,9 +139,8 @@
                 </div><!-- /.container-fluid -->
             </section>
             <!-- /.content -->
-        </div>
-    </ion-content>
-</ion-page></template>
+    </AppLayout>
+</template>
 
 <style scoped src="./PainelPage.css"></style>
 <script lang="ts" src="./PainelPage.ts"></script>
