@@ -4,7 +4,7 @@
         <ion-buttons slot="start">
           <ion-button color="medium" @click="cancel">Cancel</ion-button>
         </ion-buttons>
-        <ion-title>Modal</ion-title>
+        <ion-title>Cadastro de Clientes</ion-title>
         <ion-buttons slot="end">
           <ion-button @click="confirm">Confirm</ion-button>
         </ion-buttons>
