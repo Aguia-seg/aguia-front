@@ -1,6 +1,7 @@
 import AuthRoute from '@/views/auth/AuthRoute';
 import PainelRoute from '@/views/painel/PainelRoute';
 import ClientsRoute from '@/views/clients/ClientsRoute';
+import HousesRoute from '@/views/houses/HousesRoute';
 import { createRouter, createWebHistory } from '@ionic/vue-router';
 import { RouteRecordRaw } from 'vue-router';
 
@@ -8,6 +9,7 @@ export const routes = ([] as Array<RouteRecordRaw>).concat(
   AuthRoute,
   PainelRoute,
   ClientsRoute,
+  HousesRoute,
   )
 
 const router = createRouter({

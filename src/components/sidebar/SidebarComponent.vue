@@ -26,14 +26,11 @@
               <ion-item router-link="/clients" lines="none">
                 <ion-label>Cadastros de Clientes</ion-label>
               </ion-item>
-              <ion-item router-link="/clients" lines="none">
+              <ion-item router-link="/houses" lines="none">
                 <ion-label>Cadastros de Residências</ion-label>
               </ion-item>
               <ion-item router-link="/clients" lines="none">
-                <ion-label>Cadastros de Vendedores</ion-label>
-              </ion-item>
-              <ion-item router-link="/clients" lines="none">
-                <ion-label>Cadastros de Cobradores</ion-label>
+                <ion-label>Cadastros de Colaboradores</ion-label>
               </ion-item>
             </div>
           </ion-accordion>
