@@ -40,12 +40,6 @@
                           </ion-item>  
                         </div>
                     </div>
-                    <FormComponent
-                    input1="Nome"
-                    input2="E-mail"
-                    input3="Telefone"
-                    input4="CNPJ"
-                    input5="CPF"></FormComponent>
                 </div>
         </div>
         
