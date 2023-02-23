@@ -2,9 +2,6 @@
   <ion-header>
     <ion-toolbar>
       <ion-title>Cadastro de Clientes</ion-title>
-      <ion-buttons slot="end">
-        <ion-button color="medium" @click="cancel">Sair</ion-button>
-      </ion-buttons>
     </ion-toolbar>
   </ion-header>
   <ion-content class="ion-padding">
