@@ -1,7 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router';
-import { IonicVue, IonPage, IonContent, IonButtons, IonBackButton, IonButton, IonHeader, IonItem, IonList, IonMenu, IonMenuToggle, IonToolbar, IonTitle, IonMenuButton, IonRow, IonCol, IonAccordionGroup, IonAccordion, IonIcon, IonGrid, IonLabel, IonText, IonInput, IonSelect, IonSelectOption } from '@ionic/vue';
+import { IonicVue, IonPage, IonContent, IonButtons, IonBackButton, IonButton, IonHeader, IonItem, IonList, IonMenu, IonMenuToggle, IonToolbar, IonTitle, IonMenuButton, IonRow, IonCol, IonAccordionGroup, IonAccordion, IonIcon, IonGrid, IonLabel, IonText, IonInput, IonSelect, IonSelectOption, IonDatetimeButton, IonDatetime, IonModal } from '@ionic/vue';
 
 import AppLayout from '@/layout/AppLayout.vue';
 
@@ -57,6 +57,9 @@ const app = createApp(App)
   app.component('ion-input', IonInput);
   app.component('ion-select', IonSelect);
   app.component('ion-select-option', IonSelectOption);
+  app.component('ion-datetime-button', IonDatetimeButton);
+  app.component('ion-datetime', IonDatetime);
+  app.component('ion-modal', IonModal);
   
   
 router.isReady().then(() => {

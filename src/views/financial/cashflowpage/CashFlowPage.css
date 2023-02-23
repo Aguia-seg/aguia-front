@@ -1,0 +1,13 @@
+ion-item.date-selector{
+    --border-radius: 20px;
+    --highlight-color-focused: #ffc409;
+    --color-focused: #000000;
+    --detail-font-color: #ffc409;
+   
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+button.ion-activatable{
+    display: none !important;
+}

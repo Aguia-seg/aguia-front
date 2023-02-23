@@ -48,16 +48,8 @@
 <div class="row">
     <div class="col-12">
         <ion-item>
-            <ion-label position="floating">Telefone</ion-label>
+            <ion-label position="floating">Whatsapp</ion-label>
             <ion-input placeholder="Telefone"></ion-input>
-        </ion-item>
-    </div>
-</div>
-<div class="row">
-    <div class="col-12">
-        <ion-item>
-            <ion-label position="floating">Celular</ion-label>
-            <ion-input placeholder="Celular"></ion-input>
         </ion-item>
     </div>
 </div>

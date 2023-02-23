@@ -30,8 +30,7 @@
                         <th scope="col">Nome</th>
                         <th scope="col">CPF</th>
                         <th scope="col">E-mail</th>
-                        <th scope="col">Telefone</th>
-                        <th scope="col">Celular</th>
+                        <th scope="col">Whatsapp</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -41,7 +40,6 @@
                         <td>Torres Tortas</td>
                         <td>999.999.999-99</td>
                         <td>TorresTortas@fortnite.com</td>
-                        <td>87999999999</td>
                         <td>87999999999</td>
                         <td>
                             <div class="d-flex align-items-center">
