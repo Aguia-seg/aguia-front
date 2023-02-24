@@ -24,4 +24,11 @@ ion-button.edit-button{
     --background-hover: #ffc966;
 }
 
+ion-spinner {
+    transform: scale(6);
+    margin: 0 auto !important;
+    top: 200px;
+    width: 100%;
+}
+
 

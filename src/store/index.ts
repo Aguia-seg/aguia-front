@@ -2,6 +2,7 @@ import { InjectionKey } from 'vue'
 import { createStore, useStore as baseUseStore, Store, createLogger} from 'vuex'
 import auth from './modules/auth'
 import user from './modules/user'
+import client from './modules/client'
 
 const debug = process.env.NODE_ENV !== 'production'
 
@@ -9,6 +10,7 @@ const debug = process.env.NODE_ENV !== 'production'
 export interface State {
   auth: any,
   user: any,
+  client: any,
 }
 
 // define injection key
@@ -17,7 +19,8 @@ export const key: InjectionKey<Store<State>> = Symbol()
 export const store = createStore<State>({
   modules:{
     auth,
-    user
+    user,
+    client
   },
   strict: false,
   plugins: debug ? [createLogger()] : []

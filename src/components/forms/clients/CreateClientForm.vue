@@ -9,8 +9,8 @@
       <div class="col-6">
         <ion-item>
           <ion-select interface="popover" placeholder="Tipo de cliente" required>
-            <ion-select-option value="1">Pessoa física</ion-select-option>
-            <ion-select-option value="2">Pessoa jurídica</ion-select-option>
+            <ion-select-option value="PF">Pessoa física</ion-select-option>
+            <ion-select-option value="PJ">Pessoa jurídica</ion-select-option>
           </ion-select>
         </ion-item>
       </div>

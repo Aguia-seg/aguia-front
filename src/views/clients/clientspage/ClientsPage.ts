@@ -1,15 +1,23 @@
 import { defineComponent } from "vue";
-import SidebarComponent from "@/components/sidebar/SidebarComponent.vue"
-import NavbarComponent from "@/components/navbar/NavbarComponent.vue"
 import { searchOutline, closeOutline, createOutline, searchCircleOutline } from 'ionicons/icons'
 import { modalController } from "@ionic/vue";
-import CreateClientForm from '@/components/forms/clients/CreateClientForm.vue'
+import CreateClientForm from '@/components/forms/clients/CreateClientForm.vue';
+import { mapActions, mapState } from "vuex";
 
 export default defineComponent({
     name: 'ClientsShow',
-    components: {
-        SidebarComponent,
-        NavbarComponent,
+    data() {
+        return{
+            spinner: true,
+        }
+    },
+    computed: {
+        ...mapState('client', ['clients'])
+    },
+    async ionViewWillEnter() {
+        this.spinner = true;
+         await this.getClients();
+         this.spinner = false;
     },
     methods:{
         async formClient(){
@@ -17,7 +25,8 @@ export default defineComponent({
                 component: CreateClientForm,
               });
               modal.present();
-        }
+        },
+        ...mapActions('client', ['getClients'])
     },
     setup() {
         return{
