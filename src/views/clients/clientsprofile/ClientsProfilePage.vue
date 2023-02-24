@@ -23,6 +23,10 @@
                                 <ion-col class="sec-col d-flex justify-content-center">Pessoa física</ion-col>
                             </ion-row>
                             <ion-row>
+                                <ion-col class="first-col d-flex justify-content-center">CPF/CNPJ:</ion-col>
+                                <ion-col class="sec-col d-flex justify-content-center">000.000.000-00</ion-col>
+                            </ion-row>
+                            <ion-row>
                                 <ion-col class="first-col d-flex justify-content-center">Ativo:</ion-col>
                                 <ion-col class="sec-col d-flex justify-content-center">True</ion-col>
                             </ion-row>
@@ -71,12 +75,12 @@
                                             <ion-col class="sec-col d-flex justify-content-center">Rua qualquer</ion-col>
                                         </ion-row>
                                         <ion-row>
-                                            <ion-col class="d-flex justify-content-center">Bairro:</ion-col>
-                                            <ion-col class="last-col d-flex justify-content-center">Bairro qualquer</ion-col>
+                                            <ion-col class="first-col d-flex justify-content-center">Bairro:</ion-col>
+                                            <ion-col class="sec-col d-flex justify-content-center">Bairro qualquer</ion-col>
                                         </ion-row>
                                         <ion-row>
-                                            <ion-col class="d-flex justify-content-center">Número:</ion-col>
-                                            <ion-col class="last-col d-flex justify-content-center">127</ion-col>
+                                            <ion-col class="first-col d-flex justify-content-center">Número:</ion-col>
+                                            <ion-col class="sec-col d-flex justify-content-center">127</ion-col>
                                         </ion-row>
                                         <ion-row>
                                             <ion-col class="d-flex justify-content-center">Bloco:</ion-col>
@@ -108,12 +112,12 @@
                                             <ion-col class="sec-col d-flex justify-content-center">Rua qualquer</ion-col>
                                         </ion-row>
                                         <ion-row>
-                                            <ion-col class="d-flex justify-content-center">Bairro:</ion-col>
-                                            <ion-col class="last-col d-flex justify-content-center">Bairro qualquer</ion-col>
+                                            <ion-col class="first-col d-flex justify-content-center">Bairro:</ion-col>
+                                            <ion-col class="sec-col d-flex justify-content-center">Bairro qualquer</ion-col>
                                         </ion-row>
                                         <ion-row>
-                                            <ion-col class="d-flex justify-content-center">Número:</ion-col>
-                                            <ion-col class="last-col d-flex justify-content-center">62</ion-col>
+                                            <ion-col class="first-col d-flex justify-content-center">Número:</ion-col>
+                                            <ion-col class="sec-col d-flex justify-content-center">62</ion-col>
                                         </ion-row>
                                         <ion-row>
                                             <ion-col class="d-flex justify-content-center">Bloco:</ion-col>

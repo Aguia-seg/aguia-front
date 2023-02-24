@@ -30,7 +30,7 @@
     <div class="col-12">
         <ion-item>
             <ion-label position="floating">CEP</ion-label>
-            <ion-input placeholder="CEP"></ion-input>
+            <ion-input type="number" placeholder="CEP"></ion-input>
         </ion-item>
     </div>
 </div>
@@ -54,26 +54,10 @@
     <div class="col-12">
         <ion-item>
             <ion-label position="floating">Número</ion-label>
-            <ion-input placeholder="Número"></ion-input>
+            <ion-input type="number" placeholder="Número"></ion-input>
         </ion-item>
     </div>
-</div>
-<div class="row">
-    <div class="col-12">
-        <ion-item>
-            <ion-label position="floating">Bloco</ion-label>
-            <ion-input placeholder="Bloco"></ion-input>
-        </ion-item>
-    </div>
-</div>  
-<div class="row">
-    <div class="col-12">
-        <ion-item>
-            <ion-label position="floating">Veículo</ion-label>
-            <ion-input placeholder="Veículo"></ion-input>
-        </ion-item>
-    </div>
-</div>  
+</div> 
 
     </ion-content>
   </template>

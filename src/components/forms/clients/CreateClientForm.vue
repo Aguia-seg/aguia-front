@@ -35,7 +35,7 @@
       <div class="col-12">
         <ion-item>
           <ion-label position="floating">E-mail</ion-label>
-          <ion-input placeholder="E-mail"></ion-input>
+          <ion-input type="email" placeholder="E-mail"></ion-input>
         </ion-item>
       </div>
     </div>
@@ -43,23 +43,18 @@
       <div class="col-12">
         <ion-item>
           <ion-label position="floating">Telefone</ion-label>
-          <ion-input placeholder="Telefone"></ion-input>
+          <ion-input type="number" placeholder="Telefone"></ion-input>
         </ion-item>
       </div>
     </div>
     <div class="row">
       <div class="col-12">
         <ion-item>
-          <ion-label position="floating">CNPJ</ion-label>
-          <ion-input placeholder="CNPJ"></ion-input>
-        </ion-item>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-12">
-        <ion-item>
-          <ion-label position="floating">CPF</ion-label>
-          <ion-input placeholder="CPF"></ion-input>
+          <ion-label class="d-flex" position="floating">
+            <h5>Veículo</h5>
+            <p>(opcional)</p>
+          </ion-label>
+          <ion-textarea placeholder="Cliente possui veículo?"></ion-textarea>
         </ion-item>
       </div>
     </div>

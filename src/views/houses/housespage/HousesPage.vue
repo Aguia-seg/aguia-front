@@ -32,8 +32,9 @@
                         <th scope="col">Rua</th>
                         <th scope="col">Bairro</th>
                         <th scope="col">Número</th>
-                        <th scope="col">Bloco</th>
-                        <th scope="col">Veículo</th>
+                        <th scope="col">Ações</th>
+                        
+                       
                     </tr>
                 </thead>
                 <tbody>
@@ -45,8 +46,8 @@
                         <td>Rua genérica</td>
                         <td>Bairro qualquer</td>
                         <td>27</td>
-                        <td>3</td>
-                        <td>Fiat Uno</td>
+
+                    
                         <td>
                             <div class="d-flex align-items-center">
                                 <ion-button class="delete-button mr-2" size="small"><ion-icon
