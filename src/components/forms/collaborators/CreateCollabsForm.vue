@@ -23,7 +23,7 @@
       <div class="col-12">
         <ion-item>
           <ion-label position="floating">Nome</ion-label>
-          <ion-input placeholder="Nome" v-model="user.name"></ion-input>
+          <ion-input placeholder="Nome" v-model="user.name" type="text"></ion-input>
         </ion-item>
       </div>
     </div>
@@ -31,7 +31,7 @@
       <div class="col-12">
         <ion-item>
           <ion-label position="floating">E-mail</ion-label>
-          <ion-input placeholder="E-mail" v-model="user.email"></ion-input>
+          <ion-input placeholder="E-mail" v-model="user.email" type="email"></ion-input>
         </ion-item>
       </div>
     </div>
@@ -39,7 +39,7 @@
       <div class="col-12">
         <ion-item>
           <ion-label position="floating">CPF</ion-label>
-          <ion-input placeholder="CPF" v-model="user.cpf"></ion-input>
+          <ion-input placeholder="CPF" v-model="user.cpf" type="number"></ion-input>
         </ion-item>
       </div>
     </div>
@@ -47,7 +47,7 @@
       <div class="col-12">
         <ion-item>
           <ion-label position="floating">Telefone</ion-label>
-          <ion-input placeholder="Telefone" v-model="user.whatsapp"></ion-input>
+          <ion-input placeholder="Telefone" v-model="user.whatsapp" type="number"></ion-input>
         </ion-item>
       </div>
     </div>
