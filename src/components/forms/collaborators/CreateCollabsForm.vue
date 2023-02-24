@@ -106,4 +106,7 @@ ion-item {
   margin-bottom: 20px;
   margin-top: 20px;
 }
+.row{
+  height: 80px;
+}
 </style>

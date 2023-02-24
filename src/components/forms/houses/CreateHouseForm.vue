@@ -110,4 +110,7 @@ ion-item{
     margin-top: 20px;   
     }
 
+    .row{
+  height: 80px;
+}
 </style>
