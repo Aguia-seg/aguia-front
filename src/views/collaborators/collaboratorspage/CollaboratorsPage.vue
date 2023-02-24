@@ -22,7 +22,8 @@
             </div>
                         </div> -->
         <div class="container-fluid ">
-            <table class="table">
+            <ion-spinner color="success" v-if="spinner"></ion-spinner>
+            <table class="table" v-if="!spinner">
                 <thead>
                     <tr>
                         <th scope="col">ID</th>
@@ -30,19 +31,17 @@
                         <th scope="col">Nome</th>
                         <th scope="col">CPF</th>
                         <th scope="col">E-mail</th>
-                        <th scope="col">Telefone</th>
                         <th scope="col">Celular</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Cobrador</td>
-                        <td>Torres Tortas</td>
-                        <td>999.999.999-99</td>
-                        <td>TorresTortas@fortnite.com</td>
-                        <td>87999999999</td>
-                        <td>87999999999</td>
+                    <tr v-for="user in users" :key="user.id">
+                        <th scope="row">{{ user.id }}</th>
+                        <td>{{user.type}}</td>
+                        <td>{{ user.name }}</td>
+                        <td>{{ user.cpf }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.whatsapp }}</td>
                         <td>
                             <div class="d-flex align-items-center">
                                 <ion-button class="delete-button mr-2" size="small"><ion-icon
@@ -57,6 +56,7 @@
                 </tbody>
             </table>
         </div>
+     
     </AppLayout>
 </template>
 <script lang="ts" src="./CollaboratorsPage.ts"></script>

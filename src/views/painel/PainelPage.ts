@@ -1,11 +1,7 @@
 import { defineComponent } from 'vue'
-import SidebarComponent from '@/components/sidebar/SidebarComponent.vue'
-import NavbarComponent from '@/components/navbar/NavbarComponent.vue'
+import { mapState, mapActions } from 'vuex';
 export default defineComponent({
     name: 'PainelPage',
-    components:{
-        SidebarComponent,
-        NavbarComponent
-    }
+ 
     
 });
