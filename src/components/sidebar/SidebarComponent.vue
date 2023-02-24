@@ -1,10 +1,18 @@
 <template>
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
+    <div class="row">
+      <div class="col text-center pt-2">
+        <span class="brand-text font-weight-light text-light">ÁGUIA SEG</span>
+      </div>
+      <div class="col text-right">
+         <a class="nav-link" data-widget="pushmenu" href="#" role="button">
+          <i class="fas fa-arrow-left text-light"></i></a>
+      </div>
+    </div>
 
-      <span class="brand-text font-weight-light">ÁGUIA SEG</span>
-    </a>
+
+
 
     <!-- Sidebar -->
     <div class="sidebar">
@@ -22,7 +30,7 @@
               <i class=" nav-icon fas fa-table mr-2 "></i>
               <ion-label>Cadastros</ion-label>
             </ion-item>
-            <div class="" slot="content" >
+            <div class="" slot="content">
               <ion-item router-link="/clients" lines="none">
                 <ion-label>Cadastros de Clientes</ion-label>
               </ion-item>
