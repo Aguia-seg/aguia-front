@@ -3,6 +3,7 @@ import PainelRoute from '@/views/painel/PainelRoute';
 import ClientsRoute from '@/views/clients/ClientsRoute';
 import HousesRoute from '@/views/houses/HousesRoute';
 import CollabsRoute from '@/views/collaborators/CollaboratorsRoute';
+import FinancialRoute from '@/views/financial/FinancialRoute';
 import { createRouter, createWebHistory } from '@ionic/vue-router';
 import { RouteRecordRaw } from 'vue-router';
 
@@ -12,6 +13,7 @@ export const routes = ([] as Array<RouteRecordRaw>).concat(
   ClientsRoute,
   HousesRoute,
   CollabsRoute,
+  FinancialRoute,
   )
 
 const router = createRouter({

@@ -1,0 +1,27 @@
+.client-sheet{
+    background-color: white;
+    border-radius: 34px;
+
+}
+
+ion-col.first-col{
+    border: 1px solid rgb(226, 226, 226) ;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+}
+
+ion-col.sec-col{
+    
+    border: 1px solid rgb(226, 226, 226) ;
+    border-top: 0px;
+    border-right: 0px;
+}
+
+ion-col.last-col{
+    border: 1px solid rgb(226, 226, 226) ;
+    border-top: 0px;
+    border-right: 0px;
+    border-bottom: 0px;
+}
+

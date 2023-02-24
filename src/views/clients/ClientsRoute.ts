@@ -2,9 +2,9 @@ import { RouteRecordRaw } from 'vue-router';
 
 const ClientsRoute: Array<RouteRecordRaw> = [
   {
-    path: '/clients/register',
-    name: 'ClientRegister',
-    component: () => import('@/views/clients/clientsregisterpage/ClientsRegisterPage.vue')
+    path: '/clients/profile',
+    name: 'ClientProfile',
+    component: () => import('@/views/clients/clientsprofile/ClientsProfilePage.vue')
   },
   {
     path: '/clients',
