@@ -11,7 +11,7 @@
     <div class="row">
       <div class="col-6">
         <ion-item>
-          <ion-select interface="popover" placeholder="Tipo" v-model="user.type">
+          <ion-select interface="popover" placeholder="Tipo" v-model="user.type" @change="validate()">
             <ion-select-option value="seller">Vendedor</ion-select-option>
             <ion-select-option value="collector">Cobrador</ion-select-option>
             <ion-select-option value="admin">Admin</ion-select-option>
@@ -54,7 +54,7 @@
 
   </ion-content>
   <ion-footer>
-    <ion-button @click="registerUser()" expand="block" color="success">
+    <ion-button @click="validate()" expand="block" color="success">
       Cadastrar
     </ion-button>
   </ion-footer>
@@ -79,7 +79,7 @@ export default defineComponent({
         type: '',
         whatsapp: '',
         password: 'null'
-      }
+      },
     }
   },
   methods: {
@@ -91,6 +91,22 @@ export default defineComponent({
     cancel() {
       return modalController.dismiss(null, 'cancel');
     },
+    async validate() {
+      const inputs: any = this.user
+      const userform = Object.keys(this.user);
+      let cont = 0;
+      userform.forEach((res) => {
+        if (inputs[res] == '') {
+          cont++;
+        }
+      });
+      if (cont!== 0) {
+        alert('Preencha todos os campos')
+      }else{
+        this.registerUser();
+      }
+
+    }
   },
 });
 </script>

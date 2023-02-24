@@ -1,7 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router';
-import { IonicVue, IonPage, IonContent, IonButtons, IonBackButton, IonButton, IonHeader, IonItem, IonList, IonMenu, IonMenuToggle, IonToolbar, IonTitle, IonMenuButton, IonRow, IonCol, IonAccordionGroup, IonAccordion, IonIcon, IonGrid, IonLabel, IonText, IonInput, IonSelect, IonSelectOption, IonFooter } from '@ionic/vue';
+import { IonicVue, IonPage, IonContent, IonButtons, IonBackButton, IonButton, IonHeader, IonItem, IonList, IonMenu, IonMenuToggle, IonToolbar, IonTitle, IonMenuButton, IonRow, IonCol, IonAccordionGroup, IonAccordion, IonIcon, IonGrid, IonLabel, IonText, IonInput, IonSelect, IonSelectOption, IonFooter, IonSpinner } from '@ionic/vue';
 
 import AppLayout from '@/layout/AppLayout.vue';
 
@@ -60,6 +60,7 @@ app.component('ion-input', IonInput);
 app.component('ion-select', IonSelect);
 app.component('ion-select-option', IonSelectOption);
 app.component('ion-footer', IonFooter);
+app.component('ion-spinner', IonSpinner);
 
 
 router.isReady().then(() => {
