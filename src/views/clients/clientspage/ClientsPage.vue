@@ -47,11 +47,7 @@
                         <td>Maria@bunita.com</td>
                         <td>
                             <div class="d-flex align-items-center">
-                                <ion-button class="delete-button mr-2" size="small"><ion-icon
-                                        :icon="closeOutline"></ion-icon></ion-button>
-                                <ion-button class="edit-button mr-2" size="small"><ion-icon
-                                        :icon="createOutline"></ion-icon></ion-button>
-                                <ion-button size="small"><ion-icon class="search-button"
+                                <ion-button router-link="/clients/profile" size="small"><ion-icon class="search-button"
                                         :icon="searchOutline"></ion-icon></ion-button>
                             </div>
                         </td>
