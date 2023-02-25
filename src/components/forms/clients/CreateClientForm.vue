@@ -17,8 +17,8 @@
       <div class="col-6">
         <ion-item>
           <ion-select interface="popover" placeholder="Situação">
-            <ion-select-option value="1">Ativo</ion-select-option>
-            <ion-select-option value="2">Inativo</ion-select-option>
+            <ion-select-option value="0">Ativo</ion-select-option>
+            <ion-select-option value="">Inativo</ion-select-option>
           </ion-select>
         </ion-item>
       </div>
