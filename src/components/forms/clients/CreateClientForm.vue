@@ -49,7 +49,7 @@
     </div>  
     <div class="row row-tiny mt-4">
       <div class="col-12">
-        <p class="m-0 pl-2">informações de residência</p>
+        <p class="m-0 pl-2">INFORMAÇÕES DE RESIDÊNCIA</p>
       </div>
     </div>
     <div class="row">
