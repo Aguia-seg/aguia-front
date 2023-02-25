@@ -55,9 +55,11 @@
     <div class="row">
       <div class="col-12">
         <ion-item>
-          <ion-label position="floating">Endereço</ion-label>
-          <ion-input placeholder="Telefone"></ion-input>
-        </ion-item>
+                <ion-select interface="popover" placeholder="Cidade">
+                    <ion-select-option value="1">Petrolina</ion-select-option>
+                    <ion-select-option value="2">Juazeiro</ion-select-option>
+                </ion-select>
+            </ion-item>  
       </div>
     </div>
     <div class="row">
