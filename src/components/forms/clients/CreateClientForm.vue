@@ -46,6 +46,51 @@
           <ion-input type="number" placeholder="Telefone"></ion-input>
         </ion-item>
       </div>
+    </div>  
+    <div class="row row-tiny mt-3">
+      <div class="col-12">
+        <p class="m-0 pl-2">informações de residência</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <ion-item>
+          <ion-label position="floating">Endereço</ion-label>
+          <ion-input placeholder="Telefone"></ion-input>
+        </ion-item>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <ion-item>
+          <ion-label position="floating">Bairro</ion-label>
+          <ion-input placeholder="Bairro"></ion-input>
+        </ion-item>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <ion-item>
+          <ion-label position="floating">Rua</ion-label>
+          <ion-input placeholder="Rua"></ion-input>
+        </ion-item>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <ion-item>
+          <ion-label position="floating">Complemento</ion-label>
+          <ion-input placeholder="Complemento"></ion-input>
+        </ion-item>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <ion-item>
+          <ion-label position="floating">Número</ion-label>
+          <ion-input placeholder="Número"></ion-input>
+        </ion-item>
+      </div>
     </div>
     <div class="row">
       <div class="col-12">
@@ -95,5 +140,9 @@ ion-item {
 }
 .row{
   height: 80px;
+}
+
+.row.row-tiny{
+  height: 40px;
 }
 </style>
