@@ -27,7 +27,7 @@
       <div class="col-12">
         <ion-item>
           <ion-label position="floating">Nome</ion-label>
-          <ion-input placeholder="Nome"></ion-input>
+          <ion-input placeholder="Nome" v-model="client.name"></ion-input>
         </ion-item>
       </div>
     </div>
@@ -35,7 +35,7 @@
       <div class="col-12">
         <ion-item>
           <ion-label position="floating">E-mail</ion-label>
-          <ion-input type="email" placeholder="E-mail"></ion-input>
+          <ion-input type="email" placeholder="E-mail" v-model="client.email"></ion-input>
         </ion-item>
       </div>
     </div>
@@ -43,11 +43,11 @@
       <div class="col-12">
         <ion-item>
           <ion-label position="floating">Telefone</ion-label>
-          <ion-input type="number" placeholder="Telefone"></ion-input>
+          <ion-input type="number" placeholder="Telefone" v-model="client.phone"></ion-input>
         </ion-item>
       </div>
     </div>  
-    <div class="row row-tiny mt-3">
+    <div class="row row-tiny mt-4">
       <div class="col-12">
         <p class="m-0 pl-2">informações de residência</p>
       </div>
@@ -55,9 +55,9 @@
     <div class="row">
       <div class="col-12">
         <ion-item>
-                <ion-select interface="popover" placeholder="Cidade">
-                    <ion-select-option value="1">Petrolina</ion-select-option>
-                    <ion-select-option value="2">Juazeiro</ion-select-option>
+                <ion-select interface="popover" placeholder="Cidade" v-model="client.city">
+                    <ion-select-option value="petrolina">Petrolina</ion-select-option>
+                    
                 </ion-select>
             </ion-item>  
       </div>
@@ -66,7 +66,7 @@
       <div class="col-12">
         <ion-item>
           <ion-label position="floating">Bairro</ion-label>
-          <ion-input placeholder="Bairro"></ion-input>
+          <ion-input placeholder="Bairro" v-model="client.district"></ion-input>
         </ion-item>
       </div>
     </div>
@@ -74,7 +74,7 @@
       <div class="col-12">
         <ion-item>
           <ion-label position="floating">Rua</ion-label>
-          <ion-input placeholder="Rua"></ion-input>
+          <ion-input placeholder="Rua" v-model="client.street"></ion-input>
         </ion-item>
       </div>
     </div>
@@ -82,7 +82,7 @@
       <div class="col-12">
         <ion-item>
           <ion-label position="floating">Complemento</ion-label>
-          <ion-input placeholder="Complemento"></ion-input>
+          <ion-input placeholder="Complemento" v-model="client.complement"></ion-input>
         </ion-item>
       </div>
     </div>
@@ -90,7 +90,7 @@
       <div class="col-12">
         <ion-item>
           <ion-label position="floating">Número</ion-label>
-          <ion-input placeholder="Número"></ion-input>
+          <ion-input placeholder="Número" v-model="client.number"></ion-input>
         </ion-item>
       </div>
     </div>
@@ -101,12 +101,16 @@
             <h5>Veículo</h5>
             <p>(opcional)</p>
           </ion-label>
-          <ion-textarea placeholder="Cliente possui veículo?"></ion-textarea>
+          <ion-textarea v-model="client.veicle" placeholder="Cliente possui veículo?" ></ion-textarea>
         </ion-item>
       </div>
     </div>
-    
   </ion-content>
+  <ion-footer>
+    <ion-button @click="validate()" expand="block" color="success">
+      Cadastrar
+    </ion-button>
+  </ion-footer>  
 </template>
   
 <script lang="ts">
@@ -118,6 +122,21 @@ import { defineComponent } from 'vue';
 
 export default defineComponent({
   name: 'CreateClientForm',
+  data(){
+    return{
+      client: {
+        name: '',
+        email: '',
+        phone: '',
+        city: '',
+        district: '',
+        street: '',
+        complement: '',
+        number: '',
+        veicle: ''
+      }
+    }
+  },
   methods: {
     cancel() {
       return modalController.dismiss(null, 'cancel');
@@ -125,6 +144,11 @@ export default defineComponent({
     confirm() {
       return modalController.dismiss(null, 'confirm');
     },
+
+    validate(){
+      const inputs: any = this.client
+      console.log(inputs)
+    }
   },
 });
 </script>
@@ -145,6 +169,6 @@ ion-item {
 }
 
 .row.row-tiny{
-  height: 40px;
+  height: 20px;
 }
 </style>
