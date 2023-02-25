@@ -20,6 +20,16 @@ const actions = {
         );
     },
 
+    async registerClient(context: any, form: any){
+        await ClientService.registerClient(form).then(
+            (response) => {
+                console.log(response.data.message)
+                alert(response.data.message);
+                context.dispatch('getClients');
+            }
+        )
+    }
+
 }
 
 // const getters = {}

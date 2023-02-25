@@ -56,7 +56,7 @@
       <div class="col-12">
         <ion-item>
                 <ion-select interface="popover" placeholder="Cidade" v-model="client.city">
-                    <ion-select-option value="petrolina">Petrolina</ion-select-option>
+                    <ion-select-option selected value="petrolina">Petrolina</ion-select-option>
                     
                 </ion-select>
             </ion-item>  
@@ -118,6 +118,7 @@ import {
   modalController,
 } from '@ionic/vue';
 import { defineComponent } from 'vue';
+import { mapActions } from 'vuex'
 
 
 export default defineComponent({
@@ -126,6 +127,7 @@ export default defineComponent({
     return{
       client: {
         name: '',
+        password: 'null',
         email: '',
         phone: '',
         city: '',
@@ -145,9 +147,29 @@ export default defineComponent({
       return modalController.dismiss(null, 'confirm');
     },
 
+    ...mapActions('client', ['registerClient']),
+    async registerUser() {
+      await this.registerClient(this.client);
+      await this.cancel();
+    },
+
     validate(){
       const inputs: any = this.client
       console.log(inputs)
+      const clientsform = Object.keys(this.client)
+      let cont = 0
+      clientsform.forEach((res) => {
+        if(inputs[res] == ''){
+          cont++;
+        }
+      })
+        if(cont !== 0){
+          alert('Preencha todos os campos')
+        }
+        else{
+          this.registerClient(this.client)
+        }
+      
     }
   },
 });

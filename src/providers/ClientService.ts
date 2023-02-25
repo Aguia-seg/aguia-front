@@ -6,5 +6,9 @@ export default {
         return request.get('/clients');      
     },
 
+    async registerClient(form: any){
+        return request.post('/clients', form);
+    }
+
    
 }
