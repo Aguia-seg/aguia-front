@@ -53,14 +53,14 @@
       </div>
       <div class="row row-tiny mt-4">
         <div class="col-12">
-          <p class="m-0 pl-2">INFORMAÇÕES DE RESIDÊNCIA</p>
+          <p class="m-0 pl-2"><b>INFORMAÇÕES DE RESIDÊNCIA</b></p>
         </div>
       </div>
       <div class="row">
         <div class="col-12">
           <ion-item>
             <ion-label position="floating">CEP</ion-label>
-            <ion-input @change="searchCep()" placeholder="CEP" v-model="client.cep"></ion-input>
+            <ion-input v-on:keyup="searchCep()" placeholder="CEP" v-model="client.cep" maxlength="8"></ion-input>
           </ion-item>
         </div>
       </div>
@@ -80,14 +80,7 @@
           </ion-item>
         </div>
       </div>
-      <div class="row">
-        <div class="col-12">
-          <ion-item>
-            <ion-label position="floating">Complemento</ion-label>
-            <ion-input placeholder="Complemento" v-model="client.complement"></ion-input>
-          </ion-item>
-        </div>
-      </div>
+     
     
     <div class="row">
       <div class="col-12">
@@ -103,15 +96,15 @@
           <ion-label position="floating">Número</ion-label>
           <ion-input placeholder="Número" v-model="client.number"></ion-input>
         </ion-item>
-      </div>
-      <div class="row">
+      </div>      
+    </div>
+    <div class="row">
         <div class="col-12">
           <ion-button type="submit" expand="block" color="success">
             Cadastrar
           </ion-button>
         </div>
       </div>
-    </div>
   </form>
   </ion-content>
  
@@ -124,6 +117,7 @@ import {
 import { defineComponent } from 'vue';
 import { mapActions } from 'vuex'
 import apiCorreios from '@/apis/Api'
+import { loadingController } from '@ionic/vue';
 
 export default defineComponent({
   name: 'CreateClientForm',
@@ -179,16 +173,23 @@ export default defineComponent({
           this.registerClient(this.client)
         }
     },
-    searchCep(){
-      console.log(this.client.cep)
+    async searchCep(){
+      
+      if(this.client.cep.length == 8){
+       const loading = await loadingController.create({
+          message: 'Carregando endereço',
+          //duration: 3000
+        });
+        loading.present();
       apiCorreios.get('https://viacep.com.br/ws/' + this.client.cep + '/json/').then(
           (response) => {
-          console.log(response.data)
+          //console.log(response.data)
           this.client.district = response.data.bairro
           this.client.street = response.data.logradouro
-          
+          loading.dismiss();
          }
        )
+        }
     }
   },
 });
