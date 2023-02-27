@@ -173,7 +173,7 @@ export default defineComponent({
     ...mapActions('client', ['registerClient']),
     async registerUser() {
       await this.registerClient(this.client);
-      await this.cancel();
+      this.cancel();
     },
 
     validate() {
@@ -190,7 +190,7 @@ export default defineComponent({
           alert('Preencha todos os campos')
         }
         else{
-          this.registerClient(this.client)
+          this.registerUser()
         }
     },
     async searchCep(){
