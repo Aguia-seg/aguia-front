@@ -73,6 +73,14 @@
     <div class="row">
       <div class="col-12">
         <ion-item>
+          <ion-label position="floating">CEP</ion-label>
+          <ion-input placeholder="CEP" v-model="client.cep"></ion-input>
+        </ion-item>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <ion-item>
           <ion-label position="floating">Bairro</ion-label>
           <ion-input placeholder="Bairro" v-model="client.district"></ion-input>
         </ion-item>
@@ -115,7 +123,7 @@
     </div>
   </ion-content>
   <ion-footer>
-    <ion-button @click="validate()" expand="block" color="success">
+    <ion-button @click=" searchCep()" expand="block" color="success">
       Cadastrar
     </ion-button>
   </ion-footer>  
@@ -127,6 +135,7 @@ import {
 } from '@ionic/vue';
 import { defineComponent } from 'vue';
 import { mapActions } from 'vuex'
+import  apiCorreios from '@/apis/Api'
 
 
 export default defineComponent({
@@ -146,7 +155,8 @@ export default defineComponent({
         veicle: '',
         type: '',
         cpf_cnpj:'',
-        active: '1'
+        active: '1',
+        cep: '',
       }
     }
   },
@@ -180,7 +190,15 @@ export default defineComponent({
         else{
           this.registerClient(this.client)
         }
-      
+    },
+
+    searchCep(){
+      apiCorreios.get('https://viacep.com.br/ws/' + this.client.cep + '/json/').then(
+        (response) => {
+          console.log(response)
+          this.client.district = response.data.
+        }
+      )
     }
   },
 });
