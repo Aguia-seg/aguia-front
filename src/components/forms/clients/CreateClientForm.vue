@@ -8,7 +8,7 @@
     <div class="row">
       <div class="col-6">
         <ion-item>
-          <ion-select interface="popover" placeholder="Tipo de cliente" required>
+          <ion-select interface="popover" placeholder="Tipo de cliente" required v-model="client.type">
             <ion-select-option value="PF">Pessoa física</ion-select-option>
             <ion-select-option value="PJ">Pessoa jurídica</ion-select-option>
           </ion-select>
@@ -17,8 +17,8 @@
       <div class="col-6">
         <ion-item>
           <ion-select interface="popover" placeholder="Situação">
-            <ion-select-option value="0">Ativo</ion-select-option>
-            <ion-select-option value="">Inativo</ion-select-option>
+            <ion-select-option value="1">Ativo</ion-select-option>
+            <ion-select-option value="2">Inativo</ion-select-option>
           </ion-select>
         </ion-item>
       </div>
@@ -28,6 +28,14 @@
         <ion-item>
           <ion-label position="floating">Nome</ion-label>
           <ion-input placeholder="Nome" v-model="client.name"></ion-input>
+        </ion-item>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <ion-item>
+          <ion-label position="floating">CPF/CNPJ</ion-label>
+          <ion-input placeholder="CPF/CNPJ" v-model="client.cpf_cnpj"></ion-input>
         </ion-item>
       </div>
     </div>
@@ -130,12 +138,15 @@ export default defineComponent({
         password: 'null',
         email: '',
         phone: '',
-        city: '',
+        city: 'petrolina',
         district: '',
         street: '',
         complement: '',
         number: '',
-        veicle: ''
+        veicle: '',
+        type: '',
+        cpf_cnpj:'',
+        active: '1'
       }
     }
   },
