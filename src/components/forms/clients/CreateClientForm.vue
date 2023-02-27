@@ -30,14 +30,6 @@
       <div class="row">
         <div class="col-12">
           <ion-item>
-            <ion-label position="floating">Nome</ion-label>
-            <ion-input placeholder="Nome" v-model="client.name" required></ion-input>
-          </ion-item>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-12">
-          <ion-item>
             <ion-label position="floating">CPF/CNPJ</ion-label>
             <ion-input placeholder="CPF/CNPJ" v-model="client.cpf_cnpj"></ion-input>
           </ion-item>
@@ -61,16 +53,22 @@
       </div>
       <div class="row row-tiny mt-4">
         <div class="col-12">
-          <p class="m-0 pl-2">informações de residência</p>
+          <p class="m-0 pl-2">INFORMAÇÕES DE RESIDÊNCIA</p>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <ion-item>
+              <ion-label position="floating">Bairro</ion-label>
+              <ion-input placeholder="Bairro" v-model="client.district"></ion-input>
+            </ion-item>
+          </div>
         </div>
       </div>
       <div class="row">
         <div class="col-12">
           <ion-item>
-            <ion-select interface="popover" placeholder="Cidade" v-model="client.city">
-              <ion-select-option selected value="petrolina">Petrolina</ion-select-option>
-
-            </ion-select>
+            <ion-label position="floating">CEP</ion-label>
+            <ion-input placeholder="CEP" v-model="client.cep"></ion-input>
           </ion-item>
         </div>
       </div>
@@ -79,14 +77,6 @@
           <ion-item>
             <ion-label position="floating">Bairro</ion-label>
             <ion-input placeholder="Bairro" v-model="client.district"></ion-input>
-          </ion-item>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-12">
-          <ion-item>
-            <ion-label position="floating">Rua</ion-label>
-            <ion-input placeholder="Rua" v-model="client.street"></ion-input>
           </ion-item>
         </div>
       </div>
@@ -119,13 +109,18 @@
       </div>
       <div class="row">
         <div class="col-12">
-            <ion-button type="submit" expand="block" color="success">
-              Cadastrar
-            </ion-button>
+          <ion-button type="submit" expand="block" color="success">
+            Cadastrar
+          </ion-button>
         </div>
       </div>
     </form>
   </ion-content>
+  <ion-footer>
+    <ion-button @click="searchCep()" expand="block" color="success">
+      Cadastrar
+    </ion-button>
+  </ion-footer>
 </template>
   
 <script lang="ts">
@@ -134,6 +129,7 @@ import {
 } from '@ionic/vue';
 import { defineComponent } from 'vue';
 import { mapActions } from 'vuex'
+import apiCorreios from '@/apis/Api'
 
 
 export default defineComponent({
@@ -151,9 +147,10 @@ export default defineComponent({
         complement: '',
         number: '',
         veicle: '',
-        type: 'PF',
+        type: '',
         cpf_cnpj: '',
-        active: '1'
+        active: '1',
+        cep: '',
       }
     }
   },
@@ -187,7 +184,15 @@ export default defineComponent({
       else {
         this.registerClient(this.client)
       }
+    },
 
+    searchCep() {
+      apiCorreios.get('https://viacep.com.br/ws/' + this.client.cep + '/json/').then(
+        (response) => {
+          console.log(response)
+          this.client.district = response.data;
+        }
+      )
     }
   },
 });
