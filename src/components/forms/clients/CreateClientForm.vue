@@ -8,87 +8,79 @@
     </ion-toolbar>
   </ion-header>
   <ion-content class="ion-padding">
-    <div class="row">
-      <div class="col-6">
-        <ion-item>
-          <ion-select interface="popover" placeholder="Tipo de cliente" required v-model="client.type">
-            <ion-select-option value="PF">Pessoa física</ion-select-option>
-            <ion-select-option value="PJ">Pessoa jurídica</ion-select-option>
-          </ion-select>
-        </ion-item>
+    <form @submit.prevent="validate();">
+      <div class="row">
+        <div class="col-6">
+          <ion-item>
+            <ion-select interface="popover" placeholder="Tipo de cliente" required v-model="client.type">
+              <ion-select-option value="PF">Pessoa física</ion-select-option>
+              <ion-select-option value="PJ">Pessoa jurídica</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </div>
+        <div class="col-6">
+          <ion-item>
+            <ion-select interface="popover" placeholder="Situação" v-model="client.active">
+              <ion-select-option value="1">Ativo</ion-select-option>
+              <ion-select-option value="0">Inativo</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </div>
       </div>
-      <div class="col-6">
-        <ion-item>
-          <ion-select interface="popover" placeholder="Situação" v-model="client.active">
-            <ion-select-option value="1">Ativo</ion-select-option>
-            <ion-select-option value="0">Inativo</ion-select-option>
-          </ion-select>
-        </ion-item>
+      <div class="row">
+        <div class="col-12">
+          <ion-item>
+            <ion-label position="floating">CPF/CNPJ</ion-label>
+            <ion-input placeholder="CPF/CNPJ" v-model="client.cpf_cnpj"></ion-input>
+          </ion-item>
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-12">
-        <ion-item>
-          <ion-label position="floating">Nome</ion-label>
-          <ion-input placeholder="Nome" v-model="client.name"></ion-input>
-        </ion-item>
+      <div class="row">
+        <div class="col-12">
+          <ion-item>
+            <ion-label position="floating">E-mail</ion-label>
+            <ion-input type="email" placeholder="E-mail" v-model="client.email"></ion-input>
+          </ion-item>
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-12">
-        <ion-item>
-          <ion-label position="floating">CPF/CNPJ</ion-label>
-          <ion-input placeholder="CPF/CNPJ" v-model="client.cpf_cnpj"></ion-input>
-        </ion-item>
+      <div class="row">
+        <div class="col-12">
+          <ion-item>
+            <ion-label position="floating">Telefone</ion-label>
+            <ion-input type="number" placeholder="Telefone" v-model="client.phone"></ion-input>
+          </ion-item>
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-12">
-        <ion-item>
-          <ion-label position="floating">E-mail</ion-label>
-          <ion-input type="email" placeholder="E-mail" v-model="client.email"></ion-input>
-        </ion-item>
+      <div class="row row-tiny mt-4">
+        <div class="col-12">
+          <p class="m-0 pl-2">INFORMAÇÕES DE RESIDÊNCIA</p>
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-12">
-        <ion-item>
-          <ion-label position="floating">Telefone</ion-label>
-          <ion-input type="number" placeholder="Telefone" v-model="client.phone"></ion-input>
-        </ion-item>
+      <div class="row">
+        <div class="col-12">
+          <ion-item>
+            <ion-label position="floating">CEP</ion-label>
+            <ion-input @change="searchCep()" placeholder="CEP" v-model="client.cep"></ion-input>
+          </ion-item>
+        </div>
       </div>
-    </div>  
-    <div class="row row-tiny mt-4">
-      <div class="col-12">
-        <p class="m-0 pl-2">informações de residência</p>
+      <div class="row">
+        <div class="col-12">
+          <ion-item>
+            <ion-label position="floating">Bairro</ion-label>
+            <ion-input placeholder="Bairro" v-model="client.district"></ion-input>
+          </ion-item>
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-12">
-        <ion-item>
-                <ion-select interface="popover" placeholder="Cidade" v-model="client.city">
-                    <ion-select-option selected value="petrolina">Petrolina</ion-select-option>
-                    
-                </ion-select>
-            </ion-item>  
+      <div class="row">
+        <div class="col-12">
+          <ion-item>
+            <ion-label position="floating">Complemento</ion-label>
+            <ion-input placeholder="Complemento" v-model="client.complement"></ion-input>
+          </ion-item>
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-12">
-        <ion-item>
-          <ion-label position="floating">Bairro</ion-label>
-          <ion-input placeholder="Bairro" v-model="client.district"></ion-input>
-        </ion-item>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-12">
-        <ion-item>
-          <ion-label position="floating">Rua</ion-label>
-          <ion-input placeholder="Rua" v-model="client.street"></ion-input>
-        </ion-item>
-      </div>
-    </div>
+    
     <div class="row">
       <div class="col-12">
         <ion-item>
@@ -104,19 +96,17 @@
           <ion-input placeholder="Número" v-model="client.number"></ion-input>
         </ion-item>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-12">
-        <ion-item>
-          <ion-label class="d-flex" position="floating">
-            <h5>Veículo</h5>
-            <p>(opcional)</p>
-          </ion-label>
-          <ion-textarea v-model="client.veicle" placeholder="Cliente possui veículo?" ></ion-textarea>
-        </ion-item>
+      <div class="row">
+        <div class="col-12">
+          <ion-button type="submit" expand="block" color="success">
+            Cadastrar
+          </ion-button>
+        </div>
       </div>
     </div>
+  </form>
   </ion-content>
+ 
 </template>
   
 <script lang="ts">
@@ -125,8 +115,7 @@ import {
 } from '@ionic/vue';
 import { defineComponent } from 'vue';
 import { mapActions } from 'vuex'
-import  apiCorreios from '@/apis/Api'
-
+import apiCorreios from '@/apis/Api'
 
 export default defineComponent({
   name: 'CreateClientForm',
@@ -144,9 +133,10 @@ export default defineComponent({
         complement: '',
         number: '',
         veicle: '',
-        type: 'PF',
+        type: '',
         cpf_cnpj: '',
-        active: '1'
+        active: '1',
+        
       }
     }
   },
