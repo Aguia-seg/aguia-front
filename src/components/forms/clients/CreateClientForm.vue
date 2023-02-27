@@ -75,6 +75,14 @@
       <div class="row">
         <div class="col-12">
           <ion-item>
+            <ion-label position="floating">Rua</ion-label>
+            <ion-input placeholder="Rua" v-model="client.street"></ion-input>
+          </ion-item>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <ion-item>
             <ion-label position="floating">Complemento</ion-label>
             <ion-input placeholder="Complemento" v-model="client.complement"></ion-input>
           </ion-item>
