@@ -109,6 +109,17 @@
     </div>
     <div class="row">
         <div class="col-12">
+          <ion-item>
+            <ion-label class="d-flex" position="floating">
+              <h5>Veículo</h5>
+              <p>(opcional)</p>
+            </ion-label>
+            <ion-textarea v-model="client.veicle" placeholder="Cliente possui veículo?"></ion-textarea>
+          </ion-item>
+        </div>
+      </div>
+    <div class="row">
+        <div class="col-12">
           <ion-button type="submit" expand="block" color="success">
             Cadastrar
           </ion-button>
