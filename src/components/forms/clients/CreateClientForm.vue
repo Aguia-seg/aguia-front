@@ -69,7 +69,7 @@
         <div class="col-12">
           <ion-item>
             <ion-label position="floating">CEP</ion-label>
-            <ion-input v-on:keyup="searchCep()" placeholder="CEP" v-model="client.cep" maxlength="8"></ion-input>
+            <ion-input @keyup="searchCep()" placeholder="CEP" v-model="client.cep" maxlength="8"></ion-input>
           </ion-item>
         </div>
       </div>
