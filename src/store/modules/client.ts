@@ -1,7 +1,8 @@
 import ClientService from "@/providers/ClientService";
 
 const state = {
-    clients: ''
+    clients: '',
+    client: ''
 }
 
 const mutations = {
@@ -28,16 +29,20 @@ const actions = {
                 context.dispatch('getClients');
             }
         )
-    }
+    },
+
+
 
 }
 
-// const getters = {}
+// const getters = {
+  
+// }
 
 export default {
     namespaced: true,
     state,
     mutations,
     actions,
-    // getters,
+    // getters
 }
