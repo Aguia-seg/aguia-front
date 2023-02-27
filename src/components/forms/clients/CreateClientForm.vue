@@ -12,7 +12,7 @@
       <div class="row">
         <div class="col-6">
           <ion-item>
-            <ion-select interface="popover" placeholder="Tipo de cliente" required v-model="client.type">
+            <ion-select interface="popover" placeholder="Tipo de cliente" v-model="client.type">
               <ion-select-option value="PF">Pessoa física</ion-select-option>
               <ion-select-option value="PJ">Pessoa jurídica</ion-select-option>
             </ion-select>
@@ -27,11 +27,11 @@
           </ion-item>
         </div>
       </div>
-        <div class="row">
+      <div class="row">
         <div class="col-12">
           <ion-item>
             <ion-label position="floating">Nome</ion-label>
-            <ion-input placeholder="Nome" v-model="client.name"></ion-input>
+            <ion-input placeholder="Nome" v-model="client.name" required></ion-input>
           </ion-item>
         </div>
       </div>
@@ -43,7 +43,7 @@
           </ion-item>
         </div>
       </div>
-    
+
       <div class="row">
         <div class="col-12">
           <ion-item>
@@ -89,25 +89,25 @@
           </ion-item>
         </div>
       </div>
-     
-    
-    <div class="row">
-      <div class="col-12">
-        <ion-item>
-          <ion-label position="floating">Complemento</ion-label>
-          <ion-input placeholder="Complemento" v-model="client.complement"></ion-input>
-        </ion-item>
+
+
+      <div class="row">
+        <div class="col-12">
+          <ion-item>
+            <ion-label position="floating">Complemento</ion-label>
+            <ion-input placeholder="Complemento" v-model="client.complement"></ion-input>
+          </ion-item>
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-12">
-        <ion-item>
-          <ion-label position="floating">Número</ion-label>
-          <ion-input placeholder="Número" v-model="client.number"></ion-input>
-        </ion-item>
-      </div>      
-    </div>
-    <div class="row">
+      <div class="row">
+        <div class="col-12">
+          <ion-item>
+            <ion-label position="floating">Número</ion-label>
+            <ion-input placeholder="Número" v-model="client.number"></ion-input>
+          </ion-item>
+        </div>
+      </div>
+      <div class="row">
         <div class="col-12">
           <ion-item>
             <ion-label class="d-flex" position="floating">
@@ -118,16 +118,25 @@
           </ion-item>
         </div>
       </div>
-    <div class="row">
+      <div class="row">
+        <div class="col-12">
+          <ion-item>
+            <select class="form-control" required style="border: none;">
+              <option value="">Escolha o plano do Cliente</option>
+              <option value="{{plan.id }}" v-for="plan in plans" :key="plan.id">{{ plan.description }}</option>
+            </select>
+          </ion-item>
+        </div>
+      </div>
+      <div class="row">
         <div class="col-12">
           <ion-button type="submit" expand="block" color="success">
             Cadastrar
           </ion-button>
         </div>
       </div>
-  </form>
+    </form>
   </ion-content>
- 
 </template>
   
 <script lang="ts">
@@ -135,12 +144,15 @@ import {
   modalController,
 } from '@ionic/vue';
 import { defineComponent } from 'vue';
-import { mapActions } from 'vuex'
+import { mapActions, mapState } from 'vuex'
 import apiCorreios from '@/apis/Api'
 import { loadingController } from '@ionic/vue';
 
 export default defineComponent({
   name: 'CreateClientForm',
+  computed: {
+    ...mapState('plan', ['plans'])
+  },
   data() {
     return {
       client: {
@@ -158,9 +170,12 @@ export default defineComponent({
         type: '',
         cpf_cnpj: '',
         active: '1',
-        
+
       }
     }
+  },
+  mounted() {
+    this.getPlans();
   },
   methods: {
     cancel() {
@@ -169,8 +184,8 @@ export default defineComponent({
     confirm() {
       return modalController.dismiss(null, 'confirm');
     },
-
     ...mapActions('client', ['registerClient']),
+    ...mapActions('plan', ['getPlans']),
     async registerUser() {
       await this.registerClient(this.client);
       this.cancel();
@@ -186,30 +201,30 @@ export default defineComponent({
           cont++;
         }
       })
-        if(cont !== 0){
-          alert('Preencha todos os campos')
-        }
-        else{
-          this.registerUser()
-        }
+      if (cont !== 0) {
+        alert('Preencha todos os campos')
+      }
+      else {
+        this.registerUser()
+      }
     },
-    async searchCep(){
-      
-      if(this.client.cep.length == 8){
-       const loading = await loadingController.create({
+    async searchCep() {
+
+      if (this.client.cep.length == 8) {
+        const loading = await loadingController.create({
           message: 'Carregando endereço',
           //duration: 3000
         });
         loading.present();
-      apiCorreios.get('https://viacep.com.br/ws/' + this.client.cep + '/json/').then(
+        apiCorreios.get('https://viacep.com.br/ws/' + this.client.cep + '/json/').then(
           (response) => {
-          //console.log(response.data)
-          this.client.district = response.data.bairro
-          this.client.street = response.data.logradouro
-          loading.dismiss();
-         }
-       )
-        }
+            //console.log(response.data)
+            this.client.district = response.data.bairro
+            this.client.street = response.data.logradouro
+            loading.dismiss();
+          }
+        )
+      }
     }
   },
 });

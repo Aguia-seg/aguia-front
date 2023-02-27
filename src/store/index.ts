@@ -3,6 +3,7 @@ import { createStore, useStore as baseUseStore, Store, createLogger} from 'vuex'
 import auth from './modules/auth'
 import user from './modules/user'
 import client from './modules/client'
+import plan from './modules/plan'
 
 const debug = process.env.NODE_ENV !== 'production'
 
@@ -11,6 +12,7 @@ export interface State {
   auth: any,
   user: any,
   client: any,
+  plan: any,
 }
 
 // define injection key
@@ -20,7 +22,8 @@ export const store = createStore<State>({
   modules:{
     auth,
     user,
-    client
+    client,
+    plan
   },
   strict: false,
   plugins: debug ? [createLogger()] : []
