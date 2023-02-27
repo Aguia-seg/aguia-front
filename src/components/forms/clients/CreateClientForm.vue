@@ -1,6 +1,9 @@
 <template>
   <ion-header>
     <ion-toolbar>
+      <ion-buttons slot="end">
+        <ion-button color="medium" @click="cancel">Sair</ion-button>
+      </ion-buttons>
       <ion-title>Cadastro de Clientes</ion-title>
     </ion-toolbar>
   </ion-header>
@@ -16,9 +19,9 @@
       </div>
       <div class="col-6">
         <ion-item>
-          <ion-select interface="popover" placeholder="Situação">
+          <ion-select interface="popover" placeholder="Situação" v-model="client.active">
             <ion-select-option value="1">Ativo</ion-select-option>
-            <ion-select-option value="2">Inativo</ion-select-option>
+            <ion-select-option value="0">Inativo</ion-select-option>
           </ion-select>
         </ion-item>
       </div>
@@ -57,7 +60,7 @@
     </div>  
     <div class="row row-tiny mt-4">
       <div class="col-12">
-        <p class="m-0 pl-2">INFORMAÇÕES DE RESIDÊNCIA</p>
+        <p class="m-0 pl-2">informações de residência</p>
       </div>
     </div>
     <div class="row">
@@ -68,14 +71,6 @@
                     
                 </ion-select>
             </ion-item>  
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-12">
-        <ion-item>
-          <ion-label position="floating">CEP</ion-label>
-          <ion-input placeholder="CEP" v-model="client.cep"></ion-input>
-        </ion-item>
       </div>
     </div>
     <div class="row">
@@ -122,11 +117,6 @@
       </div>
     </div>
   </ion-content>
-  <ion-footer>
-    <ion-button @click=" searchCep()" expand="block" color="success">
-      Cadastrar
-    </ion-button>
-  </ion-footer>  
 </template>
   
 <script lang="ts">
@@ -140,23 +130,23 @@ import  apiCorreios from '@/apis/Api'
 
 export default defineComponent({
   name: 'CreateClientForm',
-  data(){
-    return{
+  data() {
+    return {
       client: {
         name: '',
         password: 'null',
         email: '',
         phone: '',
+        cep: '',
         city: 'petrolina',
         district: '',
         street: '',
         complement: '',
         number: '',
         veicle: '',
-        type: '',
-        cpf_cnpj:'',
-        active: '1',
-        cep: '',
+        type: 'PF',
+        cpf_cnpj: '',
+        active: '1'
       }
     }
   },
@@ -174,13 +164,13 @@ export default defineComponent({
       await this.cancel();
     },
 
-    validate(){
+    validate() {
       const inputs: any = this.client
       console.log(inputs)
       const clientsform = Object.keys(this.client)
       let cont = 0
       clientsform.forEach((res) => {
-        if(inputs[res] == ''){
+        if (inputs[res] == '') {
           cont++;
         }
       })
@@ -191,14 +181,16 @@ export default defineComponent({
           this.registerClient(this.client)
         }
     },
-
     searchCep(){
+      console.log(this.client.cep)
       apiCorreios.get('https://viacep.com.br/ws/' + this.client.cep + '/json/').then(
-        (response) => {
-          console.log(response)
-          this.client.district = response.data.
-        }
-      )
+          (response) => {
+          console.log(response.data)
+          this.client.district = response.data.bairro
+          this.client.street = response.data.logradouro
+          
+         }
+       )
     }
   },
 });
@@ -212,14 +204,11 @@ ion-item {
   --color-focused: #000000;
   --detail-font-color: #ffc409;
   --highlight-height: 8px;
-  margin-bottom: 20px;
-  margin-top: 20px;
-}
-.row{
-  height: 80px;
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
 
-.row.row-tiny{
+.row.row-tiny {
   height: 20px;
 }
 </style>

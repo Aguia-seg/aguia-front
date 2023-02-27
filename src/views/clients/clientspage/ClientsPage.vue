@@ -47,7 +47,7 @@
                             <i v-if="client.active == 1" class="fas fa-circle text-success"></i>
                             <i v-else-if="client.active == 0" class="fas fa-circle text-danger"></i>
                         </td>
-                        <td>{{ client.cellphone }}</td>
+                        <td>{{ client.phone }}</td>
                         <td>{{ client.email }}</td>
                         <td>
                             <div class="d-flex align-items-center">
