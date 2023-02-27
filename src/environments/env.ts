@@ -10,6 +10,6 @@ const request = axios.create({
   'Authorization': 'Bearer ' + localStorage.getItem('token')
 }
 
-axios.defaults.withCredentials = true;
+axios.defaults.withCredentials = false;
 
 export default request 
