@@ -40,6 +40,9 @@
               <ion-item router-link="/collaborators" lines="none">
                 <ion-label>Cadastros de Colaboradores</ion-label>
               </ion-item>
+              <ion-item router-link="/plans" lines="none">
+                <ion-label>Cadastros de Planos</ion-label>
+              </ion-item>
             </div>
           </ion-accordion>
         </ion-accordion-group>
