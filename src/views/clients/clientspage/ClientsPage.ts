@@ -1,5 +1,5 @@
 import { defineComponent } from "vue";
-import { searchOutline, closeOutline, createOutline, searchCircleOutline } from 'ionicons/icons'
+import { searchOutline } from 'ionicons/icons'
 import { modalController } from "@ionic/vue";
 import CreateClientForm from '@/components/forms/clients/CreateClientForm.vue';
 import { mapActions, mapState } from "vuex";
@@ -35,9 +35,7 @@ export default defineComponent({
     setup() {
         return {
             searchOutline,
-            closeOutline,
-            createOutline,
-            searchCircleOutline,
+           
         }
     },
 })

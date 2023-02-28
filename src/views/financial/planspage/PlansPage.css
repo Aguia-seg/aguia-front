@@ -8,10 +8,6 @@ ion-item{
     margin-top: 20px;  
 }
 
-ion-item.search{
-    width: 50%;
-}
-
 ion-button.add-button{
     --background: var(--ion-color-success);
     --background-hover: #f7ff66;
@@ -34,5 +30,3 @@ ion-spinner {
     top: 200px;
     width: 100%;
 }
-
-
