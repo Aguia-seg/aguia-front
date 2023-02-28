@@ -40,9 +40,6 @@
               <ion-item router-link="/collaborators" lines="none">
                 <ion-label>Cadastros de Colaboradores</ion-label>
               </ion-item>
-              <ion-item router-link="/plans" lines="none">
-                <ion-label>Cadastros de Planos</ion-label>
-              </ion-item>
             </div>
           </ion-accordion>
         </ion-accordion-group>
@@ -62,7 +59,7 @@
               <ion-item lines="none">
                 <ion-label> Mensalidades</ion-label>
               </ion-item>
-              <ion-item lines="none">
+              <ion-item router-link="/plans" lines="none">
                 <ion-label> Planos</ion-label>
               </ion-item>
             </div>
