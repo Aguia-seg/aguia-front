@@ -2,7 +2,6 @@ import ClientService from "@/providers/ClientService";
 
 const state = {
     clients: '',
-    client: ''
 }
 
 const mutations = {
@@ -21,7 +20,7 @@ const actions = {
         );
     },
 
-    async registerClient(context: any, form: any){
+    async registerClient(context: any, form: any) {
         await ClientService.registerClient(form).then(
             (response) => {
                 console.log(response.data.message)
@@ -35,14 +34,16 @@ const actions = {
 
 }
 
-// const getters = {
-  
-// }
+const getters = {
+    clientById(state: any) {
+        return state.clients.find((client: any) => client.id === 1)
+    }
+}
 
 export default {
     namespaced: true,
     state,
     mutations,
     actions,
-    // getters
+    getters
 }

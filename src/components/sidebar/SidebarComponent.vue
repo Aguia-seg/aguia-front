@@ -43,6 +43,41 @@
             </div>
           </ion-accordion>
         </ion-accordion-group>
+        <ion-accordion-group :multiple="true">
+          <ion-accordion value="second">
+            <ion-item slot="header" color="dark">
+              <i class=" nav-icon fas fa-hand-holding-usd mr-2 "></i>
+              <ion-label>Finaceiro</ion-label>
+            </ion-item>
+            <div class="" slot="content">
+              <ion-item  lines="none">
+                <ion-label>Fluxo de Caixa</ion-label>
+              </ion-item>
+              <ion-item lines="none">
+                <ion-label> Consulta de Débitos</ion-label>
+              </ion-item>
+              <ion-item lines="none">
+                <ion-label> Mensalidades</ion-label>
+              </ion-item>
+              <ion-item lines="none">
+                <ion-label> Planos</ion-label>
+              </ion-item>
+            </div>
+          </ion-accordion>
+        </ion-accordion-group>
+        <ion-accordion-group :multiple="true">
+          <ion-accordion value="second">
+            <ion-item slot="header" color="dark">
+              <i class=" nav-icon fas fa-cogs mr-2 "></i>
+              <ion-label>Configurações</ion-label>
+            </ion-item>
+            <div class="" slot="content">
+              <ion-item  lines="none">
+                <ion-label>Teste</ion-label>
+              </ion-item>
+            </div>
+          </ion-accordion>
+        </ion-accordion-group>
       </nav>
       <!-- /.sidebar-menu -->
     </div>
