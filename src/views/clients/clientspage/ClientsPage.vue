@@ -13,7 +13,7 @@
         
         </ion-header>
         <div class="container-fluid d-flex justify-content-center">
-            <ion-item class="search">
+            <ion-item v-if="!spinner" class="search">
                 <ion-input placeholder="Pesquisar"><ion-icon :icon="searchOutline"></ion-icon></ion-input>
             </ion-item>
         </div>
