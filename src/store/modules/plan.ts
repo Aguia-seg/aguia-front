@@ -20,6 +20,15 @@ const actions = {
         );
     },
 
+    async registerPlans(context: any, form: any){
+        await PlanService.registerPlans(form).then(
+            (response) => {
+                alert(response.data.message);
+                context.dispatch('getPlans');
+            }
+        )
+    }
+
 
 
 

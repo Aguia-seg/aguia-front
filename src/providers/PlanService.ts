@@ -6,9 +6,9 @@ export default {
         return request.get('/plans');      
     },
 
-    // async registerClient(form: any){
-    //     return request.post('/clients', form);
-    // }
+    async registerPlans(form: any){
+         return request.post('/plans', form);
+     }
 
    
 }
