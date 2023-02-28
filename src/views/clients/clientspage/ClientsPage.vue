@@ -51,7 +51,7 @@
                         <td>{{ client.email }}</td>
                         <td>
                             <div class="d-flex align-items-center">
-                                <ion-button router-link="/clients/profile" size="small"><ion-icon class="search-button"
+                                <ion-button :router-link="{name: 'ClientProfile', params:{ id: client.id}}" size="small"><ion-icon class="search-button"
                                         :icon="searchOutline"></ion-icon></ion-button>
                             </div>
                         </td>

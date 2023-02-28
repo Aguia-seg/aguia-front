@@ -2,11 +2,18 @@ import ClientService from "@/providers/ClientService";
 
 const state = {
     clients: '',
+    client:''
 }
 
 const mutations = {
     clients(state: any, dados: any) {
         state.clients = dados;
+    },
+    client(state: any, dados: any) {
+        state.client = dados;
+    },
+    limpar(state: any){
+        state.client = '';
     }
 
 }
@@ -16,6 +23,14 @@ const actions = {
         await ClientService.getClients().then(
             (response) => {
                 context.commit('clients', response.data);
+               
+            }
+        );
+    },
+    async getClient(context: any, id: any) {
+        await ClientService.getClient(id).then(
+            (response) => {
+                context.commit('client', response.data);
             }
         );
     },
@@ -34,16 +49,16 @@ const actions = {
 
 }
 
-const getters = {
-    clientById(state: any) {
-        return state.clients.find((client: any) => client.id === 1)
-    }
-}
+// const getters = {
+//     clientById(state: any) {
+//         return state.clients.find((client: any) => client.id === 1)
+//     }
+// }
 
 export default {
     namespaced: true,
     state,
     mutations,
     actions,
-    getters
+    // getters
 }

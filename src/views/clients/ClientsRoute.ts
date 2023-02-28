@@ -2,7 +2,7 @@ import { RouteRecordRaw } from 'vue-router';
 
 const ClientsRoute: Array<RouteRecordRaw> = [
   {
-    path: '/clients/profile',
+    path: '/clients/profile/:id',
     name: 'ClientProfile',
     component: () => import('@/views/clients/clientsprofile/ClientsProfilePage.vue')
   },

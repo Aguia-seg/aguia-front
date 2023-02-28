@@ -1,22 +1,24 @@
 import { defineComponent } from "vue";
-import { cashOutline, closeOutline, createOutline} from "ionicons/icons"
-import { mapGetters } from "vuex";
+import { cashOutline, closeOutline, createOutline } from "ionicons/icons"
+import { mapActions, mapState, mapMutations } from "vuex";
 
 export default defineComponent({
     name: 'ClientsProfilePage',
-    data() {
-        return{
-            client: ''
-        }
-    },
     computed: {
-        ...mapGetters('client',['clientById'])
+        ...mapState('client', ['client'])
     },
     mounted() {
-      console.log(this.clientById);
+        this.getClient(this.$route.params.id)
     },
-    setup(){
-        return{
+    ionViewDidLeave() {
+        this.limpar()
+    },
+    methods: {
+        ...mapActions('client', ['getClient']),
+        ...mapMutations('client', ['limpar']),
+    },
+    setup() {
+        return {
             cashOutline,
             closeOutline,
             createOutline,
