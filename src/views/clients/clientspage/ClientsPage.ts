@@ -7,7 +7,7 @@ import { mapActions, mapState } from "vuex";
 export default defineComponent({
     name: 'ClientsShow',
     data() {
-        return{
+        return {
             spinner: true,
         }
     },
@@ -15,21 +15,25 @@ export default defineComponent({
         ...mapState('client', ['clients'])
     },
     async ionViewWillEnter() {
+
         this.spinner = true;
-         await this.getClients();
-         this.spinner = false;
+        await this.getClients();
+        this.spinner = false;
+        setInterval(async () => {
+            await this.getClients();
+        }, 10000);
     },
-    methods:{
-        async formClient(){
+    methods: {
+        async formClient() {
             const modal = await modalController.create({
                 component: CreateClientForm,
-              });
-              modal.present();
+            });
+            modal.present();
         },
         ...mapActions('client', ['getClients'])
     },
     setup() {
-        return{
+        return {
             searchOutline,
             closeOutline,
             createOutline,

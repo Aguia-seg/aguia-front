@@ -123,7 +123,7 @@
           <ion-item>
             <select class="form-control" required style="border: none;">
               <option value="">Escolha o plano do Cliente</option>
-              <option value="{{plan.id }}" v-for="plan in plans" :key="plan.id">{{ plan.description }}</option>
+              <option value="{{plan.id }}" v-for="plan in plans" :key="plan.id">{{ plan.description }} | R$ {{ plan.value }}</option>
             </select>
           </ion-item>
         </div>
