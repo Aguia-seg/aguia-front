@@ -5,7 +5,8 @@ import { mapActions, mapState, mapMutations } from "vuex";
 export default defineComponent({
     name: 'ClientsProfilePage',
     computed: {
-        ...mapState('client', ['client'])
+        ...mapState('client', ['client']),
+        ...mapState('contract', ['contract'])
     },
     mounted() {
         this.getClient(this.$route.params.id)
