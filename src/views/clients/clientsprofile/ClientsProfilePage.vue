@@ -94,20 +94,14 @@
                             <th scope="col">ID do plano</th>
                             <th scope="col">Data de Vencimento</th>
                             <th scope="col">data de Pagamento</th>
-                            <th scope="col">Receber</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td scope="row">1</td>
-                            <td>...</td>
-                            <td>...</td>
-                            <td>...</td>
-                            <td>
-                                <div class="d-flex align-items-center">
-                                    <ion-button color="success"><ion-icon :icon="cashOutline"></ion-icon></ion-button>
-                                </div>
-                            </td>
+                        <tr v-for="cli in client.contract" :key="cli.id">
+                            <td scope="row">{{ cli.id }}</td>
+                            <td>{{ cli.plan_id }}</td>
+                            <td>{{ cli.expiration }}</td>
+                            <td>{{ cli.payday }}</td>
                         </tr>
                     </tbody>
                 </table>
