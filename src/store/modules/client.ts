@@ -43,9 +43,7 @@ const actions = {
                 context.dispatch('getClients');
             }
         )
-    },
-
-
+    }, 
 
 }
 
