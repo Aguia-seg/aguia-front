@@ -35,10 +35,6 @@
                                     <ion-col class="first-col d-flex justify-content-center">Telefone:</ion-col>
                                     <ion-col class="sec-col d-flex justify-content-center">{{client.phone}}</ion-col>
                                 </ion-row>
-                                <ion-row>
-                                    <ion-col class="first-col d-flex justify-content-center">Celular:</ion-col>
-                                    <ion-col class="sec-col d-flex justify-content-center">87999999999</ion-col>
-                                </ion-row>
                                    <ion-row>
                                     <ion-col class="d-flex justify-content-center">E-mail:</ion-col>
                                     <ion-col class="last-col d-flex justify-content-center">{{client.email}}</ion-col>
@@ -83,7 +79,40 @@
                     </ion-col>
                 </ion-row>
             </ion-grid>
-
+            <div class="container client-sheet mt-5 shadow">
+                <ion-grid>
+                    <ion-row>
+                        <ion-col class="d-flex justify-content-center">
+                            <h3>Contratos</h3>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">ID do plano</th>
+                            <th scope="col">Data de Vencimento</th>
+                            <th scope="col">data de Pagamento</th>
+                            <th scope="col">Receber</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td scope="row">1</td>
+                            <td>...</td>
+                            <td>...</td>
+                            <td>...</td>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <ion-button color="success"><ion-icon :icon="cashOutline"></ion-icon></ion-button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+           
             <div class="container client-sheet mt-5 shadow">
                 <ion-grid>
                     <ion-row>

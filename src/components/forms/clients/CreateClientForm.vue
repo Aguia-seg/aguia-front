@@ -130,6 +130,30 @@
       </div>
       <div class="row">
         <div class="col-12">
+          <ion-item>
+            <ion-label position="floating">ID do plano</ion-label>
+            <ion-input placeholder="ID do plano" v-model="client.plan_id"></ion-input>
+          </ion-item>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <ion-item>
+            <ion-label position="floating">Data de vencimento</ion-label>
+            <ion-input placeholder="Data de vencimento" v-model="client.expiration"></ion-input>
+          </ion-item>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <ion-item>
+            <ion-label position="floating">Data de Pagamento</ion-label>
+            <ion-input placeholder="Data de pagamento" v-model="client.payday"></ion-input>
+          </ion-item>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
           <ion-button type="submit" expand="block" color="success">
             Cadastrar
           </ion-button>
@@ -170,6 +194,9 @@ export default defineComponent({
         type: '',
         cpf_cnpj: '',
         active: '1',
+        plan_id: '',
+        expiration: '',
+        payday: '',
 
       }
     }
