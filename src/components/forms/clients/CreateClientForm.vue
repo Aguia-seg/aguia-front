@@ -121,18 +121,10 @@
       <div class="row">
         <div class="col-12">
           <ion-item>
-            <select class="form-control" required style="border: none;">
+            <select class="form-control" required style="border: none;" v-model="client.plan_id">
               <option value="">Escolha o plano do Cliente</option>
-              <option value="{{plan.id }}" v-for="plan in plans" :key="plan.id">{{ plan.description }} | R$ {{ plan.value }}</option>
+              <option :value="plan.id" v-for="plan in plans" :key="plan.id">{{ plan.description }} | R$ {{ plan.value }}</option>
             </select>
-          </ion-item>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-12">
-          <ion-item>
-            <ion-label position="floating">ID do plano</ion-label>
-            <ion-input placeholder="ID do plano" v-model="client.plan_id"></ion-input>
           </ion-item>
         </div>
       </div>

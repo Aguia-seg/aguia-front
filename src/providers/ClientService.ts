@@ -12,10 +12,5 @@ export default {
     async registerClient(form: any){
         return request.post('/clients', form);
     },
-
-    async showClient(form: any){
-        return request.post('/clients/show');
-    }
-
    
 }

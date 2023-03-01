@@ -9,10 +9,11 @@ export default defineComponent({
     },
     ionViewWillEnter() {
         this.getClient(this.$route.params.id)
+        console.log(this.client);
     },
-    ionViewDidLeave() {
-        this.limpar()
-    },
+    // ionViewDidLeave() {
+    //     this.limpar()
+    // },
     methods: {
         ...mapActions('client', ['getClient']),
         ...mapMutations('client', ['limpar']),
