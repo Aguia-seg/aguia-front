@@ -146,6 +146,14 @@
       </div>
       <div class="row">
         <div class="col-12">
+          <ion-item>
+            <ion-label position="floating">Desconto</ion-label>
+            <ion-input placeholder="Data de pagamento" v-model="client.off"></ion-input>
+          </ion-item>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
           <ion-button type="submit" expand="block" color="success">
             Cadastrar
           </ion-button>
@@ -189,6 +197,7 @@ export default defineComponent({
         plan_id: '',
         expiration: '',
         payday: '',
+        off: '0'
 
       }
     }
