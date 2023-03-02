@@ -92,6 +92,8 @@
                         <tr>
                             <th scope="col">ID</th>
                             <th scope="col">ID do plano</th>
+                            <th scope="col">Valor</th>
+                            <th scope="col">Desconto</th>
                             <th scope="col">Data de Vencimento</th>
                             <th scope="col">data de Pagamento</th>
                         </tr>
@@ -100,6 +102,8 @@
                         <tr v-for="cli in client.contracts" :key="cli.id">
                             <td scope="row">{{ cli.id }}</td>
                             <td>{{ cli.plan_id }}</td>
+                            <td>{{ cli.value }}</td>
+                            <td>{{ cli.off }}</td>
                             <td>{{ cli.expiration }}</td>
                             <td>{{ cli.payday }}</td>
                         </tr>

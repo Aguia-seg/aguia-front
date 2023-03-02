@@ -121,9 +121,9 @@
       <div class="row">
         <div class="col-12">
           <ion-item>
-            <select class="form-control" required style="border: none;" v-model="client.plan_id">
+            <select class="form-control" required style="border: none;" v-model="client.plano">
               <option value="">Escolha o plano do Cliente</option>
-              <option :value="plan.id" v-for="plan in plans" :key="plan.id">{{ plan.description }} | R$ {{ plan.value }}</option>
+              <option :value="plan" v-for="plan in plans" :key="plan.id">{{ plan.description }} | R$ {{ plan.value }}</option>
             </select>
           </ion-item>
         </div>
@@ -132,23 +132,15 @@
         <div class="col-12">
           <ion-item>
             <ion-label position="floating">Data de vencimento</ion-label>
-            <ion-input placeholder="Data de vencimento" v-model="client.expiration"></ion-input>
+            <ion-input type="date" placeholder="Data de vencimento" v-model="client.expiration"></ion-input>
           </ion-item>
         </div>
       </div>
       <div class="row">
         <div class="col-12">
           <ion-item>
-            <ion-label position="floating">Data de Pagamento</ion-label>
-            <ion-input placeholder="Data de pagamento" v-model="client.payday"></ion-input>
-          </ion-item>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-12">
-          <ion-item>
-            <ion-label position="floating">Desconto</ion-label>
-            <ion-input placeholder="Data de pagamento" v-model="client.off"></ion-input>
+            <ion-label position="floating">Dia de Pagamento</ion-label>
+            <ion-input type="number" placeholder="Data de pagamento" v-model="client.payday"></ion-input>
           </ion-item>
         </div>
       </div>
@@ -194,12 +186,11 @@ export default defineComponent({
         type: '',
         cpf_cnpj: '',
         active: '1',
-        plan_id: '',
+        plano: '',
         expiration: '',
         payday: '',
-        off: '0'
-
-      }
+      },
+      plano: ''
     }
   },
   mounted() {
@@ -217,6 +208,7 @@ export default defineComponent({
     async registerUser() {
       await this.registerClient(this.client);
       this.cancel();
+      // console.log(this.client);
     },
 
     validate() {
