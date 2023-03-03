@@ -39,12 +39,12 @@ import { refreshOutline } from 'ionicons/icons';
                                     <ion-col class="sec-col d-flex justify-content-center">{{client.phone}}</ion-col>
                                 </ion-row>
                                    <ion-row>
-                                    <ion-col class="d-flex justify-content-center">E-mail:</ion-col>
-                                    <ion-col class="last-col d-flex justify-content-center">{{client.email}}</ion-col>
+                                    <ion-col class="first-col d-flex justify-content-center">E-mail:</ion-col>
+                                    <ion-col class="sec-col d-flex justify-content-center">{{client.email}}</ion-col>
                                 </ion-row>
                                 <ion-row>
-                                    <ion-col class="first-col d-flex justify-content-center">Veículo(s)</ion-col>
-                                    <ion-col class="sec-col d-flex justify-content-center">{{client.veicle}}</ion-col>
+                                    <ion-col class=" d-flex justify-content-center">Veículo(s)</ion-col>
+                                    <ion-col class="last-col d-flex justify-content-center">{{client.veicle}}</ion-col>
                                 </ion-row>
                              
                             </ion-grid>
