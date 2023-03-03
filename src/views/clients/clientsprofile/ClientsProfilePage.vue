@@ -96,9 +96,9 @@ import { refreshOutline } from 'ionicons/icons';
                             <th scope="col">ID</th>
                             <th scope="col">Plano</th>
                             <th scope="col">Valor</th>
-                            <th scope="col">Ativo</th>
                             <th scope="col">Data de Vencimento</th>
-                            <th scope="col">data de Pagamento</th>
+                            <th scope="col">Data de Pagamento</th>
+                            <th scope="col">Ativo</th>
                             <th scope="col">Renovar contrato</th>
                         </tr>
                     </thead>
@@ -107,12 +107,12 @@ import { refreshOutline } from 'ionicons/icons';
                             <td scope="row">{{ cli.id }}</td>
                             <td>{{ cli.plan.description }}</td>
                             <td>{{ cli.plan.value }}</td>
+                            <td>{{ cli.expiration }}</td>
+                            <td>{{ cli.payday }}</td>
                             <td>  
                                 <i v-if="cli.plan.status == 1" class="fas fa-circle text-success"></i>
                                 <i v-else-if="cli.plan.status == 0" class="fas fa-circle text-danger"></i>
                             </td>
-                            <td>{{ cli.expiration }}</td>
-                            <td>{{ cli.payday }}</td>
                             <td>
                                 <div class="d-flex align-items-center justify-content-center">
                                 <ion-button color="success" size="small"><ion-icon class="search-button"

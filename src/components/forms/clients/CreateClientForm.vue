@@ -139,8 +139,11 @@
       <div class="row">
         <div class="col-12">
           <ion-item>
-            <ion-label position="floating">Dia de Pagamento</ion-label>
-            <ion-input type="number" placeholder="Data de pagamento" v-model="client.payday" required></ion-input>
+            <ion-select interface="popover" placeholder="Data de pagamento" v-model="client.payday" required>
+              <ion-select-option value="10">10</ion-select-option>
+              <ion-select-option value="20">20</ion-select-option>
+              <ion-select-option value="30">30</ion-select-option>
+            </ion-select>
           </ion-item>
         </div>
       </div>
