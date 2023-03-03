@@ -140,9 +140,9 @@
         <div class="col-12">
           <ion-item>
             <ion-select interface="popover" placeholder="Data de pagamento" v-model="client.payday" required>
-              <ion-select-option value="10">10</ion-select-option>
-              <ion-select-option value="20">20</ion-select-option>
-              <ion-select-option value="30">30</ion-select-option>
+              <ion-select-option value="10">Dia 10</ion-select-option>
+              <ion-select-option value="20">Dia 20</ion-select-option>
+              <ion-select-option value="30">Dia 30</ion-select-option>
             </ion-select>
           </ion-item>
         </div>
