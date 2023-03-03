@@ -12,7 +12,7 @@
       <div class="row">
         <div class="col-6">
           <ion-item>
-            <ion-select interface="popover" placeholder="Tipo de cliente" v-model="client.type">
+            <ion-select interface="popover" placeholder="Tipo de cliente" v-model="client.type" required>
               <ion-select-option value="PF">Pessoa física</ion-select-option>
               <ion-select-option value="PJ">Pessoa jurídica</ion-select-option>
             </ion-select>
@@ -20,7 +20,7 @@
         </div>
         <div class="col-6">
           <ion-item>
-            <ion-select interface="popover" placeholder="Situação" v-model="client.active">
+            <ion-select interface="popover" placeholder="Situação" v-model="client.active" required>
               <ion-select-option value="1">Ativo</ion-select-option>
               <ion-select-option value="0">Inativo</ion-select-option>
             </ion-select>
@@ -39,7 +39,7 @@
         <div class="col-12">
           <ion-item>
             <ion-label position="floating">CPF/CNPJ</ion-label>
-            <ion-input placeholder="CPF/CNPJ" v-model="client.cpf_cnpj"></ion-input>
+            <ion-input placeholder="CPF/CNPJ" v-model="client.cpf_cnpj" required></ion-input>
           </ion-item>
         </div>
       </div>
@@ -48,7 +48,7 @@
         <div class="col-12">
           <ion-item>
             <ion-label position="floating">E-mail</ion-label>
-            <ion-input type="email" placeholder="E-mail" v-model="client.email"></ion-input>
+            <ion-input type="email" placeholder="E-mail" v-model="client.email" required></ion-input>
           </ion-item>
         </div>
       </div>
@@ -56,7 +56,7 @@
         <div class="col-12">
           <ion-item>
             <ion-label position="floating">Telefone</ion-label>
-            <ion-input type="number" placeholder="Telefone" v-model="client.phone"></ion-input>
+            <ion-input type="number" placeholder="Telefone" v-model="client.phone" required></ion-input>
           </ion-item>
         </div>
       </div>
@@ -69,7 +69,7 @@
         <div class="col-12">
           <ion-item>
             <ion-label position="floating">CEP</ion-label>
-            <ion-input @keyup="searchCep()" placeholder="CEP" v-model="client.cep" maxlength="8"></ion-input>
+            <ion-input @keyup="searchCep()" placeholder="CEP" v-model="client.cep" maxlength="8" required></ion-input>
           </ion-item>
         </div>
       </div>
@@ -77,7 +77,7 @@
         <div class="col-12">
           <ion-item>
             <ion-label position="floating">Bairro</ion-label>
-            <ion-input placeholder="Bairro" v-model="client.district"></ion-input>
+            <ion-input placeholder="Bairro" v-model="client.district" required></ion-input>
           </ion-item>
         </div>
       </div>
@@ -85,7 +85,7 @@
         <div class="col-12">
           <ion-item>
             <ion-label position="floating">Rua</ion-label>
-            <ion-input placeholder="Rua" v-model="client.street"></ion-input>
+            <ion-input placeholder="Rua" v-model="client.street" required></ion-input>
           </ion-item>
         </div>
       </div>
@@ -95,7 +95,7 @@
         <div class="col-12">
           <ion-item>
             <ion-label position="floating">Complemento</ion-label>
-            <ion-input placeholder="Complemento" v-model="client.complement"></ion-input>
+            <ion-input placeholder="Complemento" v-model="client.complement" required></ion-input>
           </ion-item>
         </div>
       </div>
@@ -103,7 +103,7 @@
         <div class="col-12">
           <ion-item>
             <ion-label position="floating">Número</ion-label>
-            <ion-input placeholder="Número" v-model="client.number"></ion-input>
+            <ion-input placeholder="Número" v-model="client.number" required></ion-input>
           </ion-item>
         </div>
       </div>
@@ -121,7 +121,7 @@
       <div class="row">
         <div class="col-12">
           <ion-item>
-            <select class="form-control" required style="border: none;" v-model="client.plano">
+            <select class="form-control" required style="border: none;" v-model="client.plano" >
               <option value="">Escolha o plano do Cliente</option>
               <option :value="plan" v-for="plan in plans" :key="plan.id">{{ plan.description }} | R$ {{ plan.value }}</option>
             </select>
@@ -132,7 +132,7 @@
         <div class="col-12">
           <ion-item>
             <ion-label position="floating">Data de vencimento</ion-label>
-            <ion-input type="date" placeholder="Data de vencimento" v-model="client.expiration"></ion-input>
+            <ion-input type="date" placeholder="Data de vencimento" v-model="client.expiration" required></ion-input>
           </ion-item>
         </div>
       </div>
@@ -140,7 +140,7 @@
         <div class="col-12">
           <ion-item>
             <ion-label position="floating">Dia de Pagamento</ion-label>
-            <ion-input type="number" placeholder="Data de pagamento" v-model="client.payday"></ion-input>
+            <ion-input type="number" placeholder="Data de pagamento" v-model="client.payday" required></ion-input>
           </ion-item>
         </div>
       </div>
@@ -218,7 +218,9 @@ export default defineComponent({
       let cont = 0
       clientsform.forEach((res) => {
         if (inputs[res] == '') {
-          cont++;
+          if(this.client.veicle != ''){
+            cont++;
+          }
         }
       })
       if (cont !== 0) {

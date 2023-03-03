@@ -1,5 +1,5 @@
 import { defineComponent } from "vue";
-import { cashOutline, closeOutline, createOutline } from "ionicons/icons"
+import { cashOutline, closeOutline, createOutline, refreshOutline } from "ionicons/icons"
 import { mapActions, mapState, mapMutations } from "vuex";
 
 export default defineComponent({
@@ -23,6 +23,7 @@ export default defineComponent({
             cashOutline,
             closeOutline,
             createOutline,
+            refreshOutline,
         }
     }
 })

@@ -1,3 +1,6 @@
+
+import { refreshOutline } from 'ionicons/icons';
+
 <template>
     <AppLayout>
         <ion-header>
@@ -91,19 +94,31 @@
                     <thead>
                         <tr>
                             <th scope="col">ID</th>
-                            <th scope="col">ID do plano</th>
+                            <th scope="col">Plano</th>
                             <th scope="col">Valor</th>
-                            <th scope="col">Desconto</th>
+                            <th scope="col">Ativo</th>
                             <th scope="col">Data de Vencimento</th>
                             <th scope="col">data de Pagamento</th>
+                            <th scope="col">Renovar contrato</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr v-for="cli in client.contracts" :key="cli.id">
                             <td scope="row">{{ cli.id }}</td>
                             <td>{{ cli.plan.description }}</td>
+                            <td>{{ cli.plan.value }}</td>
+                            <td>  
+                                <i v-if="cli.plan.status == 1" class="fas fa-circle text-success"></i>
+                                <i v-else-if="cli.plan.status == 0" class="fas fa-circle text-danger"></i>
+                            </td>
                             <td>{{ cli.expiration }}</td>
                             <td>{{ cli.payday }}</td>
+                            <td>
+                                <div class="d-flex align-items-center justify-content-center">
+                                <ion-button color="success" size="small"><ion-icon class="search-button"
+                                        :icon="refreshOutline"></ion-icon></ion-button>
+                                </div>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -134,7 +149,7 @@
                             <td>...</td>
                             <td>...</td>
                             <td>
-                                <div class="d-flex align-items-center">
+                                <div class="d-flex align-items-center justify-content-center">
                                     <ion-button color="success"><ion-icon :icon="cashOutline"></ion-icon></ion-button>
                                 </div>
                             </td>

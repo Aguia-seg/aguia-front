@@ -4,6 +4,10 @@
 
 }
 
+tr{
+    text-align: center;
+}
+
 ion-col.first-col{
     border: 1px solid rgb(226, 226, 226) ;
     border-top: 0px;
