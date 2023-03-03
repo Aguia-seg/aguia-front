@@ -8,7 +8,7 @@ export default defineComponent({
         ...mapState('client', ['client']),
         ...mapState('contract', ['contract'])
     },
-    mounted() {
+    ionViewWillEnter() {
         this.getClient(this.$route.params.id)
     },
     ionViewDidLeave() {

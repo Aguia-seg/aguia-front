@@ -101,9 +101,7 @@
                     <tbody>
                         <tr v-for="cli in client.contracts" :key="cli.id">
                             <td scope="row">{{ cli.id }}</td>
-                            <td>{{ cli.plan_id }}</td>
-                            <td>{{ cli.value }}</td>
-                            <td>{{ cli.off }}</td>
+                            <td>{{ cli.plan.description }}</td>
                             <td>{{ cli.expiration }}</td>
                             <td>{{ cli.payday }}</td>
                         </tr>
