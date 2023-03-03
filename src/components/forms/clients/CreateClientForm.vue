@@ -183,7 +183,7 @@ export default defineComponent({
         complement: '',
         number: '',
         veicle: '',
-        type: '',
+        type: 'PF',
         cpf_cnpj: '',
         active: '1',
         plano: '',
