@@ -106,7 +106,7 @@ import { refreshOutline } from 'ionicons/icons';
                         <tr v-for="cli in client.contracts" :key="cli.id">
                             <td scope="row">{{ cli.id }}</td>
                             <td>{{ cli.plan.description }}</td>
-                            <td>{{ cli.plan.value }}</td>
+                            <td>R${{ cli.plan.value }}</td>
                             <td>{{ cli.expiration }}</td>
                             <td>{{ cli.payday }}</td>
                             <td>  
