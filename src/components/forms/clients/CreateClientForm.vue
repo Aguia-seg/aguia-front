@@ -132,7 +132,7 @@
         <div class="col-12">
           <ion-item>
             <ion-label position="floating">Data de vencimento</ion-label>
-            <ion-input type="date" placeholder="Data de vencimento" v-model="client.expiration" required></ion-input>
+            <ion-input type="date" placeholder="Data de vencimento" v-model="client.expiration"></ion-input>
           </ion-item>
         </div>
       </div>
@@ -140,9 +140,9 @@
         <div class="col-12">
           <ion-item>
             <ion-select interface="popover" placeholder="Data de pagamento" v-model="client.payday" required>
-              <ion-select-option value="10">Dia 10</ion-select-option>
-              <ion-select-option value="20">Dia 20</ion-select-option>
-              <ion-select-option value="30">Dia 30</ion-select-option>
+              <ion-select-option value="10"> 10</ion-select-option>
+              <ion-select-option value="20"> 20</ion-select-option>
+              <ion-select-option value="30"> 30</ion-select-option>
             </ion-select>
           </ion-item>
         </div>
@@ -211,7 +211,7 @@ export default defineComponent({
     async registerUser() {
       await this.registerClient(this.client);
       this.cancel();
-      // console.log(this.client);
+      console.log(this.client);
     },
 
     validate() {
@@ -231,6 +231,7 @@ export default defineComponent({
       }
       else {
         this.registerUser()
+        //console.log(inputs)
       }
     },
     async searchCep() {
