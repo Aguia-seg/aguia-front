@@ -1,7 +1,7 @@
 import { defineComponent } from "vue";
 import { searchOutline } from 'ionicons/icons'
 import { modalController } from "@ionic/vue";
-import CreateClientForm from '@/components/forms/clients/CreateClientForm.vue';
+import CreateClientForm from '@/views/clients/clients-forms/clients-create/CreateClientForm.vue';
 import { mapActions, mapState } from "vuex";
 
 export default defineComponent({
@@ -9,6 +9,9 @@ export default defineComponent({
     data() {
         return {
             spinner: true,
+            form:{
+                search: ''
+            }
         }
     },
     computed: {
@@ -30,12 +33,12 @@ export default defineComponent({
             });
             modal.present();
         },
-        ...mapActions('client', ['getClients'])
+        ...mapActions('client', ['getClients', 'searchClient'])
     },
     setup() {
         return {
             searchOutline,
-           
+
         }
     },
 })

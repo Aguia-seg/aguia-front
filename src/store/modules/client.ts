@@ -1,4 +1,5 @@
 import ClientService from "@/providers/ClientService";
+import { contractOutline } from "ionicons/icons";
 
 const state = {
     clients: '',
@@ -14,6 +15,9 @@ const mutations = {
     },
     limpar(state: any){
         state.client = '';
+    },
+    cleanClients(state: any){
+        state.clients = '';
     }
 
 }
@@ -41,6 +45,14 @@ const actions = {
                 console.log(response.data.message)
                 alert(response.data.message);
                 context.dispatch('getClients');
+            }
+        )
+    }, 
+    async searchClient(context: any, search: any) {
+        await ClientService.searchClient(search).then(
+            (response) => {
+                console.log(response.data);
+                context.commit('clients', response.data);
             }
         )
     }, 

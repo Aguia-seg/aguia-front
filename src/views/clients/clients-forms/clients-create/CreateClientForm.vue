@@ -39,7 +39,7 @@
         <div class="col-12">
           <ion-item>
             <ion-label position="floating">CPF/CNPJ</ion-label>
-            <ion-input placeholder="CPF/CNPJ" v-model="client.cpf_cnpj" required></ion-input>
+            <ion-input placeholder="CPF/CNPJ" v-model="client.cpf_cnpj" maxlength="14" required ></ion-input>
           </ion-item>
         </div>
       </div>
@@ -155,8 +155,8 @@ import {
   modalController,
 } from '@ionic/vue';
 import { defineComponent } from 'vue';
-import { mapActions, mapState } from 'vuex'
-import apiCorreios from '@/apis/Api'
+import { mapActions, mapState } from 'vuex';
+import apiCorreios from '@/apis/Api';
 import { loadingController } from '@ionic/vue';
 
 export default defineComponent({

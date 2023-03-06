@@ -12,5 +12,8 @@ export default {
     async registerClient(form: any){
         return request.post('/clients', form);
     },
+    async searchClient(search: any){
+        return request.post('/clients/search', search);
+    },
    
 }

@@ -27,7 +27,6 @@ ion-button.edit-button{
     --background: #ffae00;
     --background-hover: #ffc966;
 }
-
 ion-spinner {
     transform: scale(6);
     margin: 0 auto !important;
