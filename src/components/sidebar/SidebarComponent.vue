@@ -53,9 +53,7 @@
               <ion-item  lines="none">
                 <ion-label>Fluxo de Caixa</ion-label>
               </ion-item>
-              <ion-item lines="none">
-                <ion-label> Consulta de Débitos</ion-label>
-              </ion-item>
+              
               <ion-item lines="none">
                 <ion-label> Mensalidades</ion-label>
               </ion-item>

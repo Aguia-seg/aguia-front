@@ -1,6 +1,6 @@
 import { defineComponent } from "vue";
 import { modalController } from "@ionic/vue";
-import CreatePlansForms from '@/views/financial/forms/CreatePlansForms.vue'
+import CreatePlansForms from '@/views/financial/plans/forms-plans/CreatePlansForms.vue'
 import { searchOutline, closeOutline, createOutline } from 'ionicons/icons'
 
 import { mapActions, mapState } from "vuex";
