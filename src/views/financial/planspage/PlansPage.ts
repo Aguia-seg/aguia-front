@@ -17,7 +17,7 @@ export default defineComponent({
     },
     async ionViewWillEnter() {
         this.spinner = true;
-         await this.getplans();
+         await this.getPlans();
          this.spinner = false;
     },
     methods: {
@@ -28,7 +28,7 @@ export default defineComponent({
               });
               modal.present();
         },
-        ...mapActions('plan', ['getplans'])
+        ...mapActions('plan', ['getPlans'])
     },
     setup(){
         return{
