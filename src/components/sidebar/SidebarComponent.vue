@@ -34,14 +34,25 @@
               <ion-item router-link="/clients" lines="none">
                 <ion-label>Cadastros de Clientes</ion-label>
               </ion-item>
-              <ion-item router-link="/houses" lines="none">
-                <ion-label>Cadastros de Residências</ion-label>
-              </ion-item>
               <ion-item router-link="/collaborators" lines="none">
                 <ion-label>Cadastros de Colaboradores</ion-label>
               </ion-item>
             </div>
           </ion-accordion>
+
+          <ion-accordion-group :multiple="true">
+          <ion-accordion value="second">
+            <ion-item slot="header" color="dark">
+              <i class=" nav-icon fas fa-cogs mr-2 "></i>
+              <ion-label>Consultas</ion-label>
+            </ion-item>
+            <div class="" slot="content">
+              <ion-item router-link="/houses" lines="none">
+                <ion-label>Consulta de residências</ion-label>
+              </ion-item>
+            </div>
+          </ion-accordion>
+        </ion-accordion-group>
         </ion-accordion-group>
         <ion-accordion-group :multiple="true">
           <ion-accordion value="second">
@@ -54,7 +65,7 @@
                 <ion-label>Fluxo de Caixa</ion-label>
               </ion-item>
               
-              <ion-item lines="none">
+              <ion-item router-link="/monthlypayment" lines="none">
                 <ion-label> Mensalidades</ion-label>
               </ion-item>
               <ion-item router-link="/plans" lines="none">
@@ -76,6 +87,7 @@
             </div>
           </ion-accordion>
         </ion-accordion-group>
+        
       </nav>
       <!-- /.sidebar-menu -->
     </div>
