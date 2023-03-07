@@ -5,7 +5,7 @@
                 <ion-title>Cadastros de residências</ion-title>
 
                 <ion-buttons slot="secondary">
-                    <ion-button shape="round" class="add-button mr-4" @click="formHouses()">Adicionar</ion-button>
+                    <ion-button shape="round" class="add-button mr-4" @click="formHouses()">Pesquisar</ion-button>
                     
                 </ion-buttons>
             </ion-toolbar>
