@@ -4,6 +4,7 @@ import auth from './modules/auth'
 import user from './modules/user'
 import client from './modules/client'
 import plan from './modules/plan'
+import house from './modules/house'
 
 const debug = process.env.NODE_ENV !== 'production'
 
@@ -13,6 +14,7 @@ export interface State {
   user: any,
   client: any,
   plan: any,
+  house: any
 }
 
 // define injection key
@@ -23,7 +25,8 @@ export const store = createStore<State>({
     auth,
     user,
     client,
-    plan
+    plan,
+    house,
   },
   strict: false,
   plugins: debug ? [createLogger()] : []

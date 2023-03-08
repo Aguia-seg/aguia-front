@@ -23,3 +23,7 @@ ion-button.edit-button{
     --background: #ffae00;
     --background-hover: #ffc966;
 }
+
+#clearFilter{
+    display: none;
+}

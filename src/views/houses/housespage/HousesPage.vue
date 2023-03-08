@@ -5,8 +5,8 @@
                 <ion-title>Cadastros de residências</ion-title>
 
                 <ion-buttons slot="secondary">
-                    <ion-button shape="round" class="add-button mr-4" @click="formHouses()">Pesquisar</ion-button>
-                    
+                    <ion-button shape="round" color="primary" class="mr-4" @click="formHouses()">Abrir filtro</ion-button>
+                    <ion-button v-show="displayClearFilter" shape="round" color="danger" @click="disableClearFilter()" >limpar filtro</ion-button>  
                 </ion-buttons>
             </ion-toolbar>
         
