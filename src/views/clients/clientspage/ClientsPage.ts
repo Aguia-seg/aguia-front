@@ -1,7 +1,8 @@
 import { defineComponent } from "vue";
-import { searchOutline } from 'ionicons/icons'
+import { searchOutline, createOutline } from 'ionicons/icons'
 import { modalController } from "@ionic/vue";
 import CreateClientForm from '@/views/clients/clients-forms/clients-create/CreateClientForm.vue';
+import CreateClientEditForm from '@/views/clients/clients-forms/clients-create/CreateClientEditForm.vue'
 import { mapActions, mapState } from "vuex";
 
 export default defineComponent({
@@ -33,11 +34,18 @@ export default defineComponent({
             });
             modal.present();
         },
+        async formEditClient() {
+            const modal = await modalController.create({
+                component: CreateClientEditForm,
+            });
+            modal.present();
+        },
         ...mapActions('client', ['getClients', 'searchClient'])
     },
     setup() {
         return {
             searchOutline,
+            createOutline,
 
         }
     },
