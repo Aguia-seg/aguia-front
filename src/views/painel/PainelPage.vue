@@ -18,10 +18,10 @@
                         <!-- small box -->
                         <div class="small-box bg-white shadow">
                             <div class="inner">
-                                <h3 class="clients-number">150</h3>
+                                <h3 class="clients-number">{{ painel.client_active }}</h3>
                                 <p>Clientes ativos</p>
-                                <h3 class="clients-number">150</h3>
-                                <p>Clientes ativos dos dia</p>
+                                <h3 class="clients-number">{{ painel.client_today  }}</h3>
+                                <p>Clientes ativos do dia</p>
 
                             </div>
                             <div class="icon">
@@ -35,10 +35,10 @@
                         <!-- small box -->
                         <div class="small-box d-flex shadow flex-column justify-content-center bg-white">
                             <div class="inner">
-                                <h3 style="font-size: 72px; margin-left: 15px;"><sup style="font-size: 20px;">R$</sup>53
+                                <h3 style="font-size: 72px; margin-left: 15px;"><sup style="font-size: 20px;">R$</sup>{{ painel.invoices_month }}
                                 </h3>
 
-                                <p style="margin-left: 50px;">Débito do mês</p>
+                                <p style="margin-left: 50px;">A receber no mês</p>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-stats-bars"></i>

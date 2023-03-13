@@ -1,6 +1,4 @@
 
-import { refreshOutline } from 'ionicons/icons';
-
 <template>
     <AppLayout>
         <ion-header>

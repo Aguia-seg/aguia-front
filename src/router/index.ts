@@ -4,7 +4,7 @@ import ClientsRoute from '@/views/clients/ClientsRoute';
 import HousesRoute from '@/views/houses/HousesRoute';
 import CollabsRoute from '@/views/collaborators/CollaboratorsRoute';
 import FinancialRoute from '@/views/financial/FinancialRoute';
-import { createRouter, createWebHistory } from '@ionic/vue-router';
+import { createRouter, createWebHashHistory } from '@ionic/vue-router';
 import { RouteRecordRaw } from 'vue-router';
 
 export const routes = ([] as Array<RouteRecordRaw>).concat(
@@ -17,7 +17,7 @@ export const routes = ([] as Array<RouteRecordRaw>).concat(
   )
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  history: createWebHashHistory(process.env.BASE_URL),
   routes
 })
 

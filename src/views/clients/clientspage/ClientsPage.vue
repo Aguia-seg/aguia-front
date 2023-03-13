@@ -14,7 +14,7 @@
         </ion-header>
         <div class="container-fluid d-flex justify-content-center">
             <ion-item v-if="!spinner" class="search">
-                <ion-input v-model="form.search" placeholder="Pesquisar"><ion-icon :icon="searchOutline"></ion-icon></ion-input>
+                <ion-input v-model="form.search" placeholder="Pesquisar por nome ou CPF/CNPJ"><ion-icon :icon="searchOutline"></ion-icon></ion-input>
 
             </ion-item>
             <ion-buttons slot="secondary" >
