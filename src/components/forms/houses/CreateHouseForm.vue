@@ -50,7 +50,7 @@
         </div> 
         <div class="row mt-5">
         <div class="col-12">
-          <ion-button type="submit" expand="block" color="primary" @click="debugClearFilter(), enableClearFilter()">
+          <ion-button type="submit" expand="block" color="primary" @click=" enableClearFilter()">
             Pesquisar
           </ion-button>
         </div>
