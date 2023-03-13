@@ -3,7 +3,7 @@ import { contractOutline } from "ionicons/icons";
 
 const state = {
     clients: '',
-    client:''
+    client: ''
 }
 
 const mutations = {
@@ -13,11 +13,27 @@ const mutations = {
     client(state: any, dados: any) {
         state.client = dados;
     },
-    limpar(state: any){
+    limpar(state: any) {
         state.client = '';
     },
-    cleanClients(state: any){
+    cleanClients(state: any) {
         state.clients = '';
+    },
+    formatClient(state: any) {
+
+        if (state.client.active == 1) {
+            state.client.active = 'Sim'
+        }
+        else if (state.client.active == 0) {
+            state.client.active = 'Não'
+        }
+
+        if (state.client.type == 'PF') {
+            state.client.type = 'Pessoa Física'
+        }
+        else if (state.client.type == 'PJ') {
+            state.client.type = 'Pessoa Jurídica'
+        }
     }
 
 }
@@ -27,7 +43,7 @@ const actions = {
         await ClientService.getClients().then(
             (response) => {
                 context.commit('clients', response.data);
-               
+
             }
         );
     },
@@ -47,7 +63,7 @@ const actions = {
                 context.dispatch('getClients');
             }
         )
-    }, 
+    },
     async searchClient(context: any, search: any) {
         await ClientService.searchClient(search).then(
             (response) => {
@@ -55,7 +71,7 @@ const actions = {
                 context.commit('clients', response.data);
             }
         )
-    }, 
+    },
 
 }
 

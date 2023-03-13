@@ -22,7 +22,7 @@
                             <ion-grid>
                                 <ion-row>
                                     <ion-col class="first-col d-flex justify-content-center">Tipo:</ion-col>
-                                    <ion-col class="sec-col d-flex justify-content-center">{{ format.type }}</ion-col>
+                                    <ion-col class="sec-col d-flex justify-content-center">{{ client.type }}</ion-col>
                                 </ion-row>
                                 <ion-row>
                                     <ion-col class="first-col d-flex justify-content-center">CPF/CNPJ:</ion-col>
@@ -30,7 +30,7 @@
                                 </ion-row>
                                 <ion-row>
                                     <ion-col class="first-col d-flex justify-content-center">Ativo:</ion-col>
-                                    <ion-col class="sec-col d-flex justify-content-center">{{ format.active }}</ion-col>
+                                    <ion-col class="sec-col d-flex justify-content-center">{{ client.active }}</ion-col>
                                 </ion-row>
                                 <ion-row>
                                     <ion-col class="first-col d-flex justify-content-center">Telefone:</ion-col>
