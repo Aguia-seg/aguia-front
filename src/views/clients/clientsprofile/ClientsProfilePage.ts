@@ -37,7 +37,8 @@ export default defineComponent({
             else if(this.client.active == 0){
                 this.format.active = 'Não'
             }
-            console.log(this.format.active)
+            // console.log(this.format.active)
+            console.log(this.client.active)
         },
 
         formatType(){
@@ -47,7 +48,8 @@ export default defineComponent({
             else if(this.client.type == 'PJ'){
                 this.format.type = 'Pessoa Jurídica'
             }
-            console.log(this.format.type)
+            // console.log(this.format.type)
+            console.log(this.client.type)
         }
     },
     setup() {
