@@ -131,9 +131,13 @@
       <div class="row">
         <div class="col-12">
           <ion-item>
-            <ion-select interface="popover" placeholder="Data de pagamento" v-model="client.payday" required>
+            <ion-select interface="action-sheet" placeholder="Data de pagamento" v-model="client.payday" required>
+              <ion-select-option value="5"> 05</ion-select-option>
+              <ion-select-option value="8"> 08</ion-select-option>
+              <ion-select-option value="9"> 09</ion-select-option>
               <ion-select-option value="10"> 10</ion-select-option>
-              <ion-select-option value="20"> 20</ion-select-option>
+              <ion-select-option value="12"> 12</ion-select-option>
+              <ion-select-option value="15"> 15</ion-select-option>
               <ion-select-option value="30"> 30</ion-select-option>
             </ion-select>
           </ion-item>

@@ -56,6 +56,8 @@
                                 <ion-button :router-link="{ name: 'ClientProfile', params: { id: client.id } }"
                                     size="small"><ion-icon class="search-button"
                                         :icon="searchOutline"></ion-icon></ion-button>
+                                <ion-button color="warning" @click="formEditClient()" size="small"><ion-icon class="edit-button"
+                                        :icon="createOutline"></ion-icon></ion-button>
                             </div>
                         </td>
                     </tr>

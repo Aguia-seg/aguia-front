@@ -10,6 +10,11 @@ const ClientsRoute: Array<RouteRecordRaw> = [
     path: '/clients',
     name: 'ClientShow',
     component: () => import('@/views/clients/clientspage/ClientsPage.vue')
+  },
+  {
+    path: '/clients/tests',
+    name: 'ContractComponentTest',
+    component: () => import('@/views/clients/testing/ContractComponentTest.vue')
   }
 ]
 
