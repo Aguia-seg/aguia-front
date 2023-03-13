@@ -22,6 +22,8 @@
                                 <p>Clientes ativos</p>
                                 <h3 class="clients-number">{{ painel.client_today  }}</h3>
                                 <p>Clientes ativos do dia</p>
+                                <h3 class="clients-number">800</h3>
+                                <p>Clientes cancelados do dia</p>
 
                             </div>
                             <div class="icon">
@@ -32,7 +34,7 @@
                     </div>
                     <!-- ./col -->
                     <div class="col-lg-2 col-6">
-                        <div class="small-box d-flex shadow flex-column justify-content-center align-items-center bg-white">
+                        <div class="small-box smaller-box d-flex shadow flex-column justify-content-center align-items-center bg-white">
                             <div class="inner">
                                 <h3>800</h3>
                                 <p>Clientes cancelados</p>
