@@ -77,6 +77,24 @@ const actions = {
         )
     },
 
+    async editClient(context: any, id: any){
+        await ClientService.editClient(id).then(
+            (response) => {
+                console.log(response.data.message);
+                context.commit('client', response.data)
+            }
+        )
+    },
+
+    async updateClient(context: any, id: any, data: any){
+        await ClientService.updateClient(id, data).then(
+            (response) => {
+                console.log(response.data.message);
+                context.dispatch('getClient', response.data)
+            }
+        )
+    }
+
 }
 
 // const getters = {

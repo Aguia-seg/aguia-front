@@ -9,12 +9,12 @@
   </ion-header>
   <ion-content class="ion-padding">
     <div class="container">
-        <form>
+        <form @submit.prevent="validate();">
         <div class="row">
             <div class="col-12">
                 <ion-item>
                     <ion-label position="floating">Nome</ion-label>
-                    <ion-input placeholder="Nome"></ion-input>
+                    <ion-input placeholder="Nome" v-model="editedClient.name"></ion-input>
                 </ion-item>
             </div>
         </div>
@@ -22,7 +22,7 @@
             <div class="col-12">
                 <ion-item>
                     <ion-label position="floating">CPF/CNPJ</ion-label>
-                    <ion-input placeholder="CPF/CNPJ"></ion-input>
+                    <ion-input placeholder="CPF/CNPJ" v-model="editedClient.cpf_cnpj"></ion-input>
                 </ion-item>
             </div>
         </div>
@@ -30,7 +30,7 @@
             <div class="col-12">
                 <ion-item>
                     <ion-label position="floating">Telefone</ion-label>
-                    <ion-input placeholder="Telefone"></ion-input>
+                    <ion-input placeholder="Telefone" v-model="editedClient.phone"></ion-input>
                 </ion-item>
             </div>
         </div>
@@ -38,7 +38,7 @@
             <div class="col-12">
                 <ion-item>
                     <ion-label position="floating">Email</ion-label>
-                    <ion-input placeholder="Email"></ion-input>
+                    <ion-input placeholder="Email" v-model="editedClient.email"></ion-input>
                 </ion-item>
             </div>
         </div>
@@ -46,7 +46,7 @@
             <div class="col-12">
                 <ion-item>
                     <ion-label position="floating">Veículo(s)</ion-label>
-                    <ion-input placeholder="Veículo(s)"></ion-input>
+                    <ion-input placeholder="Veículo(s)" v-model="editedClient.veicle"></ion-input>
                 </ion-item>
             </div>
         </div>
@@ -68,6 +68,7 @@
     modalController,
     } from '@ionic/vue';
     import { defineComponent } from 'vue';
+    import { mapState, mapActions } from "vuex";
 
     export default defineComponent({
         name: 'CreateClientEditForm',
@@ -82,6 +83,13 @@
                 }
             }
         },
+        mounted() {
+            this.changeEditedClient()
+            
+        },
+        computed: {
+        ...mapState('client', ['client'])
+         },
         methods: {
             cancel() {
                 return modalController.dismiss(null, 'cancel');
@@ -89,6 +97,18 @@
             confirm() {
                 return modalController.dismiss(null, 'confirm');
             },
+            changeEditedClient(){
+                this.editedClient.name = this.client.name
+                console.log(this.editedClient.name)
+            },
+
+            ...mapActions('client', ['updateClient']),
+            validate(){
+                this.updateClient(this.client.id, this.editedClient)
+                console.log(this.client.id)
+                console.log(this.editedClient)
+                console.log(this.updateClient(this.client.id, this.editedClient))
+            }
         }
     })
 </script>

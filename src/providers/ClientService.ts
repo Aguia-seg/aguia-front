@@ -15,5 +15,13 @@ export default {
     async searchClient(search: any){
         return request.post('/clients/search', search);
     },
+
+    async editClient(id: any){
+        return request.get('/client/edit/'+ id);
+    },
+
+    async updateClient(id: any, data: any){
+         return request.put('/clients/' + id, data );
+    }
    
 }
