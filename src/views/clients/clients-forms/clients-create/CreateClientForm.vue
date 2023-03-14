@@ -39,7 +39,7 @@
         <div class="col-12">
           <ion-item>
             <ion-label position="floating">CPF/CNPJ</ion-label>
-            <ion-input placeholder="CPF/CNPJ" v-model="client.cpf_cnpj" maxlength="14" required ></ion-input>
+            <ion-input placeholder="CPF/CNPJ" v-model="client.cpf_cnpj" maxlength="14" required></ion-input>
           </ion-item>
         </div>
       </div>
@@ -121,9 +121,10 @@
       <div class="row">
         <div class="col-12">
           <ion-item>
-            <select class="form-control" required style="border: none;" v-model="client.plano" >
+            <select class="form-control" required style="border: none;" v-model="client.plano">
               <option value="">Escolha o plano do Cliente</option>
-              <option :value="plan" v-for="plan in plans" :key="plan.id">{{ plan.description }} | R$ {{ plan.value }}</option>
+              <option :value="plan" v-for="plan in plans" :key="plan.id">{{ plan.description }} | R$ {{ plan.value }}
+              </option>
             </select>
           </ion-item>
         </div>
@@ -171,19 +172,19 @@ export default defineComponent({
   data() {
     return {
       client: {
-        name: '',
+        name: 'Herbet Junio',
         password: 'null',
-        email: '',
-        phone: '',
-        cep: '',
-        city: 'petrolina',
-        district: '',
-        street: '',
-        complement: '',
-        number: '',
-        veicle: '',
+        email: 'herbetjr@gmail.com',
+        phone: '74988114876',
+        cep: '48903726',
+        city: 'Petrolina',
+        district: 'dsdsd',
+        street: 'dsdsds',
+        complement: 'dsds',
+        number: '22',
+        veicle: 'car',
         type: 'PF',
-        cpf_cnpj: '',
+        cpf_cnpj: '04261687550',
         active: '1',
         plano: '',
         payday: '',
@@ -204,7 +205,7 @@ export default defineComponent({
     ...mapActions('client', ['registerClient']),
     ...mapActions('plan', ['getPlans']),
     async registerUser() {
-      await this.registerClient(this.client);
+      await this.registerClient(this.client)
       this.cancel();
       console.log(this.client);
     },
@@ -216,7 +217,7 @@ export default defineComponent({
       let cont = 0
       clientsform.forEach((res) => {
         if (inputs[res] == '') {
-          if(this.client.veicle != ''){
+          if (this.client.veicle != '') {
             cont++;
           }
         }

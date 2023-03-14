@@ -57,10 +57,14 @@ const actions = {
 
     async registerClient(context: any, form: any) {
         await ClientService.registerClient(form).then(
-            (response) => {
+            async (response) => {
                 console.log(response.data.message)
                 alert(response.data.message);
                 context.dispatch('getClients');
+            },
+            async (error)=>{
+                console.log(error.response.data)
+                // return 'erro'
             }
         )
     },

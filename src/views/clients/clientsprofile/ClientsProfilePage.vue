@@ -92,10 +92,11 @@
                     <thead>
                         <tr>
                             <th scope="col">Ativo</th>
+                            <th scope="col">Data de contração</th>
                             <th scope="col">ID</th>
                             <th scope="col">Plano</th>
                             <th scope="col">Valor</th>
-                            <th scope="col">Data de Pagamento</th>
+                            <th scope="col">Dia de Pagamento</th>
                             <th scope="col">Data de Vencimento</th>
                             <th scope="col">Renovar contrato</th>
                         </tr>
@@ -106,6 +107,7 @@
                                 <i v-if="cli.plan.status == 1" class="fas fa-circle text-success"></i>
                                 <i v-else-if="cli.plan.status == 0" class="fas fa-circle text-danger"></i>
                             </td>
+                            <td >{{ cli.created_at }}</td>
                             <td scope="row">{{ cli.id }}</td>
                             <td>{{ cli.plan.description }}</td>
                             <td>R${{ cli.plan.value }}</td>
@@ -135,7 +137,9 @@
                     <thead>
                         <tr>
                             <th scope="col">N° do boleto</th>
+                            <th scope="col">Dias</th>
                             <th scope="col">Desconto %</th>
+                            <th scope="col">Acréscimo</th>
                             <th scope="col">data de vencimento</th>
                             <th scope="col">Valor</th>
                             <th scope="col">Situação</th>
@@ -145,7 +149,9 @@
                     <tbody v-for="contract in client.contracts" :key="contract.id" >
                         <tr v-for="invoice in contract.invoices"  :key="invoice.id">
                             <td>{{ invoice.id }}</td>
+                            <td>{{ invoice.days }}</td>
                             <td>{{ invoice.off }}</td>
+                            <td>{{ invoice.addition }}</td>
                             <td>{{ invoice.expiration }}</td>
                             <td>R$ {{ invoice.value }}</td>
                             <td>{{ invoice.type }}</td>
