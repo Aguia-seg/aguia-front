@@ -1,4 +1,5 @@
 import ClientService from "@/providers/ClientService";
+import { alertController, loadingController } from '@ionic/vue';
 
 const state = {
     clients: '',
@@ -61,7 +62,7 @@ const actions = {
                 alert(response.data.message);
                 context.dispatch('getClients');
             },
-            async (error)=>{
+            async (error) => {
                 console.log(error.response.data)
                 // return 'erro'
             }
@@ -76,7 +77,7 @@ const actions = {
         )
     },
 
-    async editClient(context: any, id: any){
+    async editClient(context: any, id: any) {
         await ClientService.editClient(id).then(
             (response) => {
                 console.log(response.data.message);
@@ -85,11 +86,22 @@ const actions = {
         )
     },
 
-    async updateClient(context: any, data: any){
+    async updateClient(context: any, data: any) {
+        const loading = await loadingController.create({
+            message: 'Atualizando dados',
+        });
+        loading.present();
+
         await ClientService.updateClient(data).then(
-            (response) => {
-                console.log(response.data.message);
+            async (response) => {
+                await loading.dismiss()
+                const alert = await alertController.create({
+                    message: response.data.message,
+                    buttons: ['OK'],
+                }); 
+                await alert.present()
                 context.dispatch('getClients', response.data)
+
             }
         )
     }

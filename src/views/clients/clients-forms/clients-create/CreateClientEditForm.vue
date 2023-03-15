@@ -52,7 +52,7 @@
         </div>
         <div class="row">
         <div class="col-12">
-          <ion-button type="submit" expand="block" color="secondary">
+          <ion-button :disabled="editButton" type="submit" expand="block" color="secondary">
             Editar
           </ion-button>
         </div>
@@ -69,10 +69,15 @@
     } from '@ionic/vue';
     import { defineComponent } from 'vue';
     import { mapState, mapActions } from "vuex";
+    import { alertController, loadingController } from '@ionic/vue';
 
     export default defineComponent({
         name: 'CreateClientEditForm',
-       
+       data(){
+        return{
+            editButton: false
+        }
+       },
         computed: {
         ...mapState('client', ['client', 'clients'])
          },
@@ -80,17 +85,14 @@
             cancel() {
                 return modalController.dismiss(null, 'cancel');
             },
-            confirm() {
-                return modalController.dismiss(null, 'confirm');
-            },
-           
 
             ...mapActions('client', ['updateClient', 'getClients', 'editClient']),
             
-            validate(){
+            async validate(){
                 
-                this.updateClient(this.client)
-                this.cancel()
+                await this.updateClient(this.client);
+                // this.editButton = true;                        
+                this.cancel();
                 //console.log(this.client)
                 
             },
