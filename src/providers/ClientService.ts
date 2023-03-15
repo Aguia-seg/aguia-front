@@ -20,8 +20,8 @@ export default {
         return request.get('/client/edit/'+ id);
     },
 
-    async updateClient(id: any, data: any){
-         return request.put('/clients/' + id, data );
+    async updateClient(data: any){
+         return request.put('/clients/' + data.id, data );
     }
    
 }

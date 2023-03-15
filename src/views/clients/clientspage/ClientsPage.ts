@@ -46,7 +46,7 @@ export default defineComponent({
        async getClientId(id: any){
              this.clients.id = id 
              await this.getClient(id)    
-             console.log(this.client)
+            // console.log(this.client)
         },
         ...mapActions('client', ['getClients', 'searchClient', 'getClient'])
     },

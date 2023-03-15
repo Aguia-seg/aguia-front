@@ -1,5 +1,4 @@
 import ClientService from "@/providers/ClientService";
-import { contractOutline } from "ionicons/icons";
 
 const state = {
     clients: '',
@@ -86,11 +85,11 @@ const actions = {
         )
     },
 
-    async updateClient(context: any, id: any, data: any){
-        await ClientService.updateClient(id, data).then(
+    async updateClient(context: any, data: any){
+        await ClientService.updateClient(data).then(
             (response) => {
                 console.log(response.data.message);
-                context.dispatch('getClient', response.data)
+                context.dispatch('getClients', response.data)
             }
         )
     }

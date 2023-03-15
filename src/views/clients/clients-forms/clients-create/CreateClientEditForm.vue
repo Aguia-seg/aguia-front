@@ -14,7 +14,7 @@
             <div class="col-12">
                 <ion-item>
                     <ion-label position="floating">Nome</ion-label>
-                    <ion-input placeholder="Nome" v-model="editedClient.name"></ion-input>
+                    <ion-input placeholder="Nome" v-model="client.name"></ion-input>
                 </ion-item>
             </div>
         </div>
@@ -22,7 +22,7 @@
             <div class="col-12">
                 <ion-item>
                     <ion-label position="floating">CPF/CNPJ</ion-label>
-                    <ion-input placeholder="CPF/CNPJ" v-model="editedClient.cpf_cnpj"></ion-input>
+                    <ion-input placeholder="CPF/CNPJ" v-model="client.cpf_cnpj"></ion-input>
                 </ion-item>
             </div>
         </div>
@@ -30,7 +30,7 @@
             <div class="col-12">
                 <ion-item>
                     <ion-label position="floating">Telefone</ion-label>
-                    <ion-input placeholder="Telefone" v-model="editedClient.phone"></ion-input>
+                    <ion-input placeholder="Telefone" v-model="client.phone"></ion-input>
                 </ion-item>
             </div>
         </div>
@@ -38,7 +38,7 @@
             <div class="col-12">
                 <ion-item>
                     <ion-label position="floating">Email</ion-label>
-                    <ion-input placeholder="Email" v-model="editedClient.email"></ion-input>
+                    <ion-input placeholder="Email" v-model="client.email"></ion-input>
                 </ion-item>
             </div>
         </div>
@@ -46,7 +46,7 @@
             <div class="col-12">
                 <ion-item>
                     <ion-label position="floating">Veículo(s)</ion-label>
-                    <ion-input placeholder="Veículo(s)" v-model="editedClient.veicle"></ion-input>
+                    <ion-input placeholder="Veículo(s)" v-model="client.veicle"></ion-input>
                 </ion-item>
             </div>
         </div>
@@ -72,23 +72,9 @@
 
     export default defineComponent({
         name: 'CreateClientEditForm',
-        data(){
-            return{
-                editedClient: {
-                    name:  '',
-                    cpf_cnpj: '',
-                    phone: '',
-                    email: '',
-                    veicle: '',
-                }
-            }
-        },
-        mounted() {
-            this.changeEditedClient()
-            
-        },
+       
         computed: {
-        ...mapState('client', ['client'])
+        ...mapState('client', ['client', 'clients'])
          },
         methods: {
             cancel() {
@@ -97,18 +83,17 @@
             confirm() {
                 return modalController.dismiss(null, 'confirm');
             },
-            changeEditedClient(){
-                this.editedClient.name = this.client.name
-                console.log(this.editedClient.name)
-            },
+           
 
-            ...mapActions('client', ['updateClient']),
+            ...mapActions('client', ['updateClient', 'getClients', 'editClient']),
+            
             validate(){
-                this.updateClient(this.client.id, this.editedClient)
-                console.log(this.client.id)
-                console.log(this.editedClient)
-                console.log(this.updateClient(this.client.id, this.editedClient))
-            }
+                
+                this.updateClient(this.client)
+                this.cancel()
+                //console.log(this.client)
+                
+            },
         }
     })
 </script>
