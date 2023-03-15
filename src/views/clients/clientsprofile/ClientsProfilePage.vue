@@ -7,7 +7,7 @@
                     <ion-title>{{ client.name }}</ion-title>
                     <div class="d-flex">
                         <ion-button color="danger">Deletar<ion-icon :icon="closeOutline"></ion-icon></ion-button>
-                        <ion-button class="ml-2" color="warning">Editar<ion-icon
+                        <ion-button class="ml-2" @click="formEditClient()" color="warning">Editar<ion-icon
                                 :icon="createOutline"></ion-icon></ion-button>
                     </div>
                 </div>

@@ -1,6 +1,9 @@
 import { defineComponent } from "vue";
 import { cashOutline, closeOutline, createOutline, refreshOutline } from "ionicons/icons"
 import { mapActions, mapState, mapMutations } from "vuex";
+import CreateClientEditForm from '@/views/clients/clients-forms/clients-create/CreateClientEditForm.vue'
+import { modalController } from "@ionic/vue";
+
 
 export default defineComponent({
     name: 'ClientsProfilePage',
@@ -18,6 +21,19 @@ export default defineComponent({
     methods: {
         ...mapActions('client', ['getClient']),
         ...mapMutations('client', ['limpar', 'formatClient']),
+        async formEditClient() {
+            
+            const modal = await modalController.create({
+                component: CreateClientEditForm,
+            });
+            modal.present();
+           
+        },
+       async getClientId(id: any){
+             this.client.id = id 
+             await this.getClient(id)    
+            // console.log(this.client)
+        },
        
     },
     setup() {
