@@ -11,13 +11,29 @@
         <div class="row supress">
         <div class="col-6">
             <ion-item class="main-item">
-                <ion-select interface="popover" placeholder="Cidade">
-                    <ion-select-option value="1">Petrolina</ion-select-option>
+                <ion-select interface="popover" v-model="city" placeholder="Cidade">
+                    <ion-select-option selected value="1">Petrolina</ion-select-option>
                     <ion-select-option value="2">Juazeiro</ion-select-option>
                 </ion-select>
             </ion-item>  
         </div>    
     </div>
+    <div class="row">
+          <div class="col-12 d-flex flex-column">
+            <ion-item class="main-item mb-0">
+                <ion-label position="floating">Bairro</ion-label>
+                <ion-input placeholder="Bairro" autocomplete="off" v-model="search_2" @input="filterDistrics();" @keyup="onPressKey2()"></ion-input>
+            </ion-item>
+            <div class="top-down-container" v-if="filteredDistricts && modal_2">
+                <ion-list lines="none" class="m-0 p-0" v-for="filteredDistrict in filteredDistricts" :key="filteredDistrict" @click="setDistrict(filteredDistrict)">
+                    <ion-item>
+                        <ion-label>{{ filteredDistrict }}</ion-label>
+                    </ion-item>
+                </ion-list>      
+            </div>
+         </div>
+        </div> 
+    
     <div class="row">
         <div class="col-12 d-flex flex-column">
             <ion-item class="main-item mb-0">
@@ -33,21 +49,7 @@
             </div>
         </div>
     </div>    
-        <div class="row">
-          <div class="col-12 d-flex flex-column">
-            <ion-item class="main-item mb-0">
-                <ion-label position="floating">Bairro</ion-label>
-                <ion-input placeholder="Bairro" autocomplete="off" v-model="search_2" @input="filterDistrics();" @keyup="onPressKey2()"></ion-input>
-            </ion-item>
-            <div class="top-down-container" v-if="filteredDistricts && modal_2">
-                <ion-list lines="none" class="m-0 p-0" v-for="filteredDistrict in filteredDistricts" :key="filteredDistrict" @click="setDistrict(filteredDistrict)">
-                    <ion-item>
-                        <ion-label>{{ filteredDistrict }}</ion-label>
-                    </ion-item>
-                </ion-list>      
-            </div>
-         </div>
-        </div> 
+        
         <div class="row mt-5">
         <div class="col-12">
           <ion-button type="submit" expand="block" color="primary" @click=" enableClearFilter()">
@@ -71,6 +73,7 @@
       name: 'CreateClientForm',
       data(){
         return{
+          city: '1',
           search: '',
           search_2: '',
           modal: false,
