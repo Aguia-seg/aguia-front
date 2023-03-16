@@ -1,4 +1,5 @@
 import PlanService from "@/providers/PlanService";
+import { alertController, loadingController } from '@ionic/vue';
 
 const state = {
     plans: '',
@@ -21,9 +22,18 @@ const actions = {
     },
 
     async registerPlans(context: any, form: any){
+        const loading = await loadingController.create({
+            message: 'Cadastrando Plano'
+        });
+        loading.present();
         await PlanService.registerPlans(form).then(
-            (response) => {
-                alert(response.data.message);
+            async (response) => {
+                await loading.dismiss();
+                const alert = alertController.create({
+                    message: response.data.message,
+                    buttons: ['OK']
+                });
+                (await alert).present()
                 context.dispatch('getPlans');
             }
         )

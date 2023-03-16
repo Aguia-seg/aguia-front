@@ -1,5 +1,6 @@
 import UserService from "@/providers/UserService";
-import AuthService from '@/providers/AuthService'
+import AuthService from '@/providers/AuthService';
+import { alertController, loadingController } from '@ionic/vue';
 
 const state = {
     users: ''
@@ -22,9 +23,18 @@ const actions = {
     },
 
     async register(context: any, user: any) {
+        const loading = await loadingController.create({
+            message: 'Cadastrando colaborador'
+        });
+        loading.present();
         await AuthService.registerUser(user).then(
-            (response)=>{
-                alert(response.data.message);
+            async (response)=>{
+                await loading.dismiss();
+                const alert = await alertController.create({
+                    message: response.data.message,
+                    buttons: ['OK']
+                });
+                alert.present();
                 context.dispatch('getUsers');
             }
         );

@@ -56,14 +56,29 @@ const actions = {
     },
 
     async registerClient(context: any, form: any) {
+        const loading = await loadingController.create({
+            message: 'Cadastrando Cliente',
+        });
+        loading.present();
         await ClientService.registerClient(form).then(
             async (response) => {
-                console.log(response.data.message)
-                alert(response.data.message);
+                await loading.dismiss()
+                console.log(response.data.message);
+                const alert = await alertController.create({
+                    message: response.data.message,
+                    buttons: ['OK'],
+                }); 
+                await alert.present();
                 context.dispatch('getClients');
             },
             async (error) => {
-                console.log(error.response.data)
+                console.log(error.response.data);
+                await loading.dismiss();
+                const alert = await alertController.create({
+                    message: 'Erro no cadastro',
+                    buttons: ['OK'],
+                }); 
+                await alert.present();
                 // return 'erro'
             }
         )
