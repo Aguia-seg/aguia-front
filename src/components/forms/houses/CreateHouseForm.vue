@@ -8,6 +8,8 @@
       </ion-toolbar>
     </ion-header>
     <ion-content class="ion-padding" @click="closeModal()">
+      <ion-spinner color="success" v-if="spinner"></ion-spinner>
+      <form v-if="!spinner">
         <div class="row supress">
         <div class="col-6">
             <ion-item class="main-item">
@@ -57,6 +59,8 @@
           </ion-button>
         </div>
       </div>
+      </form>
+        
     </ion-content>
   </template>
   
@@ -66,21 +70,20 @@
     } from '@ionic/vue';
     import { defineComponent } from 'vue';
     import { caretBack } from 'ionicons/icons'
-    import { mapMutations, mapState } from 'vuex'
+    import { mapMutations, mapState, mapActions } from 'vuex'
    
   
     export default defineComponent({
       name: 'CreateClientForm',
       data(){
         return{
+          spinner: true,
           city: '1',
           search: '',
           search_2: '',
           modal: false,
           modal_2: false,
-          districts: [
-            'Alabama', 'Bangu', 'Camões', 'Demi Lovato'
-          ],
+          districtsModel: [''],
           streets: [
             'Alagoas', 'Bermuda', 'Caixa', 'Destro'
           ],
@@ -90,7 +93,23 @@
         }
       },
       computed:{
-        ...mapState('house', ['displayClearFilter'])
+        ...mapState('house', ['displayClearFilter', 'districts'])
+      },
+      async mounted() {
+          this.spinner = true;
+          await this.getDistricts();
+          this.spinner = false;
+          const arrayDistrictsObjects = Object.values(this.districts);
+          const objectDistricts = arrayDistrictsObjects.reduce((objectDistricts: any, currentObj: any) => {
+            objectDistricts[currentObj.district] = objectDistricts[currentObj.district] || ['aa']
+            return objectDistricts
+          }, {})
+          //const arrayDistricts = Object.keys(objectDistricts)
+          //this.districtsModel = this.districts;
+          
+          console.log(arrayDistrictsObjects);
+          console.log(objectDistricts);
+          
       },
       methods: {
         debugClearFilter(){
@@ -111,7 +130,7 @@
         },
 
         filterDistrics(){
-          this.filteredDistricts = this.districts.filter(districts => {
+          this.filteredDistricts = this.districtsModel.filter(districts => {
             return districts.toLowerCase().startsWith(this.search_2.toLowerCase())
           })
         },
@@ -164,7 +183,8 @@
           this.changeModal2()
         },
 
-        ...mapMutations('house', ['enableClearFilter', 'disableClearFilter'])
+        ...mapMutations('house', ['enableClearFilter', 'disableClearFilter']),
+        ...mapActions('house', ['getDistricts'])
 
       },
       setup(){
@@ -196,7 +216,12 @@ ion-item.main-item{
   
 }  
 
-
+ion-spinner {
+    transform: scale(6);
+    margin: 0 auto !important;
+    top: 200px;
+    width: 100%;
+}
     
 input{
   border-width: 0.5px;
