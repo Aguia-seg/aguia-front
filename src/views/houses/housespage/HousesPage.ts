@@ -4,20 +4,26 @@ import NavbarComponent from "@/components/navbar/NavbarComponent.vue"
 import { searchOutline, closeOutline, createOutline, searchCircleOutline } from 'ionicons/icons'
 import { modalController } from "@ionic/vue";
 import CreateHouseForm from '@/components/forms/houses/CreateHouseForm.vue'
-import { mapState, mapMutations } from "vuex"
+import { mapState, mapMutations, mapActions } from "vuex"
 
 export default defineComponent({
     name: 'HousesShow',
     data(){
         return{
-
+            spinner: true
         }
     },
     computed: {
-        ...mapState('house', ['displayClearFilter'])
+        ...mapState('house', ['displayClearFilter', 'houses'])
     },
     created(){
         console.log(this.displayClearFilter)
+    },
+    async mounted() {
+        this.spinner = true;
+        await this.getHouses();
+        this.spinner = false;
+        console.log(this.houses);
     },
     components: {
         SidebarComponent,
@@ -31,7 +37,8 @@ export default defineComponent({
               modal.present();
         },
 
-        ...mapMutations('house', ['disableClearFilter', 'enableClearFilter'])
+        ...mapMutations('house', ['disableClearFilter', 'enableClearFilter']),
+        ...mapActions('house', ['getHouses'])
 
         
     },
