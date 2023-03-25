@@ -3,11 +3,15 @@ import HouseService from "@/providers/HouseService"
 const state = {
     displayClearFilter: false,
     districts: '',
+    houses:'',
 }
 
 const mutations = {
     districts(state: any, dados: any){
         state.districts = dados
+    },
+    houses(state: any, dados: any){
+        state.houses = dados
     },
     enableClearFilter(state: any){
         state.displayClearFilter = true
@@ -23,6 +27,15 @@ const actions  = {
             (response) => {
                 //console.log(response.data)
                 context.commit('districts', response.data);
+
+            }
+        );
+    },
+    async getHouses(context: any) {
+        await HouseService.getHouses().then(
+            (response) => {
+                //console.log(response.data)
+                context.commit('houses', response.data);
 
             }
         );

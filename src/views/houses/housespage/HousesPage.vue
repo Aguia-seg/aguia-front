@@ -11,17 +11,8 @@
             </ion-toolbar>
         
         </ion-header>
-    <!-- <div class="row">
-            <div class="col-lg-6 col-12">
-                <div class="d-flex align-items-center">
-                    <ion-button shape="round" class="add-button mr-4">Adicionar</ion-button>
-                    <ion-item>
-                        <ion-input placeholder="Pesquisar"><ion-icon :icon="searchOutline"></ion-icon></ion-input>
-                    </ion-item>
-                </div>
-            </div>
-                        </div> -->
-        <div class="container-fluid ">
+        <ion-spinner color="success" v-if="spinner"></ion-spinner>
+        <div class="container-fluid " v-if="!spinner">
             <table class="table">
                 <thead>
                     <tr>

@@ -24,7 +24,7 @@
           <div class="col-12 d-flex flex-column">
             <ion-item class="main-item mb-0">
                 <ion-label position="floating">Bairro</ion-label>
-                <ion-input placeholder="Bairro" autocomplete="off" v-model="search_2" @input="filterDistrics();" @keyup="onPressKey2()"></ion-input>
+                <ion-input placeholder="Bairro" autocomplete="off" v-model="search_2" @input="filterDistrics();" @keyup="onPressKey2()" @change="changeDisabledStreet(search_2)"></ion-input>
             </ion-item>
             <div class="top-down-container" v-if="filteredDistricts && modal_2">
                 <ion-list lines="none" class="m-0 p-0" v-for="filteredDistrict in filteredDistricts" :key="filteredDistrict" @click="setDistrict(filteredDistrict)">
@@ -40,7 +40,7 @@
         <div class="col-12 d-flex flex-column">
             <ion-item class="main-item mb-0">
                 <ion-label position="floating">Ruas</ion-label>
-                <ion-input placeholder="Ruas" autocomplete="off" v-model="search" @input="filterStreets();" @keyup="onPressKey()"></ion-input> 
+                <ion-input id="inputStreet" :disabled="inputStreetDisabled" placeholder="Ruas" autocomplete="off" v-model="search" @input="filterStreets();" @keyup="onPressKey()"></ion-input> 
             </ion-item>
             <div class="top-down-container" v-if="filteredStreets && modal">
                 <ion-list lines="none" class="m-0 p-0" v-for="filteredStreet in filteredStreets" :key="filteredStreet" @click="setStreet(filteredStreet)">
@@ -71,12 +71,14 @@
     import { defineComponent } from 'vue';
     import { caretBack } from 'ionicons/icons'
     import { mapMutations, mapState, mapActions } from 'vuex'
+    import { getElement } from 'ionicons/dist/types/stencil-public-runtime';
    
   
     export default defineComponent({
       name: 'CreateClientForm',
       data(){
         return{
+          inputStreetDisabled: true,
           spinner: true,
           city: '1',
           search: '',
@@ -99,15 +101,15 @@
           this.spinner = true;
           await this.getDistricts();
           this.spinner = false;
-          const arrayDistrictsObjects = Object.values(this.districts);
-          const objectDistricts = arrayDistrictsObjects.reduce((objectDistricts: any, currentObj: any) => {
-            objectDistricts[currentObj.district] = objectDistricts[currentObj.district] || ['aa']
+          const arrayDistrictsObjects: any = Object.values(this.districts);
+          const objectDistricts: any = arrayDistrictsObjects.reduce((objectDistricts: any, currentObj: any) => {
+            objectDistricts[currentObj.district] = currentObj.district
             return objectDistricts
           }, {})
-          //const arrayDistricts = Object.keys(objectDistricts)
-          //this.districtsModel = this.districts;
+          const arrayDistricts: any = Object.values(objectDistricts)
+          this.districtsModel = arrayDistricts;
           
-          console.log(arrayDistrictsObjects);
+          console.log(arrayDistricts);
           console.log(objectDistricts);
           
       },
@@ -140,9 +142,13 @@
           this.modal = false;
           console.log(search);
         },
+
+      
+
         setDistrict(search_2: any){
           this.search_2 = search_2;
           this.modal_2 = false;
+          this.inputStreetDisabled = false
           
         },
 
@@ -173,6 +179,17 @@
           this.modal_2 = false
         },
 
+        changeDisabledStreet(event: any){
+
+          for(let i = 0; i < this.districtsModel.length; i++){
+            if(event == this.districtsModel[i]){
+            this.inputStreetDisabled = false;
+            console.log('Ta pegando');
+            }
+          }
+         
+        },
+
         onPressKey(e: any){
 
           this.changeModal()
@@ -181,6 +198,10 @@
         onPressKey2(e: any){
 
           this.changeModal2()
+          if(this.search_2 != this.districtsModel as unknown as string){
+            this.inputStreetDisabled = true;
+          }
+      
         },
 
         ...mapMutations('house', ['enableClearFilter', 'disableClearFilter']),
