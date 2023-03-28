@@ -20,7 +20,20 @@
             </ion-item>  
         </div>    
     </div>
-    <div class="row">
+
+    <div class="row ">
+        <div class="col-12">
+            <ion-item class="main-item">
+                <ion-select placeholder="Bairro" v-model="districtSelected" @change="debugDistricts()">
+                    <ion-select-option v-for="districtModel in districtsModel" :key="districtModel" :value="districtModel">{{ districtModel }}</ion-select-option>
+                </ion-select>
+            </ion-item>  
+        </div>    
+    </div> 
+
+    <!--PODE SER UTIL NO FUTURO-->
+
+    <!-- <div class="row">
           <div class="col-12 d-flex flex-column">
             <ion-item class="main-item mb-0">
                 <ion-label position="floating">Bairro</ion-label>
@@ -34,33 +47,15 @@
                 </ion-list>      
             </div>
          </div>
-        </div> 
-
-    <!--PODE SER UTIL NO FUTURO-->
-
-    <div class="row">
-        <div class="col-12 d-flex flex-column">
-            <ion-item class="main-item mb-0">
-                <ion-label position="floating">Ruas</ion-label>
-                <ion-input id="inputStreet" :disabled="inputStreetDisabled" placeholder="Ruas" autocomplete="off" v-model="search" @input="filterStreets();" @keyup="onPressKey()"></ion-input> 
-            </ion-item>
-            <div class="top-down-container" v-if="filteredStreets && modal">
-                <ion-list lines="none" class="m-0 p-0" v-for="filteredStreet in filteredStreets" :key="filteredStreet" @click="setStreet(filteredStreet)">
-                    <ion-item>
-                        <ion-label>{{ filteredStreet }}</ion-label>
-                    </ion-item>
-                </ion-list>      
-            </div>
-        </div>
-    </div> 
+        </div>  -->
+    
     <div class="row ">
         <div class="col-12">
-
-                <label for="streetSelect">Ruas</label>
-                <select name="streetSelect" id="streetSelect" v-for="filteredStreet in filteredStreets" :key="filteredStreet">
-                    <option :value="filteredStreet">{{ filteredStreet }}</option>
-                </select>
-              
+            <ion-item class="main-item">
+                <ion-select placeholder="Rua" >
+                    <ion-select-option v-for="streetModel in streetsModel" :key="streetModel" :value="streetModel">{{ streetModel }}</ion-select-option>
+                </ion-select>
+            </ion-item>  
         </div>    
     </div> 
         
@@ -90,6 +85,7 @@
       name: 'CreateClientForm',
       data(){
         return{
+          districtSelected: '',
           inputStreetDisabled: true,
           spinner: true,
           city: '1',
@@ -118,15 +114,20 @@
             return objectDistricts
           }, {})
           const arrayDistricts: any = Object.values(objectDistricts)
+          //Transformando as Streets em um array e pegando o valor delas
 
 
           this.districtsModel = arrayDistricts;
           
-           console.log(arrayDistricts);
+          // console.log(arrayDistricts);
           // console.log(objectDistricts);
           
       },
       methods: {
+        debugDistricts(){
+          console.log(this.districtSelected)
+        },
+
         debugClearFilter(){
           console.log(this.displayClearFilter)
         },
@@ -157,7 +158,10 @@
         },
 
         async defineStreets(){
-          await this.getStreetsByDistrict(this.search_2);
+          for(let i = 0; i < this.districtsModel.length; i++){
+            await this.getStreetsByDistrict(this.search_2);
+          }
+          
           //transformando o array de objetos Street em um array dos valores dos Streets
           const arrayStreetsObject: any = Object.values(this.streets);
           const objectStreets: any = arrayStreetsObject.reduce((objectStreets: any, currentObj: any) =>{
