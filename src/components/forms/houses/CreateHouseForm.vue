@@ -25,7 +25,7 @@
         <div class="col-12">
             <ion-item class="main-item">
                 <ion-select placeholder="Bairro" v-model="districtSelected" @change="debugDistricts()">
-                    <ion-select-option v-for="districtModel in districtsModel" :key="districtModel" :value="districtModel">{{ districtModel }}</ion-select-option>
+                    <ion-select-option v-for="districtModel in districtsModel" :key="districtModel" value="districtModel">{{ districtModel }}</ion-select-option>
                 </ion-select>
             </ion-item>  
         </div>    
