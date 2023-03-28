@@ -35,7 +35,9 @@
             </div>
          </div>
         </div> 
-    
+
+    <!--PODE SER UTIL NO FUTURO-->
+
     <div class="row">
         <div class="col-12 d-flex flex-column">
             <ion-item class="main-item mb-0">
@@ -50,7 +52,17 @@
                 </ion-list>      
             </div>
         </div>
-    </div>    
+    </div> 
+    <div class="row ">
+        <div class="col-12">
+
+                <label for="streetSelect">Ruas</label>
+                <select name="streetSelect" id="streetSelect" v-for="filteredStreet in filteredStreets" :key="filteredStreet">
+                    <option :value="filteredStreet">{{ filteredStreet }}</option>
+                </select>
+              
+        </div>    
+    </div> 
         
         <div class="row mt-5">
         <div class="col-12">
@@ -86,31 +98,32 @@
           modal: false,
           modal_2: false,
           districtsModel: [''],
-          streets: [
-            'Alagoas', 'Bermuda', 'Caixa', 'Destro'
-          ],
+          streetsModel: [''],
           filteredStreets: [] as string[],
           filteredDistricts: [] as string[],
           
         }
       },
       computed:{
-        ...mapState('house', ['displayClearFilter', 'districts'])
+        ...mapState('house', ['displayClearFilter', 'districts', 'streets'])
       },
       async mounted() {
           this.spinner = true;
           await this.getDistricts();
           this.spinner = false;
+         //Transformando os Districts em um array e pegando o valor deles
           const arrayDistrictsObjects: any = Object.values(this.districts);
           const objectDistricts: any = arrayDistrictsObjects.reduce((objectDistricts: any, currentObj: any) => {
             objectDistricts[currentObj.district] = currentObj.district
             return objectDistricts
           }, {})
           const arrayDistricts: any = Object.values(objectDistricts)
+
+
           this.districtsModel = arrayDistricts;
           
-          console.log(arrayDistricts);
-          console.log(objectDistricts);
+           console.log(arrayDistricts);
+          // console.log(objectDistricts);
           
       },
       methods: {
@@ -126,7 +139,7 @@
         },
         
         filterStreets(){
-          this.filteredStreets = this.streets.filter(streets => {
+          this.filteredStreets = this.streetsModel.filter(streets => {
             return streets.toLowerCase().startsWith(this.search.toLowerCase())
           })
         },
@@ -143,12 +156,24 @@
           console.log(search);
         },
 
-      
+        async defineStreets(){
+          await this.getStreetsByDistrict(this.search_2);
+          //transformando o array de objetos Street em um array dos valores dos Streets
+          const arrayStreetsObject: any = Object.values(this.streets);
+          const objectStreets: any = arrayStreetsObject.reduce((objectStreets: any, currentObj: any) =>{
+            objectStreets[currentObj.street] = currentObj.street
+            return objectStreets
+          }, {});
+          const arrayStreets: any = Object.values(objectStreets);
+          this.streetsModel = arrayStreets;
+          console.log(arrayStreets);
+        },
 
         setDistrict(search_2: any){
           this.search_2 = search_2;
           this.modal_2 = false;
-          this.inputStreetDisabled = false
+          this.defineStreets();
+          this.inputStreetDisabled = false;
           
         },
 
@@ -184,7 +209,7 @@
           for(let i = 0; i < this.districtsModel.length; i++){
             if(event == this.districtsModel[i]){
             this.inputStreetDisabled = false;
-            console.log('Ta pegando');
+           // console.log('Ta pegando');
             }
           }
          
@@ -205,7 +230,7 @@
         },
 
         ...mapMutations('house', ['enableClearFilter', 'disableClearFilter']),
-        ...mapActions('house', ['getDistricts'])
+        ...mapActions('house', ['getDistricts', 'getStreetsByDistrict'])
 
       },
       setup(){
