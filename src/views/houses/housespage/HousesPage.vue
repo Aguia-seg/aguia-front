@@ -28,15 +28,15 @@
                        
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Petrolina</td>
-                        <td>Apartamento</td>
-                        <td>9999-99</td>
-                        <td>Rua genérica</td>
-                        <td>Bairro qualquer</td>
-                        <td>27</td>
+                <tbody >
+                    <tr v-for="house in houses" :key="house.id">
+                        <th scope="row">{{ house.id }}</th>
+                        <td>{{ house.city }}</td>
+                        <td>{{ house.type }}</td>
+                        <td>{{ house.cep }}</td>
+                        <td>{{ house.street }}</td>
+                        <td>{{ house.district }}</td>
+                        <td>{{ house.number }}</td>
 
                     
                         <td>

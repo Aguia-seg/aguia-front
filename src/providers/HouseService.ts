@@ -7,4 +7,8 @@ export default{
     async getHouses() {
         return request.get('/houses');      
     },
+
+    async getStreetsByDistrict(district: any){
+        return request.get('/houses/street/'+ district);
+    }
 }

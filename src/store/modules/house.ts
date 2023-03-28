@@ -4,11 +4,15 @@ const state = {
     displayClearFilter: false,
     districts: '',
     houses:'',
+    streets: '',
 }
 
 const mutations = {
     districts(state: any, dados: any){
         state.districts = dados
+    },
+    streets(state: any, dados: any){
+        state.streets = dados
     },
     houses(state: any, dados: any){
         state.houses = dados
@@ -40,6 +44,15 @@ const actions  = {
             }
         );
     },
+
+    async getStreetsByDistrict(context: any, district: any){
+        await HouseService.getStreetsByDistrict(district).then(
+            (response) => {
+                //console.log(response.data);
+                context.commit('streets', response.data);
+            }
+        )
+    }
 }
 
 export default{
