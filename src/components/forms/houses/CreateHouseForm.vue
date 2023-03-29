@@ -52,7 +52,7 @@
     <div class="row ">
         <div class="col-12">
             <ion-item class="main-item">
-                <ion-select placeholder="Rua" >
+                <ion-select placeholder="Rua" :disabled="inputStreetDisabled">
                     <ion-select-option v-for="streetModel in streetsModel" :key="streetModel" :value="streetModel">{{ streetModel }}</ion-select-option>
                 </ion-select>
             </ion-item>  
@@ -171,6 +171,7 @@
           }, {});
           const arrayStreets: any = Object.values(objectStreets);
           this.streetsModel = arrayStreets;
+          this.inputStreetDisabled = false;
           console.log(arrayStreets);
         },
 
