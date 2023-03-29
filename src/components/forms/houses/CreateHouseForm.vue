@@ -24,7 +24,7 @@
     <div class="row ">
         <div class="col-12">
             <ion-item class="main-item">
-                <ion-select placeholder="Bairro" v-model="districtSelected" @ionChange="debugDistricts()">
+                <ion-select placeholder="Bairro" v-model="districtSelected" @ionChange="debugDistricts(), defineStreets()">
                     <ion-select-option v-for="districtModel in districtsModel" :key="districtModel" :value="districtModel">{{ districtModel }}</ion-select-option>
                 </ion-select>
             </ion-item>  
@@ -125,7 +125,6 @@
       },
       methods: {
         debugDistricts(){
-          alert('oi')
           console.log(this.districtSelected)
         },
 
@@ -139,31 +138,32 @@
         confirm() {
           return modalController.dismiss(null, 'confirm');
         },
+
+        // PODE SER ÚTIL NO FUTURO
         
-        filterStreets(){
-          this.filteredStreets = this.streetsModel.filter(streets => {
-            return streets.toLowerCase().startsWith(this.search.toLowerCase())
-          })
-        },
+        // filterStreets(){
+        //   this.filteredStreets = this.streetsModel.filter(streets => {
+        //     return streets.toLowerCase().startsWith(this.search.toLowerCase())
+        //   })
+        // },
 
-        filterDistrics(){
-          this.filteredDistricts = this.districtsModel.filter(districts => {
-            return districts.toLowerCase().startsWith(this.search_2.toLowerCase())
-          })
-        },
+        // filterDistrics(){
+        //   this.filteredDistricts = this.districtsModel.filter(districts => {
+        //     return districts.toLowerCase().startsWith(this.search_2.toLowerCase())
+        //   })
+        // },
 
-        setStreet(search: any){
-          this.search = search;
-          this.modal = false;
-          console.log(search);
-        },
+        // setStreet(search: any){
+        //   this.search = search;
+        //   this.modal = false;
+        //   console.log(search);
+        // },
 
         async defineStreets(){
-          for(let i = 0; i < this.districtsModel.length; i++){
-            await this.getStreetsByDistrict(this.search_2);
-          }
-          
+          await this.getStreetsByDistrict(this.districtSelected);
+
           //transformando o array de objetos Street em um array dos valores dos Streets
+
           const arrayStreetsObject: any = Object.values(this.streets);
           const objectStreets: any = arrayStreetsObject.reduce((objectStreets: any, currentObj: any) =>{
             objectStreets[currentObj.street] = currentObj.street
