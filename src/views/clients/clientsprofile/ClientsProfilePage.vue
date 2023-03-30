@@ -51,29 +51,29 @@
                     <ion-col>
                         <div class="container p-0 client-sheet mt-4 shadow">
                             <ion-grid>
-                                <ion-row>
+                                <ion-row v-for="house in client.houses" :key="house.id">
                                     <ion-col class="first-col d-flex justify-content-center">Cidade:</ion-col>
-                                    <ion-col class="sec-col d-flex justify-content-center">{{ client.city }}</ion-col>
+                                    <ion-col class="sec-col d-flex justify-content-center">{{ house.city }}</ion-col>
                                 </ion-row>
-                                <ion-row>
+                                <ion-row v-for="house in client.houses" :key="house.id">
                                     <ion-col class="first-col d-flex justify-content-center">CEP:</ion-col>
-                                    <ion-col class="sec-col d-flex justify-content-center">{{ client.cep }}</ion-col>
+                                    <ion-col class="sec-col d-flex justify-content-center">{{ house.cep }}</ion-col>
                                 </ion-row>
-                                <ion-row>
+                                <ion-row v-for="house in client.houses" :key="house.id">
                                     <ion-col class="first-col d-flex justify-content-center">Rua:</ion-col>
-                                    <ion-col class="sec-col d-flex justify-content-center">{{ client.street }}</ion-col>
+                                    <ion-col class="sec-col d-flex justify-content-center">{{ house.street }}</ion-col>
                                 </ion-row>
-                                <ion-row>
+                                <ion-row v-for="house in client.houses" :key="house.id">
                                     <ion-col class="first-col d-flex justify-content-center">Bairro:</ion-col>
-                                    <ion-col class="sec-col d-flex justify-content-center">{{ client.district }}</ion-col>
+                                    <ion-col class="sec-col d-flex justify-content-center">{{ house.district }}</ion-col>
                                 </ion-row>
-                                <ion-row>
+                                <ion-row v-for="house in client.houses" :key="house.id">
                                     <ion-col class="first-col d-flex justify-content-center">Número:</ion-col>
-                                    <ion-col class="sec-col d-flex justify-content-center">{{ client.number }}</ion-col>
+                                    <ion-col class="sec-col d-flex justify-content-center">{{ house.number }}</ion-col>
                                 </ion-row>
-                                <ion-row>
+                                <ion-row v-for="house in client.houses" :key="house.id">
                                     <ion-col class="d-flex justify-content-center">Complemento:</ion-col>
-                                    <ion-col class="last-col d-flex justify-content-center">{{ client.complement }}</ion-col>
+                                    <ion-col class="last-col d-flex justify-content-center">{{ house.type }}</ion-col>
                                 </ion-row>
                             </ion-grid>
                         </div>

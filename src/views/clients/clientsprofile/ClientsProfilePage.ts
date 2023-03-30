@@ -9,11 +9,13 @@ export default defineComponent({
     name: 'ClientsProfilePage',
     computed: {
         ...mapState('client', ['client']),
-        ...mapState('contract', ['contract'])
+        ...mapState('contract', ['contract']),
     },
      async ionViewWillEnter() {
          await this.getClient(this.$route.params.id)
         this.formatClient();
+        this.getCLientHouses();
+        console.log(this.client.houses)
     },
     ionViewDidLeave() {
         this.limpar()
@@ -28,6 +30,9 @@ export default defineComponent({
             });
             modal.present();
            
+        },
+        async getCLientHouses(){
+            console.log(this.client.house)
         },
        async getClientId(id: any){
              this.client.id = id 
