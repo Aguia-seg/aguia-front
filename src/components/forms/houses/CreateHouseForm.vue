@@ -300,3 +300,5 @@ ion-item.check{
   height: 80px;
 }
 </style>
+
+<!-- dasgdk da k -->
