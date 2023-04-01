@@ -40,9 +40,9 @@
                                     <ion-col class="first-col d-flex justify-content-center">E-mail:</ion-col>
                                     <ion-col class="sec-col d-flex justify-content-center">{{ client.email }}</ion-col>
                                 </ion-row>
-                                <ion-row>
+                                <ion-row v-for="house in client.houses" :key="house.id">
                                     <ion-col class=" d-flex justify-content-center">Veículo(s)</ion-col>
-                                    <ion-col class="last-col d-flex justify-content-center">{{ client.veicle }}</ion-col>
+                                    <ion-col class="last-col d-flex justify-content-center">{{ house.veicle }}</ion-col>
                                 </ion-row>
 
                             </ion-grid>

@@ -17,7 +17,7 @@
                 <thead>
                     <tr>
                         <th scope="col">ID</th>
-                        <th scope="col">ID do cliente</th>
+                        <th scope="col">Nome do cliente</th>
                         <th scope="col">Cidade</th>
                         <th scope="col">Tipo</th>
                         <th scope="col">CEP</th>
@@ -32,7 +32,7 @@
                 <tbody >
                     <tr v-for="house in houses" :key="house.id">
                         <th scope="row">{{ house.id }}</th>
-                        <td>{{ house.client_id }}</td>
+                        <td>{{ house.name }}</td>
                         <td>{{ house.city }}</td>
                         <td>{{ house.type }}</td>
                         <td>{{ house.cep }}</td>
