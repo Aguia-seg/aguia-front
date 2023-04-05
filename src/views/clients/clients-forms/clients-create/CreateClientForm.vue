@@ -76,6 +76,14 @@
       <div class="row">
         <div class="col-12">
           <ion-item>
+            <ion-label position="floating">Cidade</ion-label>
+            <ion-input placeholder="Bairro" v-model="client.city" required></ion-input>
+          </ion-item>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <ion-item>
             <ion-label position="floating">Bairro</ion-label>
             <ion-input placeholder="Bairro" v-model="client.district" required></ion-input>
           </ion-item>
@@ -240,9 +248,10 @@ export default defineComponent({
         loading.present();
         apiCorreios.get('https://viacep.com.br/ws/' + this.client.cep + '/json/').then(
           (response) => {
-            //console.log(response.data)
-            this.client.district = response.data.bairro
-            this.client.street = response.data.logradouro
+            console.log(response.data)
+            this.client.district = response.data.bairro;
+            this.client.street = response.data.logradouro;
+            this.client.city = response.data.localidade;
             loading.dismiss();
           }
         )

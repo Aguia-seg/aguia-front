@@ -10,22 +10,25 @@ export default defineComponent({
     name: 'HousesShow',
     data(){
         return{
-            spinner: true
+            spinner: true,
+            spinner2: true,
         }
     },
     computed: {
-        ...mapState('house', ['displayClearFilter', 'houses'])
+        ...mapState('house', ['displayClearFilter', 'houses', 'housesFiltered'])
     },
     created(){
         console.log(this.displayClearFilter)
     },
     async mounted() {
         this.spinner = true;
+        this.spinner2 = true;
         await this.getHouses();
         this.spinner = false;
         console.log(this.houses);
+        
     },
-    components: {
+   mponents: {
         SidebarComponent,
         NavbarComponent,
     },
@@ -37,7 +40,11 @@ export default defineComponent({
               modal.present();
         },
 
-        ...mapMutations('house', ['disableClearFilter', 'enableClearFilter']),
+        updateFiltered(){
+            console.log("Atualizou!!")
+        },
+
+        ...mapMutations('house', ['disableClearFilter', 'enableClearFilter', 'cleanFilter']),
         ...mapActions('house', ['getHouses'])
 
         

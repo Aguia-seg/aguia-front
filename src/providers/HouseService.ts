@@ -10,5 +10,9 @@ export default{
 
     async getStreetsByDistrict(district: any){
         return request.get('/houses/street/'+ district);
+    },
+
+    async getHousesFiltered(data: any){
+        return request.post('/houses/filtered', data)
     }
 }
