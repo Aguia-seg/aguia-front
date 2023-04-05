@@ -2,7 +2,7 @@
     <ion-page>
         <ion-content>
            
-            <section class="section-1">
+           <div class="contractHtml">
                 <div class=" container-fluid d-flex flex-column justify-content-center align-items-center">
                     
                         <div class="d-flex">
@@ -12,8 +12,7 @@
                         <h5 class="contract-title mt-2">CONTRATO DE PRESTAÇÃO DE SERVIÇOS DE<br>
                         MONITORAMENTO ELETRÔNICO</h5>
                 </div>
-            </section> 
-            <section>
+            
                 <div class="container d-flex justify-content-center mt-3" id="capture">
                     <h5><b>I – DOS CONTRATANTES</b></h5>
                     <br>
@@ -132,7 +131,9 @@
                 <div class="container-fluid d-flex justify-content-center">
                     <ion-button @click="generatePDF()">Gerar PDF</ion-button>
                 </div>
-            </section>
+           </div>
+                
+            
         </ion-content>
     </ion-page>
 </template>
@@ -148,15 +149,27 @@ export default defineComponent({
     methods: {
         generatePDF(){
            
-            const html: any = document.querySelector("#capture");
-            html2canvas(html, {
-                allowTaint: true,
-                useCORS: true,
-                scale: 1
-            }).then(canvas => {
-             document.body.appendChild(canvas)
-             console.log(canvas)
-            })
+            // const html: any = document.querySelector("#capture");
+            // html2canvas(html, {
+            //     allowTaint: true,
+            //     useCORS: true,
+            //     scale: 1
+            // }).then(canvas => {
+            //  document.body.appendChild(canvas)
+            //  console.log(canvas)
+            //  const img = canvas.toDataURL('image/png');
+
+            //  const doc = new jsPDF();
+            //  doc.setFont('Arial');
+            //  doc.setFontSize(11);
+            //  doc.addImage(img, 'PNG', 7, 13, 195, 405);
+            //  doc.addPage();
+            //  doc.save();
+             
+            // })
+
+           
+
 
             // const paper_a4: any = document.getElementById('paper-a4')?.innerText;
             // console.log(paper_a4);
@@ -187,11 +200,6 @@ export default defineComponent({
     #capture{
         display: flex;
         flex-direction: column;
-    }
-    
-    .section-1{
-        position: relative;
-        overflow: hidden
     }
 
     .contract-title{
