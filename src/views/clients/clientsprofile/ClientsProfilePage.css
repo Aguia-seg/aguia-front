@@ -15,6 +15,13 @@ ion-col.first-col{
     border-right: 0px;
 }
 
+ion-spinner {
+    transform: scale(6);
+    margin: 0 auto !important;
+    top: 200px;
+    width: 100%;
+}
+
 ion-col.sec-col{
     
     border: 1px solid rgb(226, 226, 226) ;

@@ -15,7 +15,9 @@
             </ion-toolbar>
         </ion-header>
         <ion-content class="ion-padding">
-            <ion-grid>
+            <ion-spinner color="success" v-if="spinner"></ion-spinner>
+            <div class="all-content" v-if="!spinner">
+                <ion-grid>
                 <ion-row>
                     <ion-col>
                         <div class="container p-0 client-sheet mt-4 shadow">
@@ -98,7 +100,8 @@
                             <th scope="col">Valor</th>
                             <th scope="col">Dia de Pagamento</th>
                             <th scope="col">Data de Vencimento</th>
-                            <th scope="col">Renovar contrato</th>
+                            <th scope="col">Ações</th>
+                            
                         </tr>
                     </thead>
                     <tbody>
@@ -114,10 +117,17 @@
                             <td>{{ cli.payday }}</td>
                             <td>{{ cli.expiration }}</td>
 
-                            <td>
-                                <div class="d-flex align-items-center justify-content-center">
+                            <td class="d-flex">
+                                <div class="d-flex flex-column align-items-center justify-content-center mr-2">
+                                    <ion-button color="success" :router-link="{name: 'ContractComponentTest', params:{id: cli.id}}" size="small"><ion-icon class="search-button"
+                                            :icon="pencilOutline"></ion-icon></ion-button>
+                                    <p style="font-size: 10px;">Gerar contrato</p>
+                                </div>
+    
+                                <div class="d-flex flex-column align-items-center justify-content-center">
                                     <ion-button color="success" size="small"><ion-icon class="search-button"
                                             :icon="refreshOutline"></ion-icon></ion-button>
+                                    <p style="font-size: 10px;">Renovar contrato</p>        
                                 </div>
                             </td>
                         </tr>
@@ -164,6 +174,8 @@
                     </tbody>
                 </table>
             </div>
+            </div>
+
         </ion-content>
     </AppLayout>
 </template>

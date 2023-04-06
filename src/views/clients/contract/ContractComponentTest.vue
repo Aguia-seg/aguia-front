@@ -3,7 +3,8 @@
         <ion-content>
            
            <div class="contractHtml">
-                <div class=" container-fluid d-flex flex-column justify-content-center align-items-center">
+            <div class="container d-flex flex-column justify-content-center mt-1" id="capture">
+                <div class=" container-fluid d-flex flex-column justify-content-center align-items-center" id="capture-1">
                     
                         <div class="d-flex">
                             <img class="logo" src="@/assets/img/logo.png" alt="logo">
@@ -13,7 +14,8 @@
                         MONITORAMENTO ELETRÔNICO</h5>
                 </div>
             
-                <div class="container d-flex justify-content-center mt-3" id="capture">
+                <br>
+                <br>
                     <h5><b>I – DOS CONTRATANTES</b></h5>
                     <br>
                     <p><b>CONTRATADO (a):</b>Águia seg, pessoa Jurídica de direito privado, 
@@ -83,6 +85,8 @@
                     <br><br>4) – Informar à Contratada dos problemas de ordem técnica no sistema eletrônico monitorado.
                     </p>
                     <br>
+                    </div>
+                    <div class="container d-flex flex-column justify-content-center" id="capture-2">
                     <h5><b>VI – OUTRAS OBRIGAÇÕES DA CONTRATADA</b></h5>
                     <br>
                     <p>
@@ -146,39 +150,46 @@ import html2canvas from 'html2canvas'
 
 export default defineComponent({
     name: 'ContractComponentTest',
+    mounted() {
+        console.log(this.$route)
+    },
     methods: {
-        generatePDF(){
+       async generatePDF(){
            
-            // const html: any = document.querySelector("#capture");
-            // html2canvas(html, {
-            //     allowTaint: true,
-            //     useCORS: true,
-            //     scale: 1
-            // }).then(canvas => {
-            //  document.body.appendChild(canvas)
-            //  console.log(canvas)
-            //  const img = canvas.toDataURL('image/png');
+            const doc = new jsPDF();
+            doc.setFont('Arial');
+            doc.setFontSize(11);
 
-            //  const doc = new jsPDF();
-            //  doc.setFont('Arial');
-            //  doc.setFontSize(11);
-            //  doc.addImage(img, 'PNG', 7, 13, 195, 405);
-            //  doc.addPage();
-            //  doc.save();
+            const html: any = document.querySelector("#capture");
+            const html2: any = document.querySelector("#capture-2");
+
+            await html2canvas(html, {
+                allowTaint: true,
+                useCORS: true,
+                scale: 1
+            }).then(canvas => {
+             document.body.appendChild(canvas)
+             console.log(canvas)
+             const img = canvas.toDataURL('image2/png');
+             doc.addImage(img, 'PNG', 7, 13, 195, 275);
              
-            // })
+            })
 
-           
+            doc.addPage()
 
+            await html2canvas(html2, {
+                allowTaint: true,
+                useCORS: true,
+                scale: 1
+            }).then(canvas =>{
+                document.body.appendChild(canvas);
+                const img = canvas.toDataURL('image3/png');
+                doc.addImage(img, 'PNG', 7, 13, 195, 175);
+                
+            })
 
-            // const paper_a4: any = document.getElementById('paper-a4')?.innerText;
-            // console.log(paper_a4);
-            // const doc = new jsPDF('portrait');
+            doc.save('Contrato');
 
-            // doc.setFontSize(11)
-            // doc.text(paper_a4, 10, 10)
-            // doc.addPage()
-            // doc.save("Contrato.pdf"); 
         }
     }
 

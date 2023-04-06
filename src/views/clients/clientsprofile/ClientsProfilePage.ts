@@ -1,5 +1,5 @@
 import { defineComponent } from "vue";
-import { cashOutline, closeOutline, createOutline, refreshOutline } from "ionicons/icons"
+import { cashOutline, closeOutline, createOutline, refreshOutline, pencilOutline } from "ionicons/icons"
 import { mapActions, mapState, mapMutations } from "vuex";
 import CreateClientEditForm from '@/views/clients/clients-forms/clients-create/CreateClientEditForm.vue'
 import { modalController } from "@ionic/vue";
@@ -7,14 +7,21 @@ import { modalController } from "@ionic/vue";
 
 export default defineComponent({
     name: 'ClientsProfilePage',
+    data() {
+        return{
+            spinner: true
+        }
+    },
     computed: {
         ...mapState('client', ['client']),
         ...mapState('contract', ['contract']),
     },
      async ionViewWillEnter() {
-         await this.getClient(this.$route.params.id)
-        this.formatClient();
-        this.getCLientHouses();
+        this.spinner = true;
+        await this.getClient(this.$route.params.id)
+         this.formatClient();
+         this.getCLientHouses();
+        this.spinner = false;
         console.log(this.client.houses)
     },
     ionViewDidLeave() {
@@ -47,6 +54,7 @@ export default defineComponent({
             closeOutline,
             createOutline,
             refreshOutline,
+            pencilOutline,
         }
     }
 })

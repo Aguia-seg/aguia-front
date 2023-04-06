@@ -28,7 +28,10 @@ export default defineComponent({
         console.log(this.houses);
         
     },
-   mponents: {
+    ionViewDidEnter(){
+        this.getHouses();
+    },
+   components: {
         SidebarComponent,
         NavbarComponent,
     },
