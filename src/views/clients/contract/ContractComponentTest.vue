@@ -25,15 +25,15 @@
                         Proprietário/Administrador Paulo henriqiue cordeiro soares rodrigues 
                         portador do RG/CNH Nº 8817773 Órgão Emissor SDS e CPF 709.697.144-08 
                         telefone nº(87)99652-4057 doravante denominado simplesmente contratado.</p>
-                    <p><b>CONTRATANTE:</b> _________________________________________________, pessoa física
-                        ( ) ou Jurídica ( ) de direito privado, residente ou localizado 
-                        na ______________________________________________ , Nº _______ , 
-                        CEP__________ Bairro ___________________________ na cidade de Petrolina, 
-                        no estado de Pernambuco, inscrito no CPF/CNPJ/MF _________________________ 
+                    <p><b>CONTRATANTE:</b> <b> {{ client.name }} </b>, pessoa física
+                        (<span v-if="client.type == 'PF'">X</span>) ou Jurídica (<span v-if="client.type == 'PJ'">X</span>) de direito privado, residente ou localizado 
+                        na <b> {{ client.houses[0].street }} </b>  , Nº <b> {{ client.houses[0].number }} </b> , 
+                        CEP <b> {{ client.houses[0].cep }} </b> Bairro <b> {{ client.houses[0].district }} </b> na cidade de Petrolina, 
+                        no estado de Pernambuco, inscrito no CPF/CNPJ/MF <b> {{ client.cpf_cnpj }} </b> 
                         neste ato representada pelo seu Proprietário/Administrador 
-                        _________________________________________ portador do 
+                        <b> <span v-if="client.type == 'PF' "> {{ client.name }} </span> </b> portador do 
                         RG/CNH Nº ______________________ Órgão Emissor ______________________ e 
-                        CPF______________________________ telefone nº ________________________ 
+                        CPF <b> <span v-if="client.type == 'PF' "> {{ client.cpf_cnpj }} </span> </b> telefone nº <b> <span v-if="client.type == 'PF' "> {{ client.phone }} </span> </b> 
                         doravante denominado contratante;</p>
                     <p>Resolveram livre e espontaneamente firmar um contrato de prestação de 
                         serviços de <b>Monitoramento Eletrônico 24 horas</b>, tudo conforme cláusulas e 
@@ -46,8 +46,8 @@
                         do disparo do sistema monitorado. A quantidade de pessoal a ser utilizada na
                         execução dos serviços, será estipulada pela Contratada</p>
                     <p><b>Parágrafo primeiro:</b> - Os serviços serão executados exclusivamente na área interna 
-                        do bem patrimonial da Contratante, localizada na Rua ______________________________,
-                        Nº ___________, Bairro___________________________, CEP ________________ Petrolina -
+                        do bem patrimonial da Contratante, localizada na Rua <b> {{ client.houses[0].street }} </b>,
+                        Nº <b> {{ client.houses[0].number }} </b>, Bairro <b> {{ client.houses[0].district }} </b>, CEP <b> {{ client.houses[0].cep }} </b> Petrolina -
                         PE, diariamente, no período de 24(vinte e quatro) horas, excluída, em quaisquer 
                         circunstâncias, perseguições ou detenções em áreas públicas.</p>   
                     <p><b>Parágrafo segundo:</b> - Os serviços de <b>monitoramento Eletrônico</b> serão executados em 
@@ -56,8 +56,8 @@
                     <h5><b>III – DO PAGAMENTO</b></h5>
                     <br>
                     <p>Pelos serviços contratados, o <b>Contratante (CLIENTE)</b> pagará ao <b>Contratado</b>  (prestador de serviços)
-                        a quantia mensal de R$_____________ (__________________________________) até o 
-                        dia _______ do 1º mês <b>subsequente</b> ao vencido, através de faturamento e emissão de 
+                        a quantia mensal de <b>R$ {{ client.contracts[0].value }} </b>  (__________________________________) até o 
+                        dia <b> {{ client.contracts[0].payday }} </b> do 1º mês <b>subsequente</b> ao vencido, através de faturamento e emissão de 
                         cobrança via recibo, boleto ou outro meio aceito no mercado.</p>
                     <p><b>Parágrafo único:</b> O valor do pagamento será reajustado na renovação do contrato a cada 12
                          meses, aplicando-se o mesmo percentual adotado no dissídio coletivo da categoria de 
@@ -146,12 +146,21 @@
 import { defineComponent } from 'vue';
 import { jsPDF } from "jspdf";
 import html2canvas from 'html2canvas'
+import { mapMutations ,mapActions, mapState } from 'vuex';
 
 
 export default defineComponent({
     name: 'ContractComponentTest',
-    mounted() {
-        console.log(this.$route)
+    computed: {
+        ...mapState('client', ['client'])
+    },
+     mounted() {
+        
+        console.log(this.$route.params.id)
+    },
+    async ionViewWillEnter(){
+        await this.getClient(this.$route.params.id);
+        console.log(this.client)
     },
     methods: {
        async generatePDF(){
@@ -188,9 +197,10 @@ export default defineComponent({
                 
             })
 
-            doc.save('Contrato');
+            doc.save('Contrato'); 
+        },
 
-        }
+        ...mapActions('client', ['getClient'])
     }
 
 })
