@@ -58,6 +58,8 @@
                                         :icon="searchOutline"></ion-icon></ion-button>
                                 <ion-button color="warning"  @click="formEditClient(), getClientId(client.id)" size="small"><ion-icon class="edit-button"
                                         :icon="createOutline"></ion-icon></ion-button>
+                                <ion-button class="delete-button" @click="moveToBin(client.id)" size="small"><ion-icon
+                                        :icon="closeOutline"></ion-icon></ion-button>
                             </div>
                         </td>
                     </tr>

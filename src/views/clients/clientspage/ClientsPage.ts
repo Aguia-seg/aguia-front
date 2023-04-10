@@ -1,5 +1,5 @@
 import { defineComponent } from "vue";
-import { searchOutline, createOutline } from 'ionicons/icons'
+import { searchOutline, createOutline, closeOutline } from 'ionicons/icons'
 import { modalController } from "@ionic/vue";
 import CreateClientForm from '@/views/clients/clients-forms/clients-create/CreateClientForm.vue';
 import CreateClientEditForm from '@/views/clients/clients-forms/clients-create/CreateClientEditForm.vue'
@@ -49,12 +49,19 @@ export default defineComponent({
                  
             // console.log(this.client)
         },
-        ...mapActions('client', ['getClients', 'searchClient', 'getClient'])
+
+       async moveToBin(id: any){
+        this.clients.id  = id;
+        await this.destroyClient(id);
+        this.$router.go(0);
+       },
+        ...mapActions('client', ['getClients', 'searchClient', 'getClient', 'destroyClient'])
     },
     setup() {
         return {
             searchOutline,
             createOutline,
+            closeOutline
 
         }
     },

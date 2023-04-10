@@ -65,7 +65,7 @@
                     <br>
                     <h5><b>IV – DO PRAZO</b></h5>
                     <br>
-                    <p>O prazo deste contrato é por 12 meses, iniciando-se no dia ________ de ____________ de
+                    <p>O prazo deste contrato é por 12 meses, iniciando-se no dia <b> {{ dateDayOfContract }} </b> de <b> {{ dateMonthOfContract }} </b> de
                         2023</p> 
                     <p><b>Parágrafo único:</b> - A Renovação se dará automaticamente, se não houver manifestação de
                          uma das partes de encerra-lo, onde a contratada efetuará a emissão da renovação do 
@@ -117,7 +117,7 @@
                     </p>
                     <br>
                     <br>
-                    <p style="text-align: center;"> Petrolina, ________ de ____________ de 2023</p>
+                    <p style="text-align: center;"> Petrolina, {{ dateDayOfContract }} de {{ dateMonthOfContract }} de 2023</p>
                     <br>
                     <br>
                     <p style="text-align: center;">
@@ -152,56 +152,62 @@ import { mapMutations ,mapActions, mapState } from 'vuex';
 export default defineComponent({
     name: 'ContractComponentTest',
     computed: {
-        ...mapState('client', ['client'])
+        ...mapState('client', ['client', 'dateDayOfContract', 'dateMonthOfContract'])
     },
      mounted() {
         
         console.log(this.$route.params.id)
     },
-    async ionViewWillEnter(){
+
+    async beforeCreate() {
+        console.log(this.$route.params.id)
+        console.log('passou aqui')
         await this.getClient(this.$route.params.id);
+    },
+    async ionViewWillEnter(){
+        
         console.log(this.client);
     },
     methods: {
        
        
-        // async generatePDF(){
+        async generatePDF(){
            
-        //     const doc = new jsPDF();
-        //     doc.setFont('Arial');
-        //     doc.setFontSize(11);
+            const doc = new jsPDF();
+            doc.setFont('Arial');
+            doc.setFontSize(11);
 
-        //     const html: any = document.querySelector("#capture");
-        //     const html2: any = document.querySelector("#capture-2");
+            const html: any = document.querySelector("#capture-1");
+            const html2: any = document.querySelector("#capture-2");
 
-        //     await html2canvas(html, {
-        //         allowTaint: true,
-        //         useCORS: true,
-        //         scale: 1
-        //     }).then(canvas => {
-        //      document.body.appendChild(canvas)
-        //      console.log(canvas)
-        //      const img = canvas.toDataURL('image2/png');
-        //      doc.addImage(img, 'PNG', 7, 13, 195, 275);
+            await html2canvas(html, {
+                allowTaint: true,
+                useCORS: true,
+                scale: 1
+            }).then(canvas => {
+             document.body.appendChild(canvas)
+             console.log(canvas)
+             const img = canvas.toDataURL('image2/png');
+             doc.addImage(img, 'PNG', 7, 13, 195, 275);
              
-        //     })
+            })
 
-        //     doc.addPage()
+            doc.addPage()
 
-        //     await html2canvas(html2, {
-        //         allowTaint: true,
-        //         useCORS: true,
-        //         scale: 1
-        //     }).then(canvas =>{
-        //         document.body.appendChild(canvas);
-        //         const img = canvas.toDataURL('image3/png');
-        //         doc.addImage(img, 'PNG', 7, 13, 195, 175);
+            await html2canvas(html2, {
+                allowTaint: true,
+                useCORS: true,
+                scale: 1
+            }).then(canvas =>{
+                document.body.appendChild(canvas);
+                const img = canvas.toDataURL('image3/png');
+                doc.addImage(img, 'PNG', 7, 13, 195, 175);
                 
-        //     })
+            })
 
-        //     //doc.save('Contrato'); 
-        //     console.log(html)
-        // },
+            //doc.save('Contrato'); 
+            console.log(html)
+        },
 
         ...mapActions('client', ['getClient'])
     }

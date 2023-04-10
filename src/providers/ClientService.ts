@@ -19,6 +19,9 @@ export default {
     async editClient(id: any){
         return request.get('/client/edit/'+ id);
     },
+    async destroyClient(id: any){
+        return request.delete('clients/'+ id);
+    },
 
     async updateClient(data: any){
          return request.put('/clients/' + data.id, data );

@@ -3,7 +3,9 @@ import { alertController, loadingController } from '@ionic/vue';
 
 const state = {
     clients: '',
-    client: ''
+    client: '',
+    dateDayOfContract: '',
+    dateMonthOfContract: ''
 }
 
 const mutations = {
@@ -12,6 +14,12 @@ const mutations = {
     },
     client(state: any, dados: any) {
         state.client = dados;
+    },
+    dateDayOfContract(state: any, dados: any){
+        state.dateDayOfContract = dados;
+    },
+    dateMonthOfContract(state: any, dados: any){
+        state.dateMonthOfContract = dados;
     },
     limpar(state: any) {
         state.client = '';
@@ -50,7 +58,10 @@ const actions = {
     async getClient(context: any, id: any) {
         await ClientService.getClient(id).then(
             (response) => {
-                context.commit('client', response.data);
+                console.log(response.data)
+                context.commit('client', response.data.client);
+                context.commit('dateDayOfContract', response.data.dateDay);
+                context.commit('dateMonthOfContract', response.data.dateMonth);
             }
         ).catch(e => {
             console.log(e)
@@ -119,6 +130,16 @@ const actions = {
                 await alert.present()
                 context.dispatch('getClients', response.data)
 
+            }
+        )
+    },
+
+    async destroyClient(context: any, id: any) {
+        await ClientService.destroyClient(id).then(
+            (response) => {
+                console.log(response.data.message);
+                context.commit('client', response.data)
+                
             }
         )
     }
