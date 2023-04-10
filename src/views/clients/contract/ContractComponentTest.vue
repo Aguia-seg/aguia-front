@@ -160,45 +160,48 @@ export default defineComponent({
     },
     async ionViewWillEnter(){
         await this.getClient(this.$route.params.id);
-        console.log(this.client)
+        console.log(this.client);
     },
     methods: {
-       async generatePDF(){
+       
+       
+        // async generatePDF(){
            
-            const doc = new jsPDF();
-            doc.setFont('Arial');
-            doc.setFontSize(11);
+        //     const doc = new jsPDF();
+        //     doc.setFont('Arial');
+        //     doc.setFontSize(11);
 
-            const html: any = document.querySelector("#capture");
-            const html2: any = document.querySelector("#capture-2");
+        //     const html: any = document.querySelector("#capture");
+        //     const html2: any = document.querySelector("#capture-2");
 
-            await html2canvas(html, {
-                allowTaint: true,
-                useCORS: true,
-                scale: 1
-            }).then(canvas => {
-             document.body.appendChild(canvas)
-             console.log(canvas)
-             const img = canvas.toDataURL('image2/png');
-             doc.addImage(img, 'PNG', 7, 13, 195, 275);
+        //     await html2canvas(html, {
+        //         allowTaint: true,
+        //         useCORS: true,
+        //         scale: 1
+        //     }).then(canvas => {
+        //      document.body.appendChild(canvas)
+        //      console.log(canvas)
+        //      const img = canvas.toDataURL('image2/png');
+        //      doc.addImage(img, 'PNG', 7, 13, 195, 275);
              
-            })
+        //     })
 
-            doc.addPage()
+        //     doc.addPage()
 
-            await html2canvas(html2, {
-                allowTaint: true,
-                useCORS: true,
-                scale: 1
-            }).then(canvas =>{
-                document.body.appendChild(canvas);
-                const img = canvas.toDataURL('image3/png');
-                doc.addImage(img, 'PNG', 7, 13, 195, 175);
+        //     await html2canvas(html2, {
+        //         allowTaint: true,
+        //         useCORS: true,
+        //         scale: 1
+        //     }).then(canvas =>{
+        //         document.body.appendChild(canvas);
+        //         const img = canvas.toDataURL('image3/png');
+        //         doc.addImage(img, 'PNG', 7, 13, 195, 175);
                 
-            })
+        //     })
 
-            doc.save('Contrato'); 
-        },
+        //     //doc.save('Contrato'); 
+        //     console.log(html)
+        // },
 
         ...mapActions('client', ['getClient'])
     }
@@ -208,7 +211,7 @@ export default defineComponent({
 
 <style scoped>
 
-@media screen {
+
     body,html, #paper-a4{ 
         display: block !important;
         position: relative !important;
@@ -230,28 +233,6 @@ export default defineComponent({
     height: 120px;
     width: 100px;
     }
-}
 
-@media print {
-    body,html, #paper-a4{ 
-        width: 100% !important;
-        display: block !important;
-        position: relative !important;
-        height: auto !important;
-        overflow: visible !important;
-        margin-left: 0 !important;
-    }
-  
-    .contract-title{
-    font-size: 14px;
-    text-align: center;
-    }
-    .logo{
-    height: 100px;
-    width: 80px;
-    
-    }
-
-}
 
 </style>

@@ -52,7 +52,9 @@ const actions = {
             (response) => {
                 context.commit('client', response.data);
             }
-        );
+        ).catch(e => {
+            console.log(e)
+        })
     },
 
     async registerClient(context: any, form: any) {
