@@ -38,7 +38,7 @@
                         <th scope="col">Ações</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody v-if="clients != null">
                     <tr v-for="client in clients" :key="client.id">
                         <td>
                             <i v-if="client.active == 1" class="fas fa-circle text-success"></i>

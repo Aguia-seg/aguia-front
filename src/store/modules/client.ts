@@ -43,7 +43,7 @@ const actions = {
         await ClientService.getClients().then(
             (response) => {
                 context.commit('clients', response.data);
-
+                
             }
         );
     },
