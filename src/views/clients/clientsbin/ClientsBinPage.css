@@ -17,17 +17,19 @@ ion-button.add-button{
     --background-hover: #f7ff66;
     color: white;
 }
-ion-button.bin-button{
-    --background: var(--ion-color-danger);
-    --background-hover: #f7ff66;
-    color: white;
+
+ion-button.delete-button{
+    --background: #ff0000;
+    --background-hover: #ff6666;
 }
 
+ion-button.edit-button{
+    --background: #ffae00;
+    --background-hover: #ffc966;
+}
 ion-spinner {
     transform: scale(6);
     margin: 0 auto !important;
     top: 200px;
     width: 100%;
 }
-
-

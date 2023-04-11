@@ -181,7 +181,7 @@ export default defineComponent({
     return {
       client: {
         name: '',
-        password: '',
+        password: 'qualquerCoisa',
         email: '',
         phone: '',
         cep: '',

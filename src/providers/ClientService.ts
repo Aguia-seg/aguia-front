@@ -25,6 +25,18 @@ export default {
 
     async updateClient(data: any){
          return request.put('/clients/' + data.id, data );
+    },
+
+    async trashedOnly(){
+        return request.get('/clients/bin/show');
+    },
+
+    async forceDestroyClient(id: any){
+        return request.delete('/clients/delete/' + id);
+    },
+
+    async restoreClient(id: any){
+        return request.get('/clients/restore' + id);
     }
    
 }

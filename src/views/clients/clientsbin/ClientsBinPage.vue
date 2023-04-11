@@ -1,15 +1,12 @@
-
 <template>
     <AppLayout>
         <ion-header>
             <ion-toolbar>
-                <ion-title>Cadastros de clientes</ion-title>
+                <ion-title>Lixeira de clientes</ion-title>
 
                 <ion-buttons slot="secondary">
-                    <ion-button shape="round" class="add-button mr-4" @click="formClient()">Adicionar</ion-button>
-                </ion-buttons>
-                <ion-buttons slot="secondary">
-                    <ion-button shape="round" class="bin-button mr-4" router-link="/clients/bin/show">Lixeira</ion-button>
+                    <ion-button shape="round" class="add-button mr-4" @click="goBack()">Voltar</ion-button>
+
                 </ion-buttons>
             </ion-toolbar>
 
@@ -55,13 +52,10 @@
                         <td>{{ client.email }}</td>
                         <td>
                             <div class="d-flex align-items-center">
-                                <ion-button :router-link="{ name: 'ClientProfile', params: { id: client.id } }"
-                                    size="small"><ion-icon class="search-button"
-                                        :icon="searchOutline"></ion-icon></ion-button>
-                                <ion-button color="warning"  @click="formEditClient(), getClientId(client.id)" size="small"><ion-icon class="edit-button"
-                                        :icon="createOutline"></ion-icon></ion-button>
-                                <ion-button color="danger" @click="moveToBin(client.id)" size="small"><ion-icon
+                                <ion-button color="danger" size="small" @click="doForceDelete(client.id)">
+                                    <ion-icon class="search-button"
                                         :icon="closeOutline"></ion-icon></ion-button>
+                                
                             </div>
                         </td>
                     </tr>
@@ -71,5 +65,5 @@
     </AppLayout>
 </template>
 
-<script lang="ts" src="./ClientsPage.ts"></script>
-<style scoped src="./ClientsPage.css"></style>
+<script lang="ts" src="./ClientsBinPage.ts"></script>
+<style scoped src="./ClientsBinPage.css"></style>

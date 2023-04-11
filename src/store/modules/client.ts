@@ -55,6 +55,7 @@ const actions = {
             }
         );
     },
+
     async getClient(context: any, id: any) {
         await ClientService.getClient(id).then(
             (response) => {
@@ -142,7 +143,28 @@ const actions = {
                 
             }
         )
-    }
+    },
+    async forceDestroyClient(context: any, id: any) {
+       
+        await ClientService.forceDestroyClient(id).then(
+            (response) => {
+                console.log(response.data);
+                
+                //context.commit('client', response.data);
+        
+                
+            }
+        )
+    },
+
+    async onlyTrashed(context: any) {
+        await ClientService.trashedOnly().then(
+            (response) => {
+                context.commit('clients', response.data);
+                
+            }
+        );
+    },
 
 }
 

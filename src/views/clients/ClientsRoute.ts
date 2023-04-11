@@ -15,7 +15,12 @@ const ClientsRoute: Array<RouteRecordRaw> = [
     path: '/clients/contract/:id',
     name: 'ContractComponentTest',
     component: () => import('@/views/clients/contract/ContractComponentTest.vue')
-  }
+  },
+  {
+    path: '/clients/bin/show',
+    name: 'ClientsBinPage',
+    component: () => import('@/views/clients/clientsbin/ClientsBinPage.vue')
+  },
 ]
 
 export default ClientsRoute
