@@ -1,8 +1,6 @@
 import { defineComponent } from "vue";
-import { searchOutline, createOutline, closeOutline } from 'ionicons/icons'
-import { loadingController, modalController, onIonViewWillEnter } from "@ionic/vue";
-import CreateClientForm from '@/views/clients/clients-forms/clients-create/CreateClientForm.vue';
-import CreateClientEditForm from '@/views/clients/clients-forms/clients-create/CreateClientEditForm.vue'
+import { searchOutline ,refreshOutline, closeOutline } from 'ionicons/icons'
+import { loadingController, onIonViewWillEnter } from "@ionic/vue";
 import { mapActions, mapState } from "vuex";
 import client from "@/store/modules/client";
 import { State } from "ionicons/dist/types/stencil-public-runtime";
@@ -18,7 +16,7 @@ export default defineComponent({
         }
     },
     computed: {
-        ...mapState('client', ['clients'])
+        ...mapState('client', ['trashedClients'])
     },
     async ionViewWillEnter(){
         this.spinner = true;
@@ -26,28 +24,39 @@ export default defineComponent({
         this.spinner = false;
     },
     methods: {
-        ...mapActions('client', ['onlyTrashed', 'searchClient', 'forceDestroyClient']),
+        ...mapActions('client', ['onlyTrashed', 'searchClient', 'forceDestroyClient', 'restoreClient']),
 
         goBack(){
             this.$router.go(-1);
         },
 
         async doForceDelete(id: any){
-            this.clients.id = id
+            this.trashedClients.id = id;
             const loading = await loadingController.create({
                 message: 'Excluindo registro',
               });
-            loading.present()  
+            loading.present(); 
             await this.forceDestroyClient(id); 
-            await this.$router.go(0);
-            loading.dismiss()
+            //await this.$router.go(0);
+            loading.dismiss();
+        },
+
+        async doRestoreClient(id: any){
+            this.trashedClients.id = id;
+            const loading = await loadingController.create({
+                message: 'Restaurando registro',
+            });
+            loading.present();
+            await this.restoreClient(id);
+           // await this.$router.go(0);
+            loading.dismiss();
         }
     },
     setup() {
         return {
-            searchOutline,
-            createOutline,
-            closeOutline
+            refreshOutline,
+            closeOutline,
+            searchOutline
 
         }
     },

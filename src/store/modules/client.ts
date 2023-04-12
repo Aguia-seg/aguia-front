@@ -4,6 +4,7 @@ import { alertController, loadingController } from '@ionic/vue';
 const state = {
     clients: '',
     client: '',
+    trashedClients: '',
     dateDayOfContract: '',
     dateMonthOfContract: ''
 }
@@ -14,6 +15,9 @@ const mutations = {
     },
     client(state: any, dados: any) {
         state.client = dados;
+    },
+    trashedClients(state: any, dados: any){
+        state.trashedClients = dados;
     },
     dateDayOfContract(state: any, dados: any){
         state.dateDayOfContract = dados;
@@ -138,8 +142,9 @@ const actions = {
     async destroyClient(context: any, id: any) {
         await ClientService.destroyClient(id).then(
             (response) => {
-                console.log(response.data.message);
-                context.commit('client', response.data)
+                console.log(response.data);
+                context.dispatch('getClients', response.data)
+            
                 
             }
         )
@@ -149,18 +154,27 @@ const actions = {
         await ClientService.forceDestroyClient(id).then(
             (response) => {
                 console.log(response.data);
-                
-                //context.commit('client', response.data);
+                context.dispatch('onlyTrashed', response.data);
         
                 
             }
         )
     },
 
+    async restoreClient(context: any, id: any){
+        await ClientService.restoreClient(id).then(
+            (response) => {
+                console.log(response.data);
+                // context.commit('client', response.data);
+                context.dispatch('onlyTrashed', response.data)
+            }
+        )
+    }, 
+
     async onlyTrashed(context: any) {
         await ClientService.trashedOnly().then(
             (response) => {
-                context.commit('clients', response.data);
+                context.commit('trashedClients', response.data);
                 
             }
         );

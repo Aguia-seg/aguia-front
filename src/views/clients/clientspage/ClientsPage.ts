@@ -55,7 +55,7 @@ export default defineComponent({
           });
         loading.present()  
         await this.destroyClient(id); 
-        await this.$router.go(0);
+        //await this.$router.go(0);
         loading.dismiss()
        },
         ...mapActions('client', ['getClients', 'searchClient', 'getClient', 'destroyClient'])

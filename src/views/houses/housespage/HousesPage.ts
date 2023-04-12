@@ -4,6 +4,7 @@ import NavbarComponent from "@/components/navbar/NavbarComponent.vue"
 import { searchOutline, closeOutline, createOutline, searchCircleOutline } from 'ionicons/icons'
 import { modalController } from "@ionic/vue";
 import CreateHouseForm from '@/components/forms/houses/CreateHouseForm.vue'
+import AddHouseForm from '@/views/houses/houses-forms/AddHouseForm.vue'
 import { mapState, mapMutations, mapActions } from "vuex"
 
 export default defineComponent({
@@ -39,6 +40,12 @@ export default defineComponent({
         async formHouses(){
             const modal = await modalController.create({
                 component: CreateHouseForm,
+              });
+              modal.present();
+        },
+        async addHouses(){
+            const modal = await modalController.create({
+                component: AddHouseForm,
               });
               modal.present();
         },

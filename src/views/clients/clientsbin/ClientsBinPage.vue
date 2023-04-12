@@ -37,8 +37,8 @@
                         <th scope="col">Ações</th>
                     </tr>
                 </thead>
-                <tbody v-if="clients != null">
-                    <tr v-for="client in clients" :key="client.id">
+                <tbody v-if="trashedClients != null">
+                    <tr v-for="client in trashedClients" :key="client.id">
                         <td>
                             <i v-if="client.active == 1" class="fas fa-circle text-success"></i>
                             <i v-else-if="client.active == 0" class="fas fa-circle text-danger"></i>
@@ -55,6 +55,9 @@
                                 <ion-button color="danger" size="small" @click="doForceDelete(client.id)">
                                     <ion-icon class="search-button"
                                         :icon="closeOutline"></ion-icon></ion-button>
+                                <ion-button color="success" size="small" @click="doRestoreClient(client.id)">
+                                    <ion-icon class="search-button"
+                                        :icon="refreshOutline"></ion-icon></ion-button>
                                 
                             </div>
                         </td>

@@ -6,6 +6,7 @@
 
                 <ion-buttons slot="secondary">
                     <ion-button shape="round" color="primary" class="mr-4" @click="formHouses()">Abrir filtro</ion-button>
+                    <ion-button shape="round" color="success" class="mr-4" @click="addHouses()">Adicionar</ion-button>
                     <ion-button v-show="displayClearFilter" shape="round" color="danger" @click="disableClearFilter(), cleanFilter()" >limpar filtro</ion-button>  
                 </ion-buttons>
             </ion-toolbar>
@@ -32,7 +33,10 @@
                 <tbody >
                     <tr v-for="house in houses" :key="house.id">
                         <th scope="row">{{ house.id }}</th>
-                        <td>{{ house.name }}</td>
+                        <td>
+                            <span v-if="house.active == 1">{{ house.name }}</span>
+                            <span v-if="house.active == 0">O cliente foi excluido</span>    
+                        </td>
                         <td>{{ house.city }}</td>
                         <td>{{ house.type }}</td>
                         <td>{{ house.cep }}</td>

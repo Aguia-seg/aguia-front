@@ -36,7 +36,7 @@ export default {
     },
 
     async restoreClient(id: any){
-        return request.get('/clients/restore' + id);
+        return request.get('/clients/restore/' + id);
     }
    
 }
