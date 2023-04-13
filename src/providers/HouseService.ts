@@ -13,6 +13,10 @@ export default{
     },
 
     async getHousesFiltered(data: any){
-        return request.post('/houses/filtered', data)
+        return request.post('/houses/filtered', data);
+    },
+
+    async registerHouse(form: any){
+        return request.post('/houses', form);
     }
 }

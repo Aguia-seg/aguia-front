@@ -34,8 +34,8 @@
                     <tr v-for="house in houses" :key="house.id">
                         <th scope="row">{{ house.id }}</th>
                         <td>
-                            <span v-if="house.active == 1">{{ house.name }}</span>
-                            <span v-if="house.active == 0">O cliente foi excluido</span>    
+                            <span v-if="house.clients != null">{{ house.clients.name }}</span> 
+                            <span v-if="house.clients == null">Não existe clientes nessa residência</span>  
                         </td>
                         <td>{{ house.city }}</td>
                         <td>{{ house.type }}</td>

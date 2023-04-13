@@ -13,6 +13,7 @@ export default defineComponent({
         return{
             spinner: true,
             spinner2: true,
+            housesModel: ''
         }
     },
     computed: {
@@ -26,7 +27,10 @@ export default defineComponent({
         this.spinner2 = true;
         await this.getHouses();
         this.spinner = false;
-        console.log(this.houses);
+        const housesToArray = Object.values(this.houses);
+      
+        //console.log(housesToArray);
+        console.log(this.houses)
         
     },
     ionViewDidEnter(){

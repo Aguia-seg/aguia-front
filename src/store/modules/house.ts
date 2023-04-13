@@ -1,5 +1,5 @@
 import HouseService from "@/providers/HouseService"
-import { loadingController } from "@ionic/vue";
+import { alertController, loadingController } from "@ionic/vue";
 
 const state = {
     displayClearFilter: false,
@@ -46,11 +46,30 @@ const actions  = {
     async getHouses(context: any) {
         await HouseService.getHouses().then(
             (response) => {
-                //console.log(response.data)
+                console.log(response.data)
                 context.commit('houses', response.data);
 
             }
         );
+    },
+
+    async registerHouse(context: any, form: any){
+        const loading = await loadingController.create({
+            message: 'Cadastrando residência',
+        });
+        loading.present();
+        await HouseService.registerHouse(form).then(
+           async (response) => {
+                await loading.dismiss()
+                console.log(response.data.message);
+                const alert = await alertController.create({
+                    message: response.data.message,
+                    buttons: ['OK'],
+                }); 
+                await alert.present();
+                context.dispatch('getHouses');
+            }
+        )
     },
 
     async getStreetsByDistrict(context: any, district: any){
