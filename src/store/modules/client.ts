@@ -132,8 +132,8 @@ const actions = {
                     message: response.data.message,
                     buttons: ['OK'],
                 }); 
-                await alert.present()
-                context.dispatch('getClients', response.data)
+                await alert.present();
+                context.dispatch('getClients', response.data);
 
             }
         )

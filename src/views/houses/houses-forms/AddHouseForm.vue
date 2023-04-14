@@ -73,6 +73,17 @@
             </div>
             <div class="row">
                 <div class="col-12">
+                    <ion-item>
+                    <ion-select v-model="houseModel.situation" placeholder="Situação">
+                    <ion-select-option selected value="5">Tem morador mas não houve contato</ion-select-option>
+                    <ion-select-option value="2">Ficou para retornar</ion-select-option>
+                    <ion-select-option value="3">Não teve interesse</ion-select-option>
+                </ion-select>
+                    </ion-item>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
                     <ion-button type="submit" expand="block" color="success">
                         Cadastrar
                     </ion-button>
@@ -100,6 +111,7 @@ export default defineComponent({
                 type: '',
                 number: '',
                 veicle: '',
+                situation: '',
 
 
             }
@@ -128,15 +140,15 @@ export default defineComponent({
                 alert('Preencha todos os campos')
             }
             else {
-                this.registerHouse()
+                this.registerHouse(this.houseModel)
                 //console.log(inputs)
             }
         },
 
         async searchEnd() {
-            console.log(this.houseModel.cep.length)
+        
             if (this.houseModel.cep.length == 8) {
-                alert('teste')
+                
                 const loading = await loadingController.create({
                     message: 'Carregando endereço',
                     //duration: 3000

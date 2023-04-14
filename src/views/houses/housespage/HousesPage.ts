@@ -5,6 +5,7 @@ import { searchOutline, closeOutline, createOutline, searchCircleOutline } from 
 import { modalController } from "@ionic/vue";
 import CreateHouseForm from '@/components/forms/houses/CreateHouseForm.vue'
 import AddHouseForm from '@/views/houses/houses-forms/AddHouseForm.vue'
+import ChangeBadgetForm from '@/views/houses/houses-forms/ChangeBadgetForm.vue'
 import { mapState, mapMutations, mapActions } from "vuex"
 
 export default defineComponent({
@@ -53,13 +54,19 @@ export default defineComponent({
               });
               modal.present();
         },
+        async changeBadget(){
+            const modal = await modalController.create({
+                component: ChangeBadgetForm,
+              });
+              modal.present();
+        },
 
         updateFiltered(){
             console.log("Atualizou!!")
         },
 
         ...mapMutations('house', ['disableClearFilter', 'enableClearFilter', 'cleanFilter']),
-        ...mapActions('house', ['getHouses'])
+        ...mapActions('house', ['getHouses', 'getHousesFiltered', 'getHouse'])
 
         
     },

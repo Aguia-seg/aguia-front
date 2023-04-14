@@ -24,6 +24,51 @@ ion-button.edit-button{
     --background-hover: #ffc966;
 }
 
+ion-badge.white-badge{
+    --background: white;
+    --color: Black;
+    --padding-end: 10px;
+    --padding-start: 10px;
+    border: 1px black solid;
+    text-align: center;
+}
+ion-badge.yellow-badge{
+    --background: #ffae00;
+    --color: black;
+    --padding-end: 10px;
+    --padding-start: 10px;
+   
+}
+ion-badge.blue-badge{
+    --background: rgb(0, 0, 255);
+    --color: white;
+    --padding-end: 10px;
+    --padding-start: 10px;
+   
+}
+ion-badge.red-badge{
+    --background: #d61010;
+    --color: white;
+    --padding-end: 10px;
+    --padding-start: 10px;
+   
+}
+ion-badge.white-and-red-badge{
+    --background: linear-gradient(to left, #d61010, #d61010 40%, white 40% );
+    --color: black;
+    --padding-end: 10px;
+    --padding-start: 10px;
+    border: 1px black solid;
+   
+}
+ion-badge.green-badge{
+    --background: rgb(13, 173, 13);
+    --color: white;
+    --padding-end: 10px;
+    --padding-start: 10px;
+   
+}
+
 ion-spinner {
     transform: scale(6);
     margin: 0 auto !important;

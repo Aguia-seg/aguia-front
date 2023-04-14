@@ -5,6 +5,7 @@ const state = {
     displayClearFilter: false,
     districts: '',
     houses:'',
+    house: '',
     housesFiltered: '',
     streets: '',
 }
@@ -18,6 +19,9 @@ const mutations = {
     },
     houses(state: any, dados: any){
         state.houses = dados;
+    },
+    house(state: any, dados: any){
+        state.house = dados;
     },
     housesFiltered(state: any, dados: any){
         state.housesFiltered = dados;
@@ -53,6 +57,34 @@ const actions  = {
         );
     },
 
+    async getHouse(context: any, id: any) {
+        await HouseService.getHouse(id).then(
+            (response) => {
+                console.log(response.data);
+                context.commit('house', response.data);
+            }
+        )
+    },
+
+    async updateBadget(context: any, data: any){
+        const loading = await loadingController.create({
+            message: 'Atualizando Situação',
+        });
+        loading.present();
+        await HouseService.updadeBadget(data).then(
+            async (response) => {
+                console.log(response.data)
+                await loading.dismiss();
+                const alert = await alertController.create({
+                    message: response.data.message,
+                    buttons: ['OK'],
+                }); 
+                await alert.present();
+                context.dispatch('getHouses');
+            }
+        )
+    },
+
     async registerHouse(context: any, form: any){
         const loading = await loadingController.create({
             message: 'Cadastrando residência',
@@ -61,7 +93,7 @@ const actions  = {
         await HouseService.registerHouse(form).then(
            async (response) => {
                 await loading.dismiss()
-                console.log(response.data.message);
+                console.log(response.data);
                 const alert = await alertController.create({
                     message: response.data.message,
                     buttons: ['OK'],
@@ -89,6 +121,7 @@ const actions  = {
         loading.present();
         await HouseService.getHousesFiltered(data).then(
             (response) => {
+                console.log(response.data);
                 context.commit('housesFiltered', response.data);
                 loading.dismiss();
             }

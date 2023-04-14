@@ -18,5 +18,13 @@ export default{
 
     async registerHouse(form: any){
         return request.post('/houses', form);
+    },
+
+    async updadeBadget(data: any){
+        return request.put('/houses/badget/' + data.id, data);
+    },
+
+    async getHouse(id: any){
+        return request.get('/houses/' + id);
     }
 }
