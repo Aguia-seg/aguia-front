@@ -20,8 +20,15 @@ export default{
         return request.post('/houses', form);
     },
 
-    async updadeBadget(data: any){
-        return request.put('/houses/badget/' + data.id, data);
+    async updadeBadget(badget: any){
+        return request.put('/houses/' + badget.id, badget)
+        // .catch(function (error) {
+        //     if(error.response){
+        //         console.log(error.response.data);
+        //         console.log(badget);
+        //     }
+        // });
+       
     },
 
     async getHouse(id: any){
