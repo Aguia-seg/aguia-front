@@ -71,7 +71,7 @@
           districtSelected: '',
           streetSelected: '',
           inputStreetDisabled: true,
-          spinner: true,
+          // spinner: true,
           city: '',
           houseModel: {
             city: '',
@@ -85,23 +85,6 @@
       computed:{
         ...mapState('house', ['displayClearFilter', 'districts', 'streets', 'housesFiltered'])
       },
-      async mounted() {
-          this.spinner = true;
-          await this.getDistricts();
-         
-          this.spinner = false;
-         //Transformando os Districts em um array e pegando o valor deles
-          const arrayDistrictsObjects: any = Object.values(this.districts);
-          const objectDistricts: any = arrayDistrictsObjects.reduce((objectDistricts: any, currentObj: any) => {
-            objectDistricts[currentObj.district] = currentObj.district
-            return objectDistricts
-          }, {})
-          const arrayDistricts: any = Object.values(objectDistricts)
-          this.districtsModel = arrayDistricts;
-  
-          // console.log(this.houseModel.district)
-          // console.log(this.$router.currentRoute.value.path)  
-      },
       methods: {
         onChangeDistrict(){
           console.log(this.districtSelected)
@@ -114,9 +97,23 @@
           console.log(this.houseModel.street);
         },
 
-        onChangeCity(){
+        async onChangeCity(){
           this.houseModel.city = this.city;
           console.log(this.houseModel.city);
+
+          await this.getDistricts(this.city);
+         
+         //Transformando os Districts em um array e pegando o valor deles
+          const arrayDistrictsObjects: any = Object.values(this.districts);
+          const objectDistricts: any = arrayDistrictsObjects.reduce((objectDistricts: any, currentObj: any) => {
+            objectDistricts[currentObj.district] = currentObj.district
+            return objectDistricts
+          }, {})
+          const arrayDistricts: any = Object.values(objectDistricts)
+          this.districtsModel = arrayDistricts;
+  
+          // console.log(this.houseModel.district)
+          // console.log(this.$router.currentRoute.value.path)  
         },
         
         filter(){
