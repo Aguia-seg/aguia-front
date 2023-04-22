@@ -13,7 +13,7 @@
                 <div class="row">
                 <div class="col-12">
                     <ion-item>
-                    <ion-select v-model="house.situation" placeholder="Situação">
+                    <ion-select v-model="badgeIdModel" placeholder="Situação">
                     <ion-select-option selected value="5">Tem morador mas não houve contato</ion-select-option>
                     <ion-select-option value="2">Ficou para retornar</ion-select-option>
                     <ion-select-option value="3">Não teve interesse</ion-select-option>
@@ -46,7 +46,9 @@ export default defineComponent({
     name: 'ChangeBadgetForm',
     data(){
         return{
-            editDisabled: false
+            editDisabled: false,
+            badgeIdModel: ''
+            
         }
     },
     computed: {
@@ -58,9 +60,11 @@ export default defineComponent({
             },
 
         validate(){
-            this.updateBadget(this.house, this.house.id);
+            this.house[0].badget_id = this.badgeIdModel;
+            this.updateBadget(this.house[0]);
             this.cancel();
-            //console.log(this.house.situation)
+            console.log(this.house[0].badget_id);
+            console.log(this.badgeIdModel);
         },    
         ...mapActions('house', ['getHouse', 'updateBadget'])    
     }

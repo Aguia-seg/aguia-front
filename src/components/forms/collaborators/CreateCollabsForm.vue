@@ -15,6 +15,7 @@
             <ion-select-option value="seller">Vendedor</ion-select-option>
             <ion-select-option value="collector">Cobrador</ion-select-option>
             <ion-select-option value="admin">Admin</ion-select-option>
+            <ion-select-option value="reception">Recepção</ion-select-option>
           </ion-select>
         </ion-item>
       </div>

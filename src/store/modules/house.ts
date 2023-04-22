@@ -66,6 +66,7 @@ const actions  = {
         )
     },
 
+    // INICIO MUDANÇAS
     async updateBadget(context: any, data: any){
         const loading = await loadingController.create({
             message: 'Atualizando Situação',
@@ -73,7 +74,7 @@ const actions  = {
         loading.present();
         await HouseService.updadeBadget(data).then(
             async (response) => {
-                console.log(response.data)
+                //console.log(response.data)
                 await loading.dismiss();
                 const alert = await alertController.create({
                     message: response.data.message,

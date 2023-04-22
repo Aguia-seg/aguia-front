@@ -71,13 +71,16 @@
             <ion-label position="floating">CEP</ion-label>
             <ion-input @keyup="searchCep()" placeholder="CEP" v-model="client.cep" maxlength="8" required></ion-input>
           </ion-item>
+          <a class="cep-searcher ml-3" target="_blank"
+           href="https://buscacepinter.correios.com.br/app/endereco/index.php">
+            Não sei meu CEP</a>
         </div>
       </div>
       <div class="row">
         <div class="col-12">
           <ion-item>
             <ion-label position="floating">Cidade</ion-label>
-            <ion-input placeholder="Bairro" v-model="client.city" required></ion-input>
+            <ion-input disabled placeholder="Bairro" v-model="client.city" required></ion-input>
           </ion-item>
         </div>
       </div>
@@ -85,7 +88,7 @@
         <div class="col-12">
           <ion-item>
             <ion-label position="floating">Bairro</ion-label>
-            <ion-input placeholder="Bairro" v-model="client.district" required></ion-input>
+            <ion-input disabled placeholder="Bairro" v-model="client.district" required></ion-input>
           </ion-item>
         </div>
       </div>
@@ -93,7 +96,7 @@
         <div class="col-12">
           <ion-item>
             <ion-label position="floating">Rua</ion-label>
-            <ion-input placeholder="Rua" v-model="client.street" required></ion-input>
+            <ion-input disabled placeholder="Rua" v-model="client.street" required></ion-input>
           </ion-item>
         </div>
       </div>
@@ -103,7 +106,7 @@
         <div class="col-12">
           <ion-item>
             <ion-label position="floating">Complemento</ion-label>
-            <ion-input placeholder="Complemento" v-model="client.complement" required></ion-input>
+            <ion-input :disabled="disabledModel.complement" placeholder="Complemento" v-model="client.complement" required></ion-input>
           </ion-item>
         </div>
       </div>
@@ -111,7 +114,7 @@
         <div class="col-12">
           <ion-item>
             <ion-label position="floating">Número</ion-label>
-            <ion-input placeholder="Número" v-model="client.number" required></ion-input>
+            <ion-input :disabled="disabledModel.number" placeholder="Número" v-model="client.number" required></ion-input>
           </ion-item>
         </div>
       </div>
@@ -170,7 +173,7 @@ import {
 import { defineComponent } from 'vue';
 import { mapActions, mapState } from 'vuex';
 import apiCorreios from '@/apis/Api';
-import { loadingController } from '@ionic/vue';
+import { loadingController, alertController } from '@ionic/vue';
 
 export default defineComponent({
   name: 'CreateClientForm',
@@ -197,7 +200,11 @@ export default defineComponent({
         plano: '',
         payday: '',
       },
-      plano: ''
+      plano: '',
+      disabledModel: {
+        number: true,
+        complement: true,
+      }
     }
   },
   mounted() {
@@ -247,12 +254,25 @@ export default defineComponent({
         });
         loading.present();
         apiCorreios.get('https://viacep.com.br/ws/' + this.client.cep + '/json/').then(
-          (response) => {
+          async (response) => {
             console.log(response.data)
             this.client.district = response.data.bairro;
             this.client.street = response.data.logradouro;
             this.client.city = response.data.localidade;
             loading.dismiss();
+            this.disabledModel.complement = false;
+            this.disabledModel.number = false;
+
+            if (JSON.stringify(response.data) == '{"erro":true}'){
+              const alert = await alertController.create({
+                    message: 'CEP não encontrado',
+                    buttons: ['OK'],
+                }); 
+                await alert.present();
+            }
+            
+
+           
           }
         )
       }
@@ -273,6 +293,15 @@ ion-item {
   margin-top: 10px;
 }
 
+.cep-searcher{
+  color: gray;
+  cursor: pointer;
+}
+.cep-searcher:hover{
+  color: rgb(39, 107, 255);
+  text-decoration: underline;
+  
+}
 .row.row-tiny {
   height: 20px;
 }

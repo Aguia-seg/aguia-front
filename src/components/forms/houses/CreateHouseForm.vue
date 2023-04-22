@@ -8,8 +8,8 @@
       </ion-toolbar>
     </ion-header>
     <ion-content class="ion-padding" >
-      <ion-spinner color="success" v-if="spinner"></ion-spinner>
-      <form @submit.prevent="filter(), cancel()" v-if="!spinner">
+      <ion-spinner color="success"></ion-spinner>
+      <form @submit.prevent="filter(), cancel()">
         <div class="row supress">
         <div class="col-6">
             <ion-item class="main-item">
