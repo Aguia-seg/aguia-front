@@ -1,8 +1,8 @@
 import request from "@/environments/env";
 
 export default{
-    async getDistricts() {
-        return request.get('/houses/district');      
+    async getDistricts(city: any) {
+        return request.get('/houses/filter/'+city+'/district');      
     },
     async getHouses() {
         return request.get('/houses');      

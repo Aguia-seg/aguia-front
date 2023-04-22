@@ -7,7 +7,7 @@
                 <ion-buttons slot="secondary">
                     <ion-button shape="round" color="primary" class="mr-4" @click="formHouses()">Abrir filtro</ion-button>
                     <ion-button shape="round" color="success" class="mr-4" @click="addHouses()">Adicionar</ion-button>
-                    <ion-button v-show="displayClearFilter" shape="round" color="danger" @click="disableClearFilter(), cleanFilter()" >limpar filtro</ion-button>  
+                    <ion-button v-show="displayClearFilter" shape="round" color="danger" @click="disableClearFilter(), getHouses()" >limpar filtro</ion-button>  
                 </ion-buttons>
             </ion-toolbar>
         

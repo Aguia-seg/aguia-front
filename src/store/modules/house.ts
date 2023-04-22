@@ -38,8 +38,8 @@ const mutations = {
 }
 
 const actions  = {
-    async getDistricts(context: any) {
-        await HouseService.getDistricts().then(
+    async getDistricts(context: any, city: any) {
+        await HouseService.getDistricts(city).then(
             (response) => {
                 //console.log(response.data)
                 context.commit('districts', response.data);
@@ -122,7 +122,7 @@ const actions  = {
         await HouseService.getHousesFiltered(data).then(
             (response) => {
                 console.log(response.data);
-                context.commit('housesFiltered', response.data);
+                context.commit('houses', response.data);
                 loading.dismiss();
             }
         )
