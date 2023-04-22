@@ -21,7 +21,7 @@ export default{
     },
 
     async updadeBadget(badget: any){
-        return request.put('/houses/' + badget.id, badget)
+        return request.put('/houses/update/badget/' + badget.id, badget)
         // .catch(function (error) {
         //     if(error.response){
         //         console.log(error.response.data);
