@@ -15,6 +15,10 @@ ion-col.first-col{
     border-right: 0px;
 }
 
+ion-modal {
+    --height: 90% !important
+}
+
 ion-spinner {
     transform: scale(6);
     margin: 0 auto !important;
