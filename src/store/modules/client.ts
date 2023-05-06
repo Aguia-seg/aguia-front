@@ -54,6 +54,7 @@ const actions = {
     async getClients(context: any) {
         await ClientService.getClients().then(
             (response) => {
+                
                 context.commit('clients', response.data);
                 
             }
