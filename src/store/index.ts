@@ -5,6 +5,7 @@ import user from './modules/user'
 import client from './modules/client'
 import plan from './modules/plan'
 import painel from './modules/painel'
+import invoice from './modules/invoice'
 import house from './modules/house'
 
 const debug = process.env.NODE_ENV !== 'production'
@@ -30,6 +31,7 @@ export const store = createStore<State>({
     plan,
     painel,
     house,
+    invoice
   },
   strict: false,
   plugins: debug ? [createLogger()] : []

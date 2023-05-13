@@ -12,7 +12,7 @@
         <div class="col-12">
             <div>
                 <p><b>Descrição do serviço</b></p>
-                <h2>Serviço de xxxxxx</h2>
+                <h4>Serviço de {{ client.contracts[0].plan.description }}</h4>
             </div> 
         </div>
     </div>
@@ -20,13 +20,13 @@
         <div class="col-6">
             <div>
                 <p style="margin: 0px;"><b>Valor total a receber</b></p>
-                <h1 style="font-size: 72px;">R$ 800</h1>
+                <h1 style="font-size: 56px;">R$ {{ invoice[0].value }}</h1>
             </div>
         </div>
         <div class="col-6">
             <div>
                 <p style="margin: 0px;"><b>Data de vencimento</b></p>
-                <h1>dd/mm/yyyy</h1>
+                <h1>{{ invoice[0].expiration }}</h1>
             </div>
         </div>
     </div>
@@ -34,21 +34,27 @@
         <div class="col-6">
             <div>
                 <p><b>Desconto</b></p>
-                <h1>0%</h1>
+                <h1>{{ invoice[0].off }}%</h1>
             </div>
         </div>
         <div class="col-6">
             <div>
                 <p><b>Metodo de pagamento</b></p>
-                <ion-item style="width: 50%;">
+                <!-- <ion-item style="width: 50%;">
                     <ion-select interface="popover" value="0">
                         <ion-select-option value="0" disabled>..........................</ion-select-option>
                         <ion-select-option value="1">Pix</ion-select-option>
                         <ion-select-option value="1">Cartão de crédito</ion-select-option>
                         <ion-select-option value="1">Dinheiro</ion-select-option>
                     </ion-select>
-                </ion-item>
+                </ion-item> -->
+                <div class="d-flex">
+                <ion-button class="payment" @click="activate('avista')" :color="(inCashActive) ? 'warning' : 'medium'"><ion-icon :icon="cashOutline"></ion-icon></ion-button>
+                <ion-button class="payment" @click="activate('cartao')" :color="(creditActive) ? 'warning' : 'medium'"><ion-icon :icon="cardOutline"></ion-icon></ion-button>
+                <ion-button class="payment" @click="activate('pix')" :color="(pixActive) ? 'warning' : 'medium'"><ion-icon :icon="logoUsd"></ion-icon></ion-button>
             </div>
+            </div>
+            
         </div>
     </div>
     <div class="row mt-5">
@@ -68,24 +74,57 @@ import {
 } from '@ionic/vue';
 import { defineComponent } from 'vue';
 import { mapActions, mapState } from 'vuex';
+import { cardOutline ,cashOutline, logoUsd } from 'ionicons/icons'
 
 export default defineComponent({
     name: 'ClientPaymentModal',
-    // data() {
-    //     return{
-
-    //     }
-    // },
+    data() {
+        return{
+            creditActive: false,
+            inCashActive: true,
+            pixActive: false,
+            paymentMethod: ''
+        }
+    },
     computed: {
         ...mapState('client', ['client']),
-        
+        ...mapState('invoice', ['invoice']),
     },
     
     methods: {
         cancel(){
             return modalController.dismiss(null, 'cancel');
-        },    
-    }
+        }, 
+        activate(metodo: any){
+            if(metodo == 'avista'){
+                this.inCashActive = true;
+                this.creditActive = false;
+                this.pixActive = false;
+                this.paymentMethod = 'A vista';
+            }
+            if(metodo == 'cartao'){
+                this.inCashActive = false;
+                this.creditActive = true;
+                this.pixActive = false;
+                this.paymentMethod = 'Crédito';
+            }
+            if(metodo == 'pix'){
+                this.inCashActive = false;
+                this.creditActive = false;
+                this.pixActive = true;
+                this.paymentMethod = 'Pix';
+            }
+        },
+        ...mapActions('invoice', ['getInvoice']),   
+    },
+
+    setup() {
+        return {
+            cashOutline,
+            cardOutline,
+            logoUsd,
+        }
+    },
 })
 </script>
 
@@ -103,4 +142,13 @@ ion-item {
     margin-bottom: 10px;
     margin-top: 10px;
     }
+
+ion-icon{
+    height: 50px;
+    width: 50px;
+}
+ion-button.payment{
+    height: 60px;
+    width: 60px;
+}
 </style>

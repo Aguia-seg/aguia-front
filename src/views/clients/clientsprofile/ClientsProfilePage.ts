@@ -15,6 +15,7 @@ export default defineComponent({
     },
     computed: {
         ...mapState('client', ['client']),
+        ...mapState('invoice', ['invoice']),
         ...mapState('contract', ['contract']),
     },
      async ionViewWillEnter() {
@@ -30,7 +31,9 @@ export default defineComponent({
     },
     methods: {
         ...mapActions('client', ['getClient']),
+        ...mapActions('invoice', ['getInvoice']),
         ...mapMutations('client', ['limpar', 'formatClient']),
+        ...mapMutations('invoice', ['invoice']),
         
         async formEditClient() {
             
@@ -57,6 +60,12 @@ export default defineComponent({
        async getClientId(id: any){
              this.client.id = id 
              await this.getClient(id)    
+            // console.log(this.client)
+        },
+
+       async getinvoiceId(id: any){
+             this.invoice.id = id 
+             await this.getInvoice(id)    
             // console.log(this.client)
         },
         

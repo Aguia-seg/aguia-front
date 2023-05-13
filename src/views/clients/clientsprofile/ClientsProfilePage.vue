@@ -167,7 +167,7 @@
                             <td>{{ invoice.type }}</td>
                             <td>
                                 <div class="d-flex align-items-center justify-content-center">
-                                    <ion-button color="success" @click="modalPayment(), getClientId(client.id)"><ion-icon :icon="cashOutline"></ion-icon></ion-button>
+                                    <ion-button color="success" @click="modalPayment(), getInvoice(invoice.id)"><ion-icon :icon="cashOutline"></ion-icon></ion-button>
                                 </div>
                             </td>
                         </tr>
