@@ -59,7 +59,7 @@
     </div>
     <div class="row mt-5">
         <div class="col-12">
-          <ion-button expand="block" color="success">
+          <ion-button @click="cancel(), payInvoice(invoice[0].id), getInvoices()" expand="block" color="success">
             Receber
           </ion-button>
         </div>
@@ -80,6 +80,7 @@ export default defineComponent({
     name: 'ClientPaymentModal',
     data() {
         return{
+            
             creditActive: false,
             inCashActive: true,
             pixActive: false,
@@ -94,7 +95,8 @@ export default defineComponent({
     methods: {
         cancel(){
             return modalController.dismiss(null, 'cancel');
-        }, 
+        },
+
         activate(metodo: any){
             if(metodo == 'avista'){
                 this.inCashActive = true;
@@ -115,7 +117,8 @@ export default defineComponent({
                 this.paymentMethod = 'Pix';
             }
         },
-        ...mapActions('invoice', ['getInvoice']),   
+        ...mapActions('invoice', ['getInvoice', 'getInvoices', 'payInvoice']),   
+        ...mapActions('client', ['getClients']),   
     },
 
     setup() {

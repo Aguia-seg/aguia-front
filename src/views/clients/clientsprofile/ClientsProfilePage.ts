@@ -10,7 +10,8 @@ export default defineComponent({
     name: 'ClientsProfilePage',
     data() {
         return{
-            spinner: true
+            spinner: true,
+            
         }
     },
     computed: {
@@ -24,11 +25,13 @@ export default defineComponent({
          this.formatClient();
          this.getCLientHouses();
         this.spinner = false;
-        console.log(this.client.houses)
+        console.log(this.client.houses);
+        
     },
     ionViewDidLeave() {
         this.limpar()
     },
+
     methods: {
         ...mapActions('client', ['getClient']),
         ...mapActions('invoice', ['getInvoice']),
