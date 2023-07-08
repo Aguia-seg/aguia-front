@@ -48,7 +48,7 @@
         <div class="col-12">
           <ion-item>
             <ion-label position="floating">E-mail</ion-label>
-            <ion-input type="email" placeholder="E-mail" v-model="client.email" required></ion-input>
+            <ion-input type="email" placeholder="E-mail" v-model="client.email"></ion-input>
           </ion-item>
         </div>
       </div>
