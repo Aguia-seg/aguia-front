@@ -9,7 +9,7 @@
                     <ion-button shape="round" class="add-button mr-4" @click="formClient()">Adicionar</ion-button>
                 </ion-buttons>
                 <ion-buttons slot="secondary">
-                    <ion-button shape="round" class="bin-button mr-4" router-link="/clients/bin/show">Lixeira</ion-button>
+                    <ion-button shape="round" class="bin-button mr-4" router-link="/clients/bin/show">Lixeira ( {{ trashedClients.length }})</ion-button>
                 </ion-buttons>
             </ion-toolbar>
 

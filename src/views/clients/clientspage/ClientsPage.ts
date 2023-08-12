@@ -18,12 +18,13 @@ export default defineComponent({
         }
     },
     computed: {
-        ...mapState('client', ['clients', 'client'])
+        ...mapState('client', ['clients', 'client','trashedClients'])
     },
     async ionViewWillEnter() {
 
         this.spinner = true;
         await this.getClients();
+        await this.onlyTrashed();
         this.spinner = false;
         setInterval(async () => {
             await this.getClients();
@@ -58,7 +59,7 @@ export default defineComponent({
         //await this.$router.go(0);
         loading.dismiss()
        },
-        ...mapActions('client', ['getClients', 'searchClient', 'getClient', 'destroyClient'])
+        ...mapActions('client', ['getClients', 'searchClient', 'getClient', 'destroyClient', 'onlyTrashed'])
     },
     setup() {
         return {

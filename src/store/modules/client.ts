@@ -75,6 +75,7 @@ const actions = {
     },
 
     async registerClient(context: any, form: any) {
+        console.log(form)
         const loading = await loadingController.create({
             message: 'Cadastrando Cliente',
         });

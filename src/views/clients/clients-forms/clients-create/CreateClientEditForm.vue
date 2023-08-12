@@ -37,6 +37,14 @@
         <div class="row">
             <div class="col-12">
                 <ion-item>
+                    <ion-label position="floating">Celular</ion-label>
+                    <ion-input placeholder="Celular" v-model="client.cellphone"></ion-input>
+                </ion-item>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <ion-item>
                     <ion-label position="floating">Email</ion-label>
                     <ion-input placeholder="Email" v-model="client.email"></ion-input>
                 </ion-item>

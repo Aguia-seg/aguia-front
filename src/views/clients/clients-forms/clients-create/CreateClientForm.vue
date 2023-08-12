@@ -60,6 +60,14 @@
           </ion-item>
         </div>
       </div>
+      <div class="row">
+        <div class="col-12">
+          <ion-item>
+            <ion-label position="floating">Celular</ion-label>
+            <ion-input type="number" placeholder="Celular" v-model="client.cellphone" required></ion-input>
+          </ion-item>
+        </div>
+      </div>
       <div class="row row-tiny mt-4">
         <div class="col-12">
           <p class="m-0 pl-2"><b>INFORMAÇÕES DE RESIDÊNCIA</b></p>
@@ -119,13 +127,22 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-12">
+        <div class="col-6">
           <ion-item>
             <ion-label class="d-flex" position="floating">
               <h5>Veículo</h5>
               <p>(opcional)</p>
             </ion-label>
             <ion-textarea v-model="client.veicle" placeholder="Cliente possui veículo?"></ion-textarea>
+          </ion-item>
+        </div>
+        <div class="col-6">
+          <ion-item>
+            <ion-label class="d-flex" position="floating">
+              <h5>Placa</h5>
+              <p>(opcional)</p>
+            </ion-label>
+            <ion-input v-model="client.veicle_plate" placeholder="Placa do veículo"></ion-input>
           </ion-item>
         </div>
       </div>
@@ -187,6 +204,7 @@ export default defineComponent({
         password: 'qualquerCoisa',
         email: '',
         phone: '',
+        cellphone: '',
         cep: '',
         city: '',
         district: '',
@@ -194,6 +212,7 @@ export default defineComponent({
         complement: '',
         number: '',
         veicle: '',
+        veicle_plate: '',
         type: 'PF',
         cpf_cnpj: '',
         active: '1',
