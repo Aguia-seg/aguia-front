@@ -28,10 +28,10 @@ export default defineComponent({
         this.spinner = true;
         await this.getClient(this.$route.params.id)
          this.formatClient();
-         this.getCLientHouses();
         this.spinner = false;
-        console.log(this.client.houses);
-        
+        setInterval(() => {
+            this.getClient(this.$route.params.id);
+        }, 2000);     
     },
     ionViewDidLeave() {
         this.limpar()
@@ -76,9 +76,6 @@ export default defineComponent({
             modal.present();
         },
 
-        async getCLientHouses(){
-            console.log(this.client.house)
-        },
        async getClientId(id: any){
              this.client.id = id 
              await this.getClient(id)    

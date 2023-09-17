@@ -154,6 +154,7 @@ export default defineComponent({
                 this.registerHouse(this.houseModel)
                 this.cancel()
                 //console.log(inputs)
+             
             }
         },
 

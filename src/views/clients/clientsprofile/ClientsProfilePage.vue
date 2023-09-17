@@ -86,8 +86,12 @@
                 <div class="container client-sheet mt-5 shadow">
                     <ion-grid>
                         <ion-row>
-                            <ion-col class="d-flex justify-content-center">
+                            <ion-col class="d-flex justify-content-start" size="8">
                                 <h3>Imóveis</h3>
+                            </ion-col>
+                            <ion-col class="d-flex justify-content-end" v-if="client.houses.length > 0" size="4">
+                                <ion-button color="success" size="small" @click="modalImovel()"><ion-icon class="search-button"
+                                :icon="addOutline"></ion-icon></ion-button>
                             </ion-col>
                         </ion-row>
                     </ion-grid>
@@ -98,8 +102,8 @@
                         <p style="font-size: 10px;">Cadastrar imóvel</p>
 
                     </div>
-                    <div>
-                        <HousesComponent :houses="client.houses" />
+                    <div v-else>
+                        <HousesComponent :houses="client.houses" :profile="client.id"/>
                     </div>
                     <!-- <table v-else class="table">
                         <thead>

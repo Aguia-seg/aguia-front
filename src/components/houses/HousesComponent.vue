@@ -42,7 +42,7 @@
                             <ion-badge class="red-badge">{{ house.badgets.description }}</ion-badge></span> 
                            </td>
                            <td>
-                            <ion-button color="success" size="small" title="Cadastrar Serviço"><ion-icon class="search-button"
+                            <ion-button color="success" size="small" title="Cadastrar Serviço" @click="modalService()"><ion-icon class="search-button"
                                 :icon="addOutline"></ion-icon></ion-button>
                            </td>
                     </tr>
