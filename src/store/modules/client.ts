@@ -16,13 +16,13 @@ const mutations = {
     client(state: any, dados: any) {
         state.client = dados;
     },
-    trashedClients(state: any, dados: any){
+    trashedClients(state: any, dados: any) {
         state.trashedClients = dados;
     },
-    dateDayOfContract(state: any, dados: any){
+    dateDayOfContract(state: any, dados: any) {
         state.dateDayOfContract = dados;
     },
-    dateMonthOfContract(state: any, dados: any){
+    dateMonthOfContract(state: any, dados: any) {
         state.dateMonthOfContract = dados;
     },
     limpar(state: any) {
@@ -54,9 +54,9 @@ const actions = {
     async getClients(context: any) {
         await ClientService.getClients().then(
             (response) => {
-                
+
                 context.commit('clients', response.data);
-                
+
             }
         );
     },
@@ -75,7 +75,6 @@ const actions = {
     },
 
     async registerClient(context: any, form: any) {
-        console.log(form)
         const loading = await loadingController.create({
             message: 'Cadastrando Cliente',
         });
@@ -83,21 +82,25 @@ const actions = {
         await ClientService.registerClient(form).then(
             async (response) => {
                 await loading.dismiss()
-                console.log(response.data.message);
                 const alert = await alertController.create({
                     message: response.data.message,
                     buttons: ['OK'],
-                }); 
+                });
                 await alert.present();
                 context.dispatch('getClients');
             },
             async (error) => {
                 console.log(error.response.data);
+                let message = "";
+                for (const chave in error.response.data) {
+                    message += `${ error.response.data[chave]}, <br>`;
+                }
+                console.log(message)
                 await loading.dismiss();
                 const alert = await alertController.create({
-                    message: 'Erro no cadastro',
+                    message: message,
                     buttons: ['OK'],
-                }); 
+                });
                 await alert.present();
                 // return 'erro'
             }
@@ -133,7 +136,7 @@ const actions = {
                 const alert = await alertController.create({
                     message: response.data.message,
                     buttons: ['OK'],
-                }); 
+                });
                 await alert.present();
                 context.dispatch('getClients', response.data);
 
@@ -146,24 +149,24 @@ const actions = {
             (response) => {
                 console.log(response.data);
                 context.dispatch('getClients', response.data)
-            
-                
+
+
             }
         )
     },
     async forceDestroyClient(context: any, id: any) {
-       
+
         await ClientService.forceDestroyClient(id).then(
             (response) => {
                 console.log(response.data);
                 context.dispatch('onlyTrashed', response.data);
-        
-                
+
+
             }
         )
     },
 
-    async restoreClient(context: any, id: any){
+    async restoreClient(context: any, id: any) {
         await ClientService.restoreClient(id).then(
             (response) => {
                 console.log(response.data);
@@ -171,13 +174,13 @@ const actions = {
                 context.dispatch('onlyTrashed', response.data)
             }
         )
-    }, 
+    },
 
     async onlyTrashed(context: any) {
         await ClientService.trashedOnly().then(
             (response) => {
                 context.commit('trashedClients', response.data);
-                
+
             }
         );
     },

@@ -64,12 +64,12 @@
         <div class="col-12">
           <ion-item>
             <ion-label position="floating">Celular</ion-label>
-            <ion-input type="number" placeholder="Celular" v-model="client.cellphone" required></ion-input>
+            <ion-input type="number" placeholder="Celular" v-model="client.cellphone" ></ion-input>
           </ion-item>
         </div>
       </div>
-      <div class="row row-tiny mt-4">
-        <div class="col-12">
+      <!--  <div class="row row-tiny mt-4">
+       <div class="col-12">
           <p class="m-0 pl-2"><b>INFORMAÇÕES DE RESIDÊNCIA</b></p>
         </div>
       </div>
@@ -171,7 +171,7 @@
             </ion-select>
           </ion-item>
         </div>
-      </div>
+      </div> -->
       <div class="row">
         <div class="col-12">
           <ion-button type="submit" expand="block" color="success">

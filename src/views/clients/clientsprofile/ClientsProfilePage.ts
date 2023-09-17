@@ -1,13 +1,18 @@
 import { defineComponent } from "vue";
-import { cashOutline, closeOutline, createOutline, refreshOutline, pencilOutline } from "ionicons/icons"
+import { cashOutline, closeOutline, createOutline,  pencilOutline, addOutline, refreshOutline } from "ionicons/icons"
 import { mapActions, mapState, mapMutations } from "vuex";
 import CreateClientEditForm from '@/views/clients/clients-forms/clients-create/CreateClientEditForm.vue';
 import ClientPaymentModal from '@/views/clients/cliets-modals/ClientPaymentModal.vue';
+import AddHouseForm from '@/views/houses/houses-forms/AddHouseForm.vue'
+import HousesComponent from "@/components/houses/HousesComponent.vue";
 import { modalController } from "@ionic/vue";
 
 
 export default defineComponent({
     name: 'ClientsProfilePage',
+    components:{
+        HousesComponent
+    },
     data() {
         return{
             spinner: true,
@@ -57,6 +62,20 @@ export default defineComponent({
             modal.present();
         },
 
+        async modalImovel() {
+            const modal = await modalController.create({
+                component: AddHouseForm,
+                componentProps:{
+                    badge: 7,
+                    client: this.client.id
+                },
+                cssClass: 'payment-modal',
+                
+            });
+        
+            modal.present();
+        },
+
         async getCLientHouses(){
             console.log(this.client.house)
         },
@@ -79,8 +98,10 @@ export default defineComponent({
             cashOutline,
             closeOutline,
             createOutline,
+            addOutline,
             refreshOutline,
             pencilOutline,
+            HousesComponent
         }
     }
 })

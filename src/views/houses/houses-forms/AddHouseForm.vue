@@ -71,14 +71,14 @@
                     </ion-item>
                 </div>
             </div>
-            <div class="row">
+            <div class="row" v-if="!badge">
                 <div class="col-12">
                     <ion-item>
-                    <ion-select v-model="houseModel.situation" placeholder="Situação">
-                    <ion-select-option selected value="5">Tem morador mas não houve contato</ion-select-option>
-                    <ion-select-option value="2">Ficou para retornar</ion-select-option>
-                    <ion-select-option value="3">Não teve interesse</ion-select-option>
-                </ion-select>
+                        <ion-select v-model="houseModel.situation" placeholder="Situação" required>
+                            <ion-select-option value="5">Tem morador mas não houve contato</ion-select-option>
+                            <ion-select-option value="2">Ficou para retornar</ion-select-option>
+                            <ion-select-option value="3">Não teve interesse</ion-select-option>
+                        </ion-select>
                     </ion-item>
                 </div>
             </div>
@@ -96,14 +96,18 @@
 <script lang="ts">
 import { loadingController, modalController } from '@ionic/core';
 import { defineComponent } from 'vue'
-import { mapActions, mapState } from 'vuex';
+import { mapActions} from 'vuex';
 import apiCorreios from '@/apis/Api';
 
 export default defineComponent({
     name: 'AddHouseForm',
+    props: {
+        badge: String,
+        client: null
+    },
     data() {
         return {
-            houseModel: {
+            houseModel:  {
                 cep: '',
                 city: '',
                 district: '',
@@ -112,9 +116,16 @@ export default defineComponent({
                 number: '',
                 veicle: '',
                 situation: '',
+                client_id: ''
 
 
             }
+        }
+    },
+    mounted() {
+        if (this.badge == '7') {
+            this.houseModel.situation = this.badge;
+            this.houseModel.client_id = this.client
         }
     },
     methods: {
@@ -141,14 +152,15 @@ export default defineComponent({
             }
             else {
                 this.registerHouse(this.houseModel)
+                this.cancel()
                 //console.log(inputs)
             }
         },
 
         async searchEnd() {
-        
+
             if (this.houseModel.cep.length == 8) {
-                
+
                 const loading = await loadingController.create({
                     message: 'Carregando endereço',
                     //duration: 3000

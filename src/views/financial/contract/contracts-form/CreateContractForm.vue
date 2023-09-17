@@ -1,0 +1,266 @@
+<template>
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="end">
+        <ion-button color="medium" @click="cancel">Sair</ion-button>
+      </ion-buttons>
+      <ion-title>Cadastro de Imóvel e Serviço</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+    <div class="container">
+      <form @submit.prevent="validate();">
+        <div class="row row-tiny mt-4">
+          <div class="col-12">
+            <p class="m-0 pl-2"><b>INFORMAÇÕES DE RESIDÊNCIA</b></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <ion-item>
+              <ion-label position="floating">CEP</ion-label>
+              <ion-input @keyup="searchCep()" placeholder="CEP" v-model="client.cep" maxlength="8" required></ion-input>
+            </ion-item>
+            <a class="cep-searcher ml-3" target="_blank"
+              href="https://buscacepinter.correios.com.br/app/endereco/index.php">
+              Não sei meu CEP</a>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <ion-item>
+              <ion-label position="floating">Cidade</ion-label>
+              <ion-input disabled placeholder="Bairro" v-model="client.city" required></ion-input>
+            </ion-item>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <ion-item>
+              <ion-label position="floating">Bairro</ion-label>
+              <ion-input disabled placeholder="Bairro" v-model="client.district" required></ion-input>
+            </ion-item>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <ion-item>
+              <ion-label position="floating">Rua</ion-label>
+              <ion-input disabled placeholder="Rua" v-model="client.street" required></ion-input>
+            </ion-item>
+          </div>
+        </div>
+
+
+        <div class="row">
+          <div class="col-12">
+            <ion-item>
+              <ion-label position="floating">Complemento</ion-label>
+              <ion-input :disabled="disabledModel.complement" placeholder="Complemento" v-model="client.complement"
+                required></ion-input>
+            </ion-item>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <ion-item>
+              <ion-label position="floating">Número</ion-label>
+              <ion-input :disabled="disabledModel.number" placeholder="Número" v-model="client.number"
+                required></ion-input>
+            </ion-item>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <ion-item>
+              <ion-label class="d-flex" position="floating">
+                <h5>Veículo</h5>
+                <p>(opcional)</p>
+              </ion-label>
+              <ion-textarea v-model="client.veicle" placeholder="Cliente possui veículo?"></ion-textarea>
+            </ion-item>
+          </div>
+          <div class="col-6">
+            <ion-item>
+              <ion-label class="d-flex" position="floating">
+                <h5>Placa</h5>
+                <p>(opcional)</p>
+              </ion-label>
+              <ion-input v-model="client.veicle_plate" placeholder="Placa do veículo"></ion-input>
+            </ion-item>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <ion-item>
+              <select class="form-control" required style="border: none;" v-model="client.plano">
+                <option value="">Escolha o plano do Cliente</option>
+                <option :value="plan" v-for="plan in plans" :key="plan.id">{{ plan.description }} | R$ {{ plan.value }}
+                </option>
+              </select>
+            </ion-item>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <ion-item>
+              <ion-select interface="action-sheet" placeholder="Data de pagamento" v-model="client.payday" required>
+                <ion-select-option value="5"> 05</ion-select-option>
+                <ion-select-option value="8"> 08</ion-select-option>
+                <ion-select-option value="9"> 09</ion-select-option>
+                <ion-select-option value="10"> 10</ion-select-option>
+                <ion-select-option value="12"> 12</ion-select-option>
+                <ion-select-option value="15"> 15</ion-select-option>
+                <ion-select-option value="30"> 30</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <ion-button type="submit" expand="block" color="success">
+              Cadastrar
+            </ion-button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </ion-content>
+</template>
+    
+<script lang="ts">
+import {
+  modalController,
+} from '@ionic/vue';
+import { defineComponent } from 'vue';
+import { mapActions, mapState } from 'vuex';
+import apiCorreios from '@/apis/Api';
+import { loadingController, alertController } from '@ionic/vue';
+
+export default defineComponent({
+  name: 'CreateClientForm',
+  computed: {
+    ...mapState('plan', ['plans'])
+  },
+  data() {
+    return {
+      client: {
+        cep: '',
+        city: '',
+        district: '',
+        street: '',
+        complement: '',
+        number: '',
+        veicle: '',
+        veicle_plate: '',
+        plano: '',
+        payday: '',
+      },
+      plano: '',
+      disabledModel: {
+        number: true,
+        complement: true,
+      }
+    }
+  },
+  mounted() {
+    this.getPlans();
+  },
+  methods: {
+    cancel() {
+      return modalController.dismiss(null, 'cancel');
+    },
+    confirm() {
+      return modalController.dismiss(null, 'confirm');
+    },
+    ...mapActions('client', ['registerClient']),
+    ...mapActions('plan', ['getPlans']),
+    async registerUser() {
+      await this.registerClient(this.client)
+      this.cancel();
+      console.log(this.client);
+    },
+
+    validate() {
+      const inputs: any = this.client
+      const clientsform = Object.keys(this.client)
+      let cont = 0
+      clientsform.forEach((res) => {
+        if (inputs[res] == '') {
+          if (this.client.veicle != '') {
+            cont++;
+          }
+        }
+      })
+      if (cont !== 0) {
+        alert('Preencha todos os campos')
+      }
+      else {
+        this.registerUser()
+        //console.log(inputs)
+      }
+    },
+    async searchCep() {
+
+      if (this.client.cep.length == 8) {
+        const loading = await loadingController.create({
+          message: 'Carregando endereço',
+          //duration: 3000
+        });
+        loading.present();
+        apiCorreios.get('https://viacep.com.br/ws/' + this.client.cep + '/json/').then(
+          async (response) => {
+            console.log(response.data)
+            this.client.district = response.data.bairro;
+            this.client.street = response.data.logradouro;
+            this.client.city = response.data.localidade;
+            loading.dismiss();
+            this.disabledModel.complement = false;
+            this.disabledModel.number = false;
+
+            if (JSON.stringify(response.data) == '{"erro":true}') {
+              const alert = await alertController.create({
+                message: 'CEP não encontrado',
+                buttons: ['OK'],
+              });
+              await alert.present();
+            }
+
+
+
+          }
+        )
+      }
+    },
+
+  },
+});
+</script>
+  
+<style scoped>
+ion-item {
+  --border-width: 1px;
+  --border-radius: 20px;
+  --highlight-color-focused: #ffc409;
+  --color-focused: #000000;
+  --detail-font-color: #ffc409;
+  --highlight-height: 8px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.cep-searcher {
+  color: gray;
+  cursor: pointer;
+}
+
+.cep-searcher:hover {
+  color: rgb(39, 107, 255);
+  text-decoration: underline;
+
+}
+
+.row.row-tiny {
+  height: 20px;
+}
+</style>

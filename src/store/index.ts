@@ -7,6 +7,7 @@ import plan from './modules/plan'
 import painel from './modules/painel'
 import invoice from './modules/invoice'
 import house from './modules/house'
+import contract from './modules/contract'
 
 const debug = process.env.NODE_ENV !== 'production'
 
@@ -17,7 +18,8 @@ export interface State {
   client: any,
   plan: any,
   painel: any,
-  house: any
+  house: any,
+  contract: any
 }
 
 // define injection key
@@ -31,7 +33,8 @@ export const store = createStore<State>({
     plan,
     painel,
     house,
-    invoice
+    invoice,
+    contract
   },
   strict: false,
   plugins: debug ? [createLogger()] : []

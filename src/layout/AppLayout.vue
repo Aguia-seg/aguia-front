@@ -2,12 +2,12 @@
     <ion-page>
         <SidebarComponent></SidebarComponent>
         <NavbarComponent></NavbarComponent>
-        <ion-content>
+        <!-- <ion-content> -->
             <div class="content-wrapper">
                 <slot></slot> 
             </div>
            
-        </ion-content>
+        <!-- </ion-content> -->
     </ion-page>
 </template>
 <style scoped src="./AppLayout.css"></style>

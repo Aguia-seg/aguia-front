@@ -18,39 +18,40 @@
             <ion-spinner color="success" v-if="spinner"></ion-spinner>
             <div class="all-content" v-if="!spinner">
                 <ion-grid>
-                <ion-row>
-                    <ion-col>
-                        <div class="container p-0 client-sheet mt-4 shadow">
-                            <ion-grid>
-                                <ion-row>
-                                    <ion-col class="first-col d-flex justify-content-center">Tipo:</ion-col>
-                                    <ion-col class="sec-col d-flex justify-content-center">{{ client.type }}</ion-col>
-                                </ion-row>
-                                <ion-row>
-                                    <ion-col class="first-col d-flex justify-content-center">CPF/CNPJ:</ion-col>
-                                    <ion-col class="sec-col d-flex justify-content-center">{{ client.cpf_cnpj }}</ion-col>
-                                </ion-row>
-                                <ion-row>
-                                    <ion-col class="first-col d-flex justify-content-center">Ativo:</ion-col>
-                                    <ion-col class="sec-col d-flex justify-content-center">{{ client.active }}</ion-col>
-                                </ion-row>
-                                <ion-row>
-                                    <ion-col class="first-col d-flex justify-content-center">Telefone:</ion-col>
-                                    <ion-col class="sec-col d-flex justify-content-center">{{ client.phone }}</ion-col>
-                                </ion-row>
-                                <ion-row>
-                                    <ion-col class="first-col d-flex justify-content-center">E-mail:</ion-col>
-                                    <ion-col class="sec-col d-flex justify-content-center">{{ client.email }}</ion-col>
-                                </ion-row>
-                                <ion-row v-for="house in client.houses" :key="house.id">
-                                    <ion-col class=" d-flex justify-content-center">Veículo(s)</ion-col>
-                                    <ion-col class="last-col d-flex justify-content-center">{{ house.veicle }}</ion-col>
-                                </ion-row>
+                    <ion-row>
+                        <ion-col>
+                            <div class="container p-0 client-sheet mt-4 shadow">
+                                <ion-grid>
+                                    <ion-row>
+                                        <ion-col class="first-col d-flex justify-content-center">Tipo:</ion-col>
+                                        <ion-col class="sec-col d-flex justify-content-center">{{ client.type }}</ion-col>
+                                    </ion-row>
+                                    <ion-row>
+                                        <ion-col class="first-col d-flex justify-content-center">CPF/CNPJ:</ion-col>
+                                        <ion-col class="sec-col d-flex justify-content-center">{{ client.cpf_cnpj
+                                        }}</ion-col>
+                                    </ion-row>
+                                    <ion-row>
+                                        <ion-col class="first-col d-flex justify-content-center">Ativo:</ion-col>
+                                        <ion-col class="sec-col d-flex justify-content-center">{{ client.active }}</ion-col>
+                                    </ion-row>
+                                    <ion-row>
+                                        <ion-col class="first-col d-flex justify-content-center">Telefone:</ion-col>
+                                        <ion-col class="sec-col d-flex justify-content-center">{{ client.phone }}</ion-col>
+                                    </ion-row>
+                                    <ion-row>
+                                        <ion-col class="first-col d-flex justify-content-center">E-mail:</ion-col>
+                                        <ion-col class="sec-col d-flex justify-content-center">{{ client.email }}</ion-col>
+                                    </ion-row>
+                                    <ion-row v-for="house in client.houses" :key="house.id">
+                                        <ion-col class=" d-flex justify-content-center">Veículo(s)</ion-col>
+                                        <ion-col class="last-col d-flex justify-content-center">{{ house.veicle }}</ion-col>
+                                    </ion-row>
 
-                            </ion-grid>
-                        </div>
-                    </ion-col>
-                    <ion-col>
+                                </ion-grid>
+                            </div>
+                        </ion-col>
+                        <!-- <ion-col>
                         <div class="container p-0 client-sheet mt-4 shadow">
                             <ion-grid>
                                 <ion-row v-for="house in client.houses" :key="house.id">
@@ -79,63 +80,75 @@
                                 </ion-row>
                             </ion-grid>
                         </div>
-                    </ion-col>
-                </ion-row>
-            </ion-grid>
-            <div class="container client-sheet mt-5 shadow">
-                <ion-grid>
-                    <ion-row>
-                        <ion-col class="d-flex justify-content-center">
-                            <h3>Contratos</h3>
-                        </ion-col>
+                    </ion-col> -->
                     </ion-row>
                 </ion-grid>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">Ativo</th>
-                            <th scope="col">Data de contração</th>
-                            <th scope="col">ID</th>
-                            <th scope="col">Plano</th>
-                            <th scope="col">Valor</th>
-                            <th scope="col">Dia de Pagamento</th>
-                            <th scope="col">Data de Vencimento</th>
-                            <th scope="col">Ações</th>
-                            
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr v-for="cli in client.contracts" :key="cli.id">
-                            <td>
-                                <i v-if="cli.plan.status == 1" class="fas fa-circle text-success"></i>
-                                <i v-else-if="cli.plan.status == 0" class="fas fa-circle text-danger"></i>
-                            </td>
-                            <td >{{ cli.created_at }}</td>
-                            <td scope="row">{{ cli.id }}</td>
-                            <td>{{ cli.plan.description }}</td>
-                            <td>R${{ cli.plan.value }}</td>
-                            <td>{{ cli.payday }}</td>
-                            <td>{{ cli.expiration }}</td>
+                <div class="container client-sheet mt-5 shadow">
+                    <ion-grid>
+                        <ion-row>
+                            <ion-col class="d-flex justify-content-center">
+                                <h3>Imóveis</h3>
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                    <div class="p-2 text-center" v-if="client.houses.length == 0">
+                        <h4>Cliente não imóveis cadastrados</h4>
+                        <ion-button color="success" size="small" @click="modalImovel()"><ion-icon class="search-button"
+                                :icon="addOutline"></ion-icon></ion-button>
+                        <p style="font-size: 10px;">Cadastrar imóvel</p>
 
-                            <td class="d-flex">
-                                <div class="d-flex flex-column align-items-center justify-content-center mr-2">
-                                    <ion-button color="success" :router-link="{name: 'ContractComponentTest', params:{id: cli.id}}" size="small"><ion-icon class="search-button"
-                                            :icon="pencilOutline"></ion-icon></ion-button>
-                                    <p style="font-size: 10px;">Gerar contrato</p>
-                                </div>
-    
-                                <div class="d-flex flex-column align-items-center justify-content-center">
-                                    <ion-button color="success" size="small"><ion-icon class="search-button"
-                                            :icon="refreshOutline"></ion-icon></ion-button>
-                                    <p style="font-size: 10px;">Renovar contrato</p>        
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+                    </div>
+                    <div>
+                        <HousesComponent :houses="client.houses" />
+                    </div>
+                    <!-- <table v-else class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Ativo</th>
+                                <th scope="col">Data de contração</th>
+                                <th scope="col">ID</th>
+                                <th scope="col">Plano</th>
+                                <th scope="col">Valor</th>
+                                <th scope="col">Dia de Pagamento</th>
+                                <th scope="col">Data de Vencimento</th>
+                                <th scope="col">Ações</th>
 
-            <div class="container client-sheet mt-5 shadow">
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="cli in client.contracts" :key="cli.id">
+                                <td>
+                                    <i v-if="cli.plan.status == 1" class="fas fa-circle text-success"></i>
+                                    <i v-else-if="cli.plan.status == 0" class="fas fa-circle text-danger"></i>
+                                </td>
+                                <td>{{ cli.created_at }}</td>
+                                <td scope="row">{{ cli.id }}</td>
+                                <td>{{ cli.plan.description }}</td>
+                                <td>R${{ cli.plan.value }}</td>
+                                <td>{{ cli.payday }}</td>
+                                <td>{{ cli.expiration }}</td>
+
+                                <td class="d-flex">
+                                    <div class="d-flex flex-column align-items-center justify-content-center mr-2">
+                                        <ion-button color="success"
+                                            :router-link="{ name: 'ContractCompaonentTest', params: { id: cli.id } }"
+                                            size="small"><ion-icon class="search-button"
+                                                :icon="pencilOutline"></ion-icon></ion-button>
+                                        <p style="font-size: 10px;">Gerar contrato</p>
+                                    </div>
+
+                                    <div class="d-flex flex-column align-items-center justify-content-center">
+                                        <ion-button color="success" size="small"><ion-icon class="search-button"
+                                                :icon="refreshOutline"></ion-icon></ion-button>
+                                        <p style="font-size: 10px;">Renovar contrato</p>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table> -->
+                </div>
+
+                <!-- <div class="container client-sheet mt-5 shadow">
                 <ion-grid>
                     <ion-row>
                         <ion-col class="d-flex justify-content-center">
@@ -173,7 +186,7 @@
                         </tr>
                     </tbody>
                 </table>
-            </div>
+            </div> -->
             </div>
 
         </ion-content>
