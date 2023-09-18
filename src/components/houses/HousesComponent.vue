@@ -42,8 +42,10 @@
                             <ion-badge class="red-badge">{{ house.badgets.description }}</ion-badge></span> 
                            </td>
                            <td>
-                            <ion-button color="success" size="small" title="Cadastrar Serviço" @click="modalService()"><ion-icon class="search-button"
+                            <ion-button v-if="house.badgets.id !== 4" color="success" size="small" title="Cadastrar Serviço" @click="modalService(house.id)"><ion-icon class="search-button"
                                 :icon="addOutline"></ion-icon></ion-button>
+                            <ion-button v-else color="success" size="small" title="Ver serviço"  :router-link="{name:'ContractHouse', params:{id: profile}}" ><ion-icon class="search-button"
+                                :icon="cashOutline"></ion-icon></ion-button>
                            </td>
                     </tr>
                 </tbody>

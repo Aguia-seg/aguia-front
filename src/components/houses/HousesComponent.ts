@@ -1,5 +1,5 @@
 import { defineComponent } from "vue";
-import { addOutline } from "ionicons/icons"
+import { addOutline, cashOutline } from "ionicons/icons"
 import { modalController } from "@ionic/vue";
 import CreateContractForm from "@/views/financial/contract/contracts-form/CreateContractForm.vue"
 import { mapState } from "vuex";
@@ -14,11 +14,12 @@ export default defineComponent({
         console.log(this.houses)
     },
     methods:{
-        async modalService() {
+        async modalService(houseId: any) {
             const modal = await modalController.create({
                 component: CreateContractForm,
                 componentProps:{
-                    profile: this.profile
+                    profile: this.profile,
+                    house: houseId
                 }
                
             });
@@ -29,6 +30,7 @@ export default defineComponent({
     setup() {
         return {
             addOutline,
+            cashOutline
         }
     }
 

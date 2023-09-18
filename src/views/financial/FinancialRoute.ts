@@ -15,6 +15,11 @@ const FinancialRoute: Array<RouteRecordRaw> = [
         path: '/monthlypayment',
         name: 'MonthlyPayment',
         component: () => import('@/views/financial/monthlypayment/monthlypaymentPage/MonthlyPaymentPage.vue')
+    },
+    {
+        path: '/contract-house/:id',
+        name: 'ContractHouse',
+        component: () => import('@/views/financial/contract/contract-house/ContractHouse.vue')
     }
 ]
 

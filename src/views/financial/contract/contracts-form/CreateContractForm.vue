@@ -58,7 +58,8 @@ import { mapActions, mapState } from 'vuex';
 export default defineComponent({
   name: 'CreateClientForm',
   props: {
-    profile: null
+    profile: null,
+    house: null
   },
   computed: {
     ...mapState('plan', ['plans'])
@@ -68,7 +69,8 @@ export default defineComponent({
       service: {
         plano: '',
         payday: '',
-        client_id: this.profile
+        client_id: this.profile,
+        house_id: this.house
       },
       plano: '',
       disabledModel: {
