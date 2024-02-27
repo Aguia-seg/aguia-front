@@ -36,6 +36,21 @@ const actions = {
                 });
                 alert.present();
                 context.dispatch('getUsers');
+            },
+            async (error) => {
+                console.log(error.response.data);
+                let message = "";
+                for (const chave in error.response.data) {
+                    message += `${ error.response.data[chave]}, <br>`;
+                }
+                console.log(message)
+                await loading.dismiss();
+                const alert = await alertController.create({
+                    message: message,
+                    buttons: ['OK'],
+                });
+                await alert.present();
+                // return 'erro'
             }
         );
     }
